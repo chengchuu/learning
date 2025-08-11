@@ -3,6 +3,7 @@
 
 **Table of Contents:**
 
+- [24-0526 Anji (安吉;Anji,East China)](#24-0526-anji-安吉anjieast-china)
 - [22-0905 Shanghai Chongming Island (崇明岛;Shanghai,East China)](#22-0905-shanghai-chongming-island-崇明岛shanghaieast-china)
 - [22-0619 Shanghai Haichang Ocean Park (上海海昌海洋公园;Shanghai,East China)](#22-0619-shanghai-haichang-ocean-park-上海海昌海洋公园shanghaieast-china)
 - [22-0307 Thousand Island Lake (千岛湖;Hangzhou,East China)](#22-0307-thousand-island-lake-千岛湖hangzhoueast-china)
@@ -23,7 +24,7 @@
 - [25-0204 Xiamen Horticulture Expo Garden (厦门园林博览园;Xiamen,China)](#25-0204-xiamen-horticulture-expo-garden-厦门园林博览园xiamenchina)
 - [25-0410 No Traffic Jam Today (今天不堵车;Hong Kong,China)](#25-0410-no-traffic-jam-today-今天不堵车hong-kongchina)
 - [25-0320 Senbon Torii (千本鳥居;Kyoto,Japan)](#25-0320-senbon-torii-千本鳥居kyotojapan)
-- [25-0316 Wuxi (太湖鼋头渚;Wuxi,China)](#25-0316-wuxi-太湖鼋头渚wuxichina)
+- [23-0325 Wuxi (太湖鼋头渚;Wuxi,East China)](#23-0325-wuxi-太湖鼋头渚wuxieast-china)
 - [25-0305 Hakodate Tropical Botanical Garden (函館市熱帯植物園;Hakodate,Japan)](#25-0305-hakodate-tropical-botanical-garden-函館市熱帯植物園hakodatejapan)
 - [25-0304 Kanemori Red Brick Warehouse (金森赤レンガ倉庫;Hakodate,Japan)](#25-0304-kanemori-red-brick-warehouse-金森赤レンガ倉庫hakodatejapan)
 - [25-0303 Toyokawa Wharf (豊川埠頭;Hakodate,Japan)](#25-0303-toyokawa-wharf-豊川埠頭hakodatejapan)
@@ -60,6 +61,24 @@
 - [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 - [Others](#others)
+
+## 24-0526 Anji (安吉;Anji,East China)
+
+zh:
+
+安吉｜熊猫部落探险乐园漂流记
+#漂流 #漂流记 #秋千 #羊驼 #草原 #熊猫 #浙江 #湖州 #安吉 #熊猫部落探险乐园
+#漂流#享受大自然#羊驼#草原#熊猫#秋千#天路飞车#熊猫上山#浙江#安吉
+
+en:
+
+Anji: Panda Tribe Adventure Park Rafting Journey
+#rafting #naturevibes #alpaca #grassland #panda #swing #skyroadcoaster #pandaclimb #zhejiang #anji
+
+jp:
+
+安吉：パンダ部落アドベンチャーパーク漂流記
+#ラフティング #自然を満喫 #アルパカ #草原 #パンダ #ブランコ #スカイロードコースター #パンダ登山 #浙江 #安吉
 
 ## 22-0905 Shanghai Chongming Island (崇明岛;Shanghai,East China)
 
@@ -479,7 +498,7 @@ Gentle rain falls as I wander through the serene red corridors.
 #SenbonTorii #ToriiGates #KyotoShrine #RainyDay #JapaneseCulture #RedCorridor #KyotoAttractions #InariShrine #TempleVisit #JapanHeritage #Japan #JapanTravel #Travel #TravelDiary
 #SenbonTorii#ToriiGates#KyotoShrine#RainyDay#JapaneseCulture#RedCorridor#KyotoAttractions#InariShrine#TempleVisit#JapanHeritage
 
-## 25-0316 Wuxi (太湖鼋头渚;Wuxi,China)
+## 23-0325 Wuxi (太湖鼋头渚;Wuxi,East China)
 
 无锡｜太湖鼋头渚｜漫步樱花盛开的仙境 #想约你去淋一场樱花雨 #慢下来看世界 #樱花 #樱花谷 #长春桥 #赏樱 #太湖 #佛教 #园林 #江苏 #无锡 #旅行 #旅游 #旅行日记
 
@@ -487,9 +506,8 @@ zh:
 
 鼋头渚樱花谷｜春日里的浪漫樱花雨
 樱花绽放，太湖畔的春日仙境。
-#樱花 #樱花谷 #长春桥 #赏樱 #太湖 #佛教 #园林 #江苏 #无锡 #旅游 #旅行 #旅行日记
-#樱花#樱花谷#长春桥#赏樱#太湖#佛教#园林#江苏#无锡#旅游
-#樱花# #樱花谷# #长春桥# #赏樱# #太湖# #佛教# #园林# #江苏# #无锡# #旅游#
+#樱花 #樱花谷 #长春桥 #赏樱 #太湖 #佛教 #园林 #江苏 #无锡
+#樱花#樱花谷#长春桥#赏樱#太湖#佛教#园林#江苏#无锡
 
 en:
 
@@ -1210,12 +1228,6 @@ description: #享受大自然 #身体和灵魂总有一个在路上 #旅行碎�
 color: 424b57
 
 category: 旅行日记
-
----
-
-title: 安吉｜熊猫部落探险乐园｜漂流记，羊了个羊
-
-description: #漂流 #漂流记 #享受大自然 #羊了个羊 #秋千 #天路飞车 #熊猫上山 #羊 #羊驼 #草原 #熊猫 #浙江 #湖州 #安吉 #熊猫部落探险乐园 #旅游 #旅行 #旅行日记
 
 ---
 
