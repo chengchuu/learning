@@ -3,7 +3,7 @@
 
 **Table of Contents:**
 
-- [24-0526 Anji (安吉;Anji,East China)](#24-0526-anji-安吉anjieast-china)
+- [24-0526 Anji (安吉;Huzhou,East China)](#24-0526-anji-安吉huzhoueast-china)
 - [22-0905 Shanghai Chongming Island (崇明岛;Shanghai,East China)](#22-0905-shanghai-chongming-island-崇明岛shanghaieast-china)
 - [22-0619 Shanghai Haichang Ocean Park (上海海昌海洋公园;Shanghai,East China)](#22-0619-shanghai-haichang-ocean-park-上海海昌海洋公园shanghaieast-china)
 - [22-0307 Thousand Island Lake (千岛湖;Hangzhou,East China)](#22-0307-thousand-island-lake-千岛湖hangzhoueast-china)
@@ -62,11 +62,11 @@
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 - [Others](#others)
 
-## 24-0526 Anji (安吉;Anji,East China)
+## 24-0526 Anji (安吉;Huzhou,East China)
 
 zh:
 
-安吉｜熊猫部落探险乐园漂流记
+安吉｜熊猫部落探险乐园
 #漂流 #漂流记 #秋千 #羊驼 #草原 #熊猫 #浙江 #湖州 #安吉 #熊猫部落探险乐园
 #漂流#享受大自然#羊驼#草原#熊猫#秋千#天路飞车#熊猫上山#浙江#安吉
 
