@@ -3,6 +3,7 @@
 
 **Table of Contents:**
 
+- [13-0804 Rizhao (日照;Rizhao,East China)](#13-0804-rizhao-日照rizhaoeast-china)
 - [24-0526 Anji (安吉;Huzhou,East China)](#24-0526-anji-安吉huzhoueast-china)
 - [22-0905 Shanghai Chongming Island (崇明岛;Shanghai,East China)](#22-0905-shanghai-chongming-island-崇明岛shanghaieast-china)
 - [22-0619 Shanghai Haichang Ocean Park (上海海昌海洋公园;Shanghai,East China)](#22-0619-shanghai-haichang-ocean-park-上海海昌海洋公园shanghaieast-china)
@@ -61,6 +62,21 @@
 - [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 - [Others](#others)
+
+## 13-0804 Rizhao (日照;Rizhao,East China)
+
+address: 万平口海滨风景区
+
+zh:
+
+日照｜日出东方而先照
+#万平口 #灯塔 #浮来山 #竹洞天 #滑雪场 #香河公园 #状元桥 #沙滩 #日照
+#万平口#灯塔#浮来山#竹洞天#滑雪场#香河公园#状元桥#沙滩#日照
+
+en:
+
+Rizhao: Dawn over the Eastern Sea
+#Wanpingkou #Lighthouse #Fulaishan #Zhudongtian #SkiResort #XianghePark #ZhuangyuanBridge #Beach #Rizhao
 
 ## 24-0526 Anji (安吉;Huzhou,East China)
 
@@ -1164,12 +1180,6 @@ title: 无锡｜每一帧都是热爱
 description: #祈福 #南禅寺 #孝文化 #惠山古寺 #寄畅园 #泰伯殿 #惠山 #豆腐花 #大雄宝殿 #蝴蝶 #花 #寺庙 #山 #江苏 #无锡 #旅行 #旅游 #旅行日记
 
 color: 507cc8
-
----
-
-title: 日照｜日出东方而先照
-
-description: #保持热爱奔赴山海 #目之所及皆是回忆 #海边随拍 #夕阳西下落日余晖 #万平口 #灯塔 #浮来山 #竹洞天 #滑雪场 #图书馆 #香河公园 #江北第一竹 #状元桥 #孔子 #沙滩 #山东 #日照 #旅行 #旅游 #旅行日记
 
 ---
 
