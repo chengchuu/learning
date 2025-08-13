@@ -4,10 +4,12 @@
 猫猫
 猫咪日常・嘟嘟
 桂林公园
+徐汇日月光中心
 
 **Table of Contents:**
 
 - [Cat](#cat)
+  - [25-0724](#25-0724)
   - [25-0805 A Cat Loves You](#25-0805-a-cat-loves-you)
   - [25-0803 This Is My Cat](#25-0803-this-is-my-cat)
   - [25-0714 Stay With Me](#25-0714-stay-with-me)
@@ -22,6 +24,21 @@
   - [25-0605 Don't Even Think Once](#25-0605-dont-even-think-once)
   - [25-0603 Moments with a Little Cat](#25-0603-moments-with-a-little-cat)
   - [25-0602 Tired All the Time](#25-0602-tired-all-the-time)
+
+## 25-0724
+
+zh:
+
+小猫的冻干测试
+小猫机智换姿势，只为尝一口美味冻干。
+#猫咪#宠物猫#萌宠#猫#猫咪日常#猫咪训练#智商#冻干#测试
+
+en:
+
+Clever Kitty’s Snack Heist
+A clever kitty tries every pose to steal a tasty freeze-dried snack.
+#cat #petcat #cutepet #catdaily #cattraining #smartcat #freezedried #snacktime
+#cat#petcat#cutepet#catdaily#cattraining#smartcat#freezedried#snacktime
 
 ## 25-0805 A Cat Loves You
 
