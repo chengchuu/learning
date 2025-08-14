@@ -3,6 +3,7 @@
 
 **Table of Contents:**
 
+- [22-0830 South Tai Lake (南太湖;Suzhou,East China)](#22-0830-south-tai-lake-南太湖suzhoueast-china)
 - [16-0925 Maoshan (茅山;Zhenjiang,East China)](#16-0925-maoshan-茅山zhenjiangeast-china)
 - [13-0804 Rizhao (日照;Rizhao,East China)](#13-0804-rizhao-日照rizhaoeast-china)
 - [24-0526 Anji (安吉;Huzhou,East China)](#24-0526-anji-安吉huzhoueast-china)
@@ -63,6 +64,23 @@
 - [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 - [Others](#others)
+
+## 22-0830 South Tai Lake (南太湖;Suzhou,East China)
+
+address: 南太湖大道
+
+zh:
+
+南太湖｜飞驰的快艇
+夕阳染红湖面，快艇划出闪亮的浪花。
+#苏州 #南太湖 #快艇 #夕阳 #落日 #湖景
+#苏州#南太湖#快艇#夕阳#落日#湖景
+
+en:
+
+South Tai Lake: Speeding Boat at Sunset
+The sunset paints the lake red as the speedboat cuts through waves.
+#Suzhou #SouthTaiLake #LakeView #Sunset #Speedboat #Dusk #Scenery #Travel #Tourism #Photography
 
 ## 16-0925 Maoshan (茅山;Zhenjiang,East China)
 
