@@ -9,7 +9,7 @@
 **Table of Contents:**
 
 - [Cat](#cat)
-  - [25-0724](#25-0724)
+  - [25-0724 Snack Time for a Clever Kitty](#25-0724-snack-time-for-a-clever-kitty)
   - [25-0805 A Cat Loves You](#25-0805-a-cat-loves-you)
   - [25-0803 This Is My Cat](#25-0803-this-is-my-cat)
   - [25-0714 Stay With Me](#25-0714-stay-with-me)
@@ -25,18 +25,19 @@
   - [25-0603 Moments with a Little Cat](#25-0603-moments-with-a-little-cat)
   - [25-0602 Tired All the Time](#25-0602-tired-all-the-time)
 
-## 25-0724
+## 25-0724 Snack Time for a Clever Kitty
 
 zh:
 
 小猫的冻干测试
-小猫机智换姿势，只为尝一口美味冻干。
+猫猫的目标很单纯，只为尝一口美味冻干。
+#猫咪 #宠物猫 #萌宠 #猫
 #猫咪#宠物猫#萌宠#猫#猫咪日常#猫咪训练#智商#冻干#测试
 
 en:
 
-Clever Kitty’s Snack Heist
-A clever kitty tries every pose to steal a tasty freeze-dried snack.
+Snack Time for a Clever Kitty
+A clever kitty tries every pose to taste a tasty freeze-dried snack.
 #cat #petcat #cutepet #catdaily #cattraining #smartcat #freezedried #snacktime
 #cat#petcat#cutepet#catdaily#cattraining#smartcat#freezedried#snacktime
 
