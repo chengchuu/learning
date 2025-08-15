@@ -3,9 +3,11 @@
 
 **Table of Contents:**
 
+- [22-0912 Dongfu Island (东福岛;Zhoushan,East China)](#22-0912-dongfu-island-东福岛zhoushaneast-china)
+- [22-0912 Dongji Town (东极镇;Shanghai,East China)](#22-0912-dongji-town-东极镇shanghaieast-china)
 - [22-0830 South Tai Lake (南太湖;Suzhou,East China)](#22-0830-south-tai-lake-南太湖suzhoueast-china)
 - [16-0925 Maoshan (茅山;Zhenjiang,East China)](#16-0925-maoshan-茅山zhenjiangeast-china)
-- [13-0804 Rizhao (日照;Rizhao,East China)](#13-0804-rizhao-日照rizhaoeast-china)
+- [16-0108 Rizhao (日照;Rizhao,East China)](#16-0108-rizhao-日照rizhaoeast-china)
 - [24-0526 Anji (安吉;Huzhou,East China)](#24-0526-anji-安吉huzhoueast-china)
 - [22-0905 Shanghai Chongming Island (崇明岛;Shanghai,East China)](#22-0905-shanghai-chongming-island-崇明岛shanghaieast-china)
 - [22-0619 Shanghai Haichang Ocean Park (上海海昌海洋公园;Shanghai,East China)](#22-0619-shanghai-haichang-ocean-park-上海海昌海洋公园shanghaieast-china)
@@ -65,6 +67,40 @@
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 - [Others](#others)
 
+## 22-0912 Dongfu Island (东福岛;Zhoushan,East China)
+
+addr: 东极岛景区 / 东福岛 / 东福山
+
+zh:
+
+东福岛｜夕阳与灯塔
+金色余晖映照海面，浪花轻拍灯塔脚下。
+#东极列岛 #东极岛 #东福岛 #灯塔 #夕阳 #海浪 #海景 #海边 #浙江 #舟山
+#东极列岛#东极岛#东福岛#灯塔#夕阳#海浪#海景#海边#浙江#舟山
+
+en:
+
+Dongfu Island: Seaside Prelude of Sunset and Lighthouse
+Golden afterglow reflects on the sea as gentle waves caress the lighthouse base.
+#DongjiIslands #DongjiIsland #Dongfudao #Lighthouse #Sunset #Waves #Seaview #Seaside #Zhejiang #Zhoushan
+
+## 22-0912 Dongji Town (东极镇;Shanghai,East China)
+
+addr: 东极镇
+
+zh:
+
+东极镇｜海上穿梭于群岛之间
+海风轻拂，景色连绵如画。
+#东极镇 ##东极岛 #东极列岛 #游船 #海滩 #海边 #海 #海景
+#东极镇#东极岛#东极列岛#游船#海滩#海边#海#海景
+
+en:
+
+Dongji Town: Sailing Between the Islands
+Sea breeze on my face, endless views like a painting.
+#DongjiTown #DongjiIsland #DongjiArchipelago #BoatRide #Beach #Seaside #Sea #Seascape
+
 ## 22-0830 South Tai Lake (南太湖;Suzhou,East China)
 
 address: 南太湖大道
@@ -72,7 +108,7 @@ address: 南太湖大道
 zh:
 
 南太湖｜飞驰的快艇
-夕阳染红湖面，快艇划出闪亮的浪花。
+天际被夕阳染红，水天交汇处泛起霞光，快艇划出闪亮的浪花。
 #苏州 #南太湖 #快艇 #夕阳 #落日 #湖景
 #苏州#南太湖#快艇#夕阳#落日#湖景
 
@@ -95,7 +131,7 @@ en:
 Maoshan: Serene Mountains and Pristine Scenery
 #Jiangsu #Zhenjiang #Maoshan #NatureViews #MountainsAndRivers #Travel #Tourism
 
-## 13-0804 Rizhao (日照;Rizhao,East China)
+## 16-0108 Rizhao (日照;Rizhao,East China)
 
 address: 万平口海滨风景区
 
