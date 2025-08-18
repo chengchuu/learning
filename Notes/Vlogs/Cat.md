@@ -9,7 +9,7 @@
 **Table of Contents:**
 
 - [Cat](#cat)
-  - [25-0714](#25-0714)
+  - [25-0714 Gentle Dream](#25-0714-gentle-dream)
   - [25-0724 Snack Time for a Clever Kitty](#25-0724-snack-time-for-a-clever-kitty)
   - [25-0805 A Cat Loves You](#25-0805-a-cat-loves-you)
   - [25-0803 This Is My Cat](#25-0803-this-is-my-cat)
@@ -26,13 +26,16 @@
   - [25-0603 Moments with a Little Cat](#25-0603-moments-with-a-little-cat)
   - [25-0602 Tired All the Time](#25-0602-tired-all-the-time)
 
-## 25-0714
+## 25-0714 Gentle Dream
 
 zh:
 
 可爱的长女
+小猫的温柔梦境
+#猫咪 #睡觉 #日常 #治愈 #萌宠 #可爱 #长女 #金枪鱼 #温柔 #小猫
+#猫咪#睡觉#日常#治愈#萌宠#可爱#长女#金枪鱼#温柔#小猫
+
 猫猫的温柔梦境
-#猫咪 #睡觉 #日常 #治愈 #萌宠 #可爱 #长女 #金枪鱼 #温柔 #陪伴
 
 en:
 

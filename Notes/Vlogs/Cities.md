@@ -3,7 +3,7 @@
 
 **Table of Contents:**
 
-- [22-0912 Dongfu Island (东福岛;Zhoushan,East China)](#22-0912-dongfu-island-东福岛zhoushaneast-china)
+- [22-0912 Dongfushan Island (东福山岛;Zhoushan,East China)](#22-0912-dongfushan-island-东福山岛zhoushaneast-china)
 - [22-0912 Dongji Town (东极镇;Shanghai,East China)](#22-0912-dongji-town-东极镇shanghaieast-china)
 - [22-0830 South Tai Lake (南太湖;Suzhou,East China)](#22-0830-south-tai-lake-南太湖suzhoueast-china)
 - [16-0925 Maoshan (茅山;Zhenjiang,East China)](#16-0925-maoshan-茅山zhenjiangeast-china)
@@ -67,22 +67,22 @@
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 - [Others](#others)
 
-## 22-0912 Dongfu Island (东福岛;Zhoushan,East China)
+## 22-0912 Dongfushan Island (东福山岛;Zhoushan,East China)
 
-addr: 东极岛景区 / 东福岛 / 东福山
+addr: 东福山岛 / 东极岛景区 / 东福山
 
 zh:
 
-东福岛｜夕阳与灯塔
+东福山岛｜夕阳与灯塔
 金色余晖映照海面，浪花轻拍灯塔脚下。
-#东极列岛 #东极岛 #东福岛 #灯塔 #夕阳 #海浪 #海景 #海边 #浙江 #舟山
-#东极列岛#东极岛#东福岛#灯塔#夕阳#海浪#海景#海边#浙江#舟山
+#东极列岛 #东极岛 #东福山岛 #灯塔 #夕阳 #海浪 #海景 #海边 #浙江 #舟山
+#东极列岛#东极岛#东福山岛#灯塔#夕阳#海浪#海景#海边#浙江#舟山
 
 en:
 
-Dongfu Island: Seaside Prelude of Sunset and Lighthouse
+Dongfushan Island: Seaside Prelude of Sunset and Lighthouse
 Golden afterglow reflects on the sea as gentle waves caress the lighthouse base.
-#DongjiIslands #DongjiIsland #Dongfudao #Lighthouse #Sunset #Waves #Seaview #Seaside #Zhejiang #Zhoushan
+#DongjiIslands #DongjiIsland #Dongfushan #Lighthouse #Sunset #Waves #Seaview #Seaside #Zhejiang #Zhoushan
 
 ## 22-0912 Dongji Town (东极镇;Shanghai,East China)
 
