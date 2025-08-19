@@ -31,17 +31,16 @@
 zh:
 
 可爱的长女
-小猫的温柔梦境
+猫猫的温柔梦境。
 #猫咪 #睡觉 #日常 #治愈 #萌宠 #可爱 #长女 #金枪鱼 #温柔 #小猫
 #猫咪#睡觉#日常#治愈#萌宠#可爱#长女#金枪鱼#温柔#小猫
-
-猫猫的温柔梦境
 
 en:
 
 Gentle Dream
-The kitty naps sweetly, still dreaming of her favorite tuna.
-#cat #sleeping #daily #healing #pet #cute #eldest #tuna #gentle #companion
+The kitty naps sweetly, still dreaming of her favourite tuna.
+#cat #sleeping #daily #healing #pet #cute #eldest #gentle #companion
+#cat#sleeping#daily#healing#pet#cute#eldest#gentle#companion
 
 jp:
 
