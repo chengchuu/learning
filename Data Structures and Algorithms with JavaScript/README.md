@@ -1,1 +1,1 @@
-# Mazey-Study
+# Data Structures and Algorithms with JavaScript
