@@ -1,6 +1,6 @@
 # Postman 使用指南: 请求、变量、Runner 和脚手架 Newman
 
-[Postman 使用指南: 请求、变量、Runner 和脚手架 Newman](https://blog.mazey.net/wp-content/uploads/2021/01/Postman_SF_7x3.jpg)
+![Postman 使用指南: 请求、变量、Runner 和脚手架 Newman](https://blog.mazey.net/wp-content/uploads/2021/01/Postman_SF_7x3.jpg)
 
 Postman 是一款 API 开发协作平台，支持变量管理、请求生命周期脚本、抓包代理和集合运行器 (Collection Runner)，并提供命令行工具 Newman 集成 CI / CD。其功能包括调试接口、数据验证和动态变量，付费版本还支持文档与监控等协作功能。
 
