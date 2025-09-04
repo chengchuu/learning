@@ -51,26 +51,34 @@ Postman 支持在不同的作用域和上下文中使用变量，遵循就近原
 ### 2.1 变量作用域适用于 Postman 中不同的场景
 
 - Global: 全局变量可以在整个工作空间 (Workspace) 中使用，因为无法控制使用环境和容易造成混淆，应当是不可变的**全局常量**，谨慎使用。
-    ```
-    pm.globals.set("variable_key", "variable_value");
-    pm.globals.get("variable_key");
-    ```
+
+```javascript
+pm.globals.set("variable_key", "variable_value");
+pm.globals.get("variable_key");
+```
+
 - Collection: 集合变量在单个集合 (Collection) 中可用，往往具备通用的业务绑定属性，例如: 商品属性、会员等级、通用秘钥等。
-    ```
-    pm.collectionVariables.set("variable_key", "variable_value");
-    pm.collectionVariables.get("variable_key");
-    ```
+
+```javascript
+pm.collectionVariables.set("variable_key", "variable_value");
+pm.collectionVariables.get("variable_key");
+```
+
 - Environment: 环境变量允许请求适应不同的环境，例如: 本地、测试、预演和生产环境，常常用来区别请求地址。
-    ```
-    pm.environment.set("variable_key", "variable_value");
-    pm.environment.get("variable_key");
-    ```
+
+```javascript
+pm.environment.set("variable_key", "variable_value");
+pm.environment.get("variable_key");
+```
+
 - Data: 数据变量来自外部 CSV 和 JSON 文件，当通过 Newman 或 Runner 来运行时才用到。
+
 - Local: 局部变量只在单个请求生命周期中可用，运行完成后自动销毁。
-    ```
-    pm.variables.set("variable_key", "variable_value");
-    pm.variables.get("variable_key");
-    ```
+
+```javascript
+pm.variables.set("variable_key", "variable_value");
+pm.variables.get("variable_key");
+```
 
 ![](https://blog.mazey.net/wp-content/uploads/2021/01/Variables-Chart-0020.png)
 
@@ -90,7 +98,7 @@ Postman 内置了很多常见场景的[动态变量](https://learning.postman.co
 
 ![](https://blog.mazey.net/wp-content/uploads/2021/01/postman-console-w-800-0056.jpg)
 
-```
+```javascript
 console.log('当前时间戳:', pm.variables.replaceIn('{{$timestamp}}'));
 console.log('随机颜色:', pm.variables.replaceIn('{{$randomColor}}'));
 console.log('随机 IP:', pm.variables.replaceIn('{{$randomIP}}'));
@@ -98,8 +106,11 @@ console.log('随机名字:', pm.variables.replaceIn('{{$randomFullName}}'));
 console.log('随机职业:', pm.variables.replaceIn('{{$randomJobType}}'));
 console.log('随机城市:', pm.variables.replaceIn('{{$randomCity}}'));
 console.log('随机图片:', pm.variables.replaceIn('{{$randomImageUrl}}'));
+```
 
-# 输出
+输出:
+
+```plain
 当前时间戳: 1609060090
 随机颜色: azure
 随机 IP: 163.140.207.64
@@ -149,18 +160,18 @@ Postman 支持在请求响应后通过测试脚本来验证请求是否符合预
 
 示例一: 验证响应状态码是否是 200。
 
-```
+```javascript
 pm.test("Status test", function () {
-    pm.response.to.have.status(200);
+  pm.response.to.have.status(200);
 });
 ```
 
 示例二: 验证返回的业务数据 (JSON) 是否符合预期。
 
-```
+```javascript
 pm.test("请求成功！", function () {
-    var jsonData = pm.response.json();
-    pm.expect(jsonData.message).to.eql('success');
+  var jsonData = pm.response.json();
+  pm.expect(jsonData.message).to.eql('success');
 });
 ```
 
@@ -219,7 +230,7 @@ pm.test("请求成功！", function () {
 
 Postman 提供脚手架工具 Newman 来以命令行的方式来运行集合 (Collection) 请求，其提供和 Postman 桌面端一致的功能，可以集成在工作流的 CI / CD 中。
 
-```
+```bash
 # 安装
 npm install -g newman
 
