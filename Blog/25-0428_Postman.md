@@ -2,7 +2,7 @@
 
 [Postman 使用指南: 请求、变量、Runner 和脚手架 Newman](https://blog.mazey.net/wp-content/uploads/2021/01/Postman_SF_7x3.jpg)
 
-Postman 是一款 API 开发协作平台，支持变量管理、请求生命周期脚本、抓包代理和集合运行器 (Collection Runner)，并提供命令行工具 Newman 集成 CI/CD。其功能包括调试接口、数据验证和动态变量，付费版本还支持文档与监控等协作功能。
+Postman 是一款 API 开发协作平台，支持变量管理、请求生命周期脚本、抓包代理和集合运行器 (Collection Runner)，并提供命令行工具 Newman 集成 CI / CD。其功能包括调试接口、数据验证和动态变量，付费版本还支持文档与监控等协作功能。
 
 - [Postman 使用指南: 请求、变量、Runner 和脚手架 Newman](#postman-使用指南-请求变量runner-和脚手架-newman)
   - [一、什么是 Postman (前世今生)](#一什么是-postman-前世今生)
@@ -123,17 +123,17 @@ console.log('随机图片:', pm.variables.replaceIn('{{$randomImageUrl}}'));
 
 ### 3.2 发送请求 (request)
 
-小技巧一: 在链接中使用 `:id` 自定义路径参数
+小技巧一: 在链接中使用 `:id` 自定义路径参数。
 
 ![](https://blog.mazey.net/wp-content/uploads/2021/01/path-param-w-800-0054.jpg)
 
-小技巧二: Cookie 可编辑
+小技巧二: Cookie 可编辑。
 
 ![](https://blog.mazey.net/wp-content/uploads/2021/01/WS-manage-cookies-w-800-0055.jpg)
 
 ### 3.3 接收一个响应 (response)
 
-小技巧: 保存响应结果
+小技巧: 保存响应结果。
 
 ![](https://blog.mazey.net/wp-content/uploads/2021/01/save-result-0031.jpg)
 
@@ -147,7 +147,7 @@ Postman 支持在请求响应后通过测试脚本来验证请求是否符合预
 
 ![](https://blog.mazey.net/wp-content/uploads/2021/01/example-test-status-0033.jpg)
 
-示例一: 验证响应状态码是否是 200
+示例一: 验证响应状态码是否是 200。
 
 ```
 pm.test("Status test", function () {
@@ -155,7 +155,7 @@ pm.test("Status test", function () {
 });
 ```
 
-示例二: 验证返回的业务数据 (JSON) 是否符合预期
+示例二: 验证返回的业务数据 (JSON) 是否符合预期。
 
 ```
 pm.test("请求成功！", function () {
@@ -217,7 +217,7 @@ pm.test("请求成功！", function () {
 
 ## 七、命令行脚手架 Newman
 
-Postman 提供脚手架工具 Newman 来以命令行的方式来运行集合 (Collection) 请求，其提供和 Postman 桌面端一致的功能，可以集成在工作流的 CI/CD 中。
+Postman 提供脚手架工具 Newman 来以命令行的方式来运行集合 (Collection) 请求，其提供和 Postman 桌面端一致的功能，可以集成在工作流的 CI / CD 中。
 
 ```
 # 安装
