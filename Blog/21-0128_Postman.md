@@ -88,7 +88,7 @@ pm.variables.get("variable_key");
 
 ### 2.3 编辑集合变量
 
-![编辑集合变量界面](https://blog.mazey.net/wp-content/uploads/2021/01/edit-collection-var-0145.jpg)
+![编辑集合变量](https://blog.mazey.net/wp-content/uploads/2021/01/edit-collection-var-0145.jpg)
 
 ### 2.4 使用系统内置动态变量
 
@@ -96,7 +96,7 @@ Postman 内置了很多常见场景的[动态变量](https://learning.postman.co
 
 备注: Postman 支持在 Pre-request Script 和 Tests 中打印调试信息，和浏览器控制台一致，可以使用命令: `console.log()`、`console.info()`、`console.warn()` 和 `console.error()`。
 
-![Postman 控制台界面](https://blog.mazey.net/wp-content/uploads/2021/01/postman-console-w-800-0056.jpg)
+![Postman 控制台](https://blog.mazey.net/wp-content/uploads/2021/01/postman-console-w-800-0056.jpg)
 
 ```javascript
 console.log('当前时间戳:', pm.variables.replaceIn('{{$timestamp}}'));
@@ -130,7 +130,7 @@ console.log('随机图片:', pm.variables.replaceIn('{{$randomImageUrl}}'));
 
 前置请求脚本 (pre-request script) 顾名思义就是在请求发送之前执行的脚本。
 
-![前置请求脚本界面](https://blog.mazey.net/wp-content/uploads/2021/01/pre-request-script-w-800-0021.jpg)
+![前置请求脚本](https://blog.mazey.net/wp-content/uploads/2021/01/pre-request-script-w-800-0021.jpg)
 
 ### 3.2 发送请求 (request)
 
@@ -140,13 +140,13 @@ console.log('随机图片:', pm.variables.replaceIn('{{$randomImageUrl}}'));
 
 小技巧二: Cookie 可编辑。
 
-![Cookie 管理界面](https://blog.mazey.net/wp-content/uploads/2021/01/WS-manage-cookies-w-800-0055.jpg)
+![Cookie 管理](https://blog.mazey.net/wp-content/uploads/2021/01/WS-manage-cookies-w-800-0055.jpg)
 
 ### 3.3 接收一个响应 (response)
 
 小技巧: 保存响应结果。
 
-![保存响应结果界面](https://blog.mazey.net/wp-content/uploads/2021/01/save-result-0031.jpg)
+![保存响应结果](https://blog.mazey.net/wp-content/uploads/2021/01/save-result-0031.jpg)
 
 保存后的结果可以作为案例或记录以便开发使用。
 
@@ -156,7 +156,7 @@ console.log('随机图片:', pm.variables.replaceIn('{{$randomImageUrl}}'));
 
 Postman 支持在请求响应后通过测试脚本来验证请求是否符合预期。
 
-![测试脚本示例界面](https://blog.mazey.net/wp-content/uploads/2021/01/example-test-status-0033.jpg)
+![测试脚本示例](https://blog.mazey.net/wp-content/uploads/2021/01/example-test-status-0033.jpg)
 
 示例一: 验证响应状态码是否是 200。
 
@@ -191,7 +191,7 @@ pm.test("请求成功！", function () {
 
 本机 IP 地址:
 
-![macOS 网络设置界面](https://blog.mazey.net/wp-content/uploads/2021/01/osx-network-settings-w-800-0117.jpg)
+![网络设置](https://blog.mazey.net/wp-content/uploads/2021/01/osx-network-settings-w-800-0117.jpg)
 
 手机设置:
 
@@ -199,7 +199,7 @@ pm.test("请求成功！", function () {
 
 ### 4.2 抓包效果
 
-![代理日志界面显示抓包效果](https://blog.mazey.net/wp-content/uploads/2021/01/WS-proxy.logs-w-800-0057.png)
+![抓包效果](https://blog.mazey.net/wp-content/uploads/2021/01/WS-proxy.logs-w-800-0057.png)
 
 ## 五、使用代理
 
@@ -241,13 +241,13 @@ newman run mycollection.json
 newman run https://www.postman.com/collections/cb208e7e64056f5294e5 -e dev_environment.json
 ```
 
-![Newman 命令行界面运行演示](https://blog.mazey.net/wp-content/uploads/2021/01/newman-cli-w-800-0128.gif)
+![Newman 命令行运行演示](https://blog.mazey.net/wp-content/uploads/2021/01/newman-cli-w-800-0128.gif)
 
 ## 八、付费功能
 
 另外 Postman 提供了很多团队协作需要的[付费功能](https://www.postman.com/pricing/)，例如: 文档、监控、健康检查等。
 
-![Postman 付费功能插件界面](https://blog.mazey.net/wp-content/uploads/2021/01/add-on-w-800-0048.jpg)
+![Postman 付费功能插件](https://blog.mazey.net/wp-content/uploads/2021/01/add-on-w-800-0048.jpg)
 
 **版权声明**
 
