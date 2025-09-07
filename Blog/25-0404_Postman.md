@@ -32,7 +32,7 @@ Postman 是一款 API 开发协作平台，支持变量管理、请求生命周�
 
 如今 Postman 已经成为一个 API 开发的协作平台。Postman 简化了构建 API 的每个步骤，并简化了协作，这样就可以更快地创建 API。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/api-platform-0106.png)
+![Postman API 协作平台](https://blog.mazey.net/wp-content/uploads/2021/01/api-platform-0106.png)
 
 ## 二、使用变量
 
@@ -40,13 +40,13 @@ Postman 允许用户在发送和接收时[使用变量](https://learning.postman
 
 例如在不同运行环境中设置*域名地址*为变量:
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/url-var-0135.jpg)
+![在 URL 中设置变量](https://blog.mazey.net/wp-content/uploads/2021/01/url-var-0135.jpg)
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/reference-var-0136.jpg)
+![引用变量示例](https://blog.mazey.net/wp-content/uploads/2021/01/reference-var-0136.jpg)
 
 Postman 支持在不同的作用域和上下文中使用变量，遵循就近原则，即如果在 `Global` 和 `Environment` 中都有变量 `name`，则会取 `Environment` 中的 `name`。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/var-scope-0119.jpg)
+![变量作用域示意图](https://blog.mazey.net/wp-content/uploads/2021/01/var-scope-0119.jpg)
 
 ### 2.1 变量作用域适用于 Postman 中不同的场景
 
@@ -80,15 +80,15 @@ pm.variables.set("variable_key", "variable_value");
 pm.variables.get("variable_key");
 ```
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/Variables-Chart-0020.png)
+![变量作用域层次图](https://blog.mazey.net/wp-content/uploads/2021/01/Variables-Chart-0020.png)
 
 ### 2.2 编辑全局和环境变量
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/env-quick-look-0027.jpg)
+![环境变量快速查看](https://blog.mazey.net/wp-content/uploads/2021/01/env-quick-look-0027.jpg)
 
 ### 2.3 编辑集合变量
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/edit-collection-var-0145.jpg)
+![编辑集合变量界面](https://blog.mazey.net/wp-content/uploads/2021/01/edit-collection-var-0145.jpg)
 
 ### 2.4 使用系统内置动态变量
 
@@ -96,7 +96,7 @@ Postman 内置了很多常见场景的[动态变量](https://learning.postman.co
 
 备注: Postman 支持在 Pre-request Script 和 Tests 中打印调试信息，和浏览器控制台一致，可以使用命令: `console.log()`、`console.info()`、`console.warn()` 和 `console.error()`。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/postman-console-w-800-0056.jpg)
+![Postman 控制台界面](https://blog.mazey.net/wp-content/uploads/2021/01/postman-console-w-800-0056.jpg)
 
 ```javascript
 console.log('当前时间戳:', pm.variables.replaceIn('{{$timestamp}}'));
@@ -124,39 +124,39 @@ console.log('随机图片:', pm.variables.replaceIn('{{$randomImageUrl}}'));
 
 在 Postman 中，一个完整的 Postman 请求生命周期，除了常规的请求 (request) 和响应 (response)，还包括前置请求脚本 (pre-request script) 和后置测试脚本 (tests script)。Postman 包含一个基于 **Node.js** 的强大运行态 (runtime)，允许用户在 pre-request script 和 tests 事件中编写 JavaScript 代码。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/req-resp-0107.png)
+![Postman 请求生命周期示意图](https://blog.mazey.net/wp-content/uploads/2021/01/req-resp-0107.png)
 
 ### 3.1 在前置请求 (pre-request script) 中使用脚本
 
 前置请求脚本 (pre-request script) 顾名思义就是在请求发送之前执行的脚本。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/pre-request-script-w-800-0021.jpg)
+![前置请求脚本界面](https://blog.mazey.net/wp-content/uploads/2021/01/pre-request-script-w-800-0021.jpg)
 
 ### 3.2 发送请求 (request)
 
 小技巧一: 在链接中使用 `:id` 自定义路径参数。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/path-param-w-800-0054.jpg)
+![自定义路径参数示例](https://blog.mazey.net/wp-content/uploads/2021/01/path-param-w-800-0054.jpg)
 
 小技巧二: Cookie 可编辑。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/WS-manage-cookies-w-800-0055.jpg)
+![Cookie 管理界面](https://blog.mazey.net/wp-content/uploads/2021/01/WS-manage-cookies-w-800-0055.jpg)
 
 ### 3.3 接收一个响应 (response)
 
 小技巧: 保存响应结果。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/save-result-0031.jpg)
+![保存响应结果界面](https://blog.mazey.net/wp-content/uploads/2021/01/save-result-0031.jpg)
 
 保存后的结果可以作为案例或记录以便开发使用。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/examplesDropdown-0209.jpg)
+![示例下拉菜单](https://blog.mazey.net/wp-content/uploads/2021/01/examplesDropdown-0209.jpg)
 
 ### 3.4 在测试 (tests) 中使用脚本
 
 Postman 支持在请求响应后通过测试脚本来验证请求是否符合预期。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/example-test-status-0033.jpg)
+![测试脚本示例界面](https://blog.mazey.net/wp-content/uploads/2021/01/example-test-status-0033.jpg)
 
 示例一: 验证响应状态码是否是 200。
 
@@ -183,23 +183,23 @@ pm.test("请求成功！", function () {
 2. Postman 代理捕获请求并将请求转发给服务器。
 3. 服务器通过 Postman 代理将响应返回给客户端。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/proxymobile-0035.jpg)
+![Postman 抓包代理流程图](https://blog.mazey.net/wp-content/uploads/2021/01/proxymobile-0035.jpg)
 
 ### 4.1 开启抓包
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/Interceptor-Proxy-w-400-0110.jpg)
+![开启抓包代理设置](https://blog.mazey.net/wp-content/uploads/2021/01/Interceptor-Proxy-w-400-0110.jpg)
 
 本机 IP 地址:
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/osx-network-settings-w-800-0117.jpg)
+![macOS 网络设置界面](https://blog.mazey.net/wp-content/uploads/2021/01/osx-network-settings-w-800-0117.jpg)
 
 手机设置:
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/ios-http-proxy-settings-e1611719019165.png)
+![iOS HTTP 代理设置](https://blog.mazey.net/wp-content/uploads/2021/01/ios-http-proxy-settings-e1611719019165.png)
 
 ### 4.2 抓包效果
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/WS-proxy.logs-w-800-0057.png)
+![代理日志界面显示抓包效果](https://blog.mazey.net/wp-content/uploads/2021/01/WS-proxy.logs-w-800-0057.png)
 
 ## 五、使用代理
 
@@ -214,17 +214,17 @@ pm.test("请求成功！", function () {
 5. 防止直接攻击，保证安全性。
 6. DevOps 负载平衡。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/proxy.standard-0043.jpg)
+![标准代理服务器架构图](https://blog.mazey.net/wp-content/uploads/2021/01/proxy.standard-0043.jpg)
 
 默认情况下，Postman 将使用自带的系统代理，如果自定义了代理，优先级将高于自带的系统代理。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/proxy_global-w-800-0116.jpg)
+![代理设置](https://blog.mazey.net/wp-content/uploads/2021/01/proxy_global-w-800-0116.jpg)
 
 ## 六、使用 Collection Runner
 
 集合运行器 (Collection Runner) 允许以**指定顺序**运行集合里面的请求。Collection Runner 将记录请求测试结果，并且脚本可以在请求之间传递数据。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/collection-run-results-overview-w-800-0046.jpg)
+![Collection Runner 运行结果概览](https://blog.mazey.net/wp-content/uploads/2021/01/collection-run-results-overview-w-800-0046.jpg)
 
 ## 七、命令行脚手架 Newman
 
@@ -241,13 +241,13 @@ newman run mycollection.json
 newman run https://www.postman.com/collections/cb208e7e64056f5294e5 -e dev_environment.json
 ```
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/newman-cli-w-800-0128.gif)
+![Newman 命令行界面运行演示](https://blog.mazey.net/wp-content/uploads/2021/01/newman-cli-w-800-0128.gif)
 
 ## 八、付费功能
 
 另外 Postman 提供了很多团队协作需要的[付费功能](https://www.postman.com/pricing/)，例如: 文档、监控、健康检查等。
 
-![](https://blog.mazey.net/wp-content/uploads/2021/01/add-on-w-800-0048.jpg)
+![Postman 付费功能插件界面](https://blog.mazey.net/wp-content/uploads/2021/01/add-on-w-800-0048.jpg)
 
 **版权声明**
 
