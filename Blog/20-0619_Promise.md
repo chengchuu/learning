@@ -79,7 +79,7 @@ new Promise( function(resolve, reject) {...} /* 执行器 */  )
 3. 一旦 `fulfilled` 或 `rejected` 状态确定，再也不能转换成其他状态。
 4. 一旦状态确定，必须要返回一个值，并且这个值是不可修改的。
 
-![状态](https://blog.mazey.net/wp-content/uploads/2022/09/Promise-Pending-0911-800x422-1.jpg)
+![状态](http://blog.mazey.net/wp-content/uploads/2022/09/Promise-Pending-0911-800x422-1.jpg)
 
 > ECMAScript's Promise global is just one of many Promises/A+ implementations.
 
@@ -114,7 +114,7 @@ func main() {
 
 传说中比较夸张的回调：
 
-![回调地狱](https://blog.mazey.net/wp-content/uploads/2020/06/js-callback-hell.png)
+![回调地狱](http://blog.mazey.net/wp-content/uploads/2020/06/js-callback-hell.png)
 
 现实业务中依赖关系比较强的回调：
 
@@ -242,7 +242,7 @@ p.then(console.log.bind(null, 5))
 // 1 2 3 4 5 from promise
 ```
 
-![观察者模式](https://blog.mazey.net/wp-content/uploads/2022/09/Watch-0908-800x412-1.jpg)
+![观察者模式](http://blog.mazey.net/wp-content/uploads/2022/09/Watch-0908-800x412-1.jpg)
 
 ```
 // 实现
@@ -292,7 +292,7 @@ console.log('script end')
 
 在 `Promise` 出现之前往往使用回调函数管理一些异步程序的状态。
 
-![回调函数](https://blog.mazey.net/wp-content/uploads/2022/09/Callback-0908-e1662652831315.jpeg)
+![回调函数](http://blog.mazey.net/wp-content/uploads/2022/09/Callback-0908-e1662652831315.jpeg)
 
 ```
 // 常见的异步 Ajax 请求格式
@@ -740,6 +740,6 @@ arr.reduce(async (last, curr) => {
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <https://blog.mazey.net/1642.html>
+原文: <http://blog.mazey.net/1642.html>
 
 (完)
