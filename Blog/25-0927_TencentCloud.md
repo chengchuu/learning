@@ -1,13 +1,19 @@
-# GitHub Actions 通用 npm 包自动发布实践
+# Git Actions 通用 npm 包自动发布实践
 
-![GitHub Actions 通用 npm 包自动发布实践](http://blog.mazey.net/wp-content/uploads/2025/09/Git_SF_7x3.jpg)
+![Git Actions 通用 npm 包自动发布实践](http://blog.mazey.net/wp-content/uploads/2025/09/Git_SF_7x3.jpg)
+
+**声明：**
+
+本文仅用于技术分享和学习交流，内容不包含任何广告、推广、引流、付费课程或外链信息。所有示例和配置均为技术实践，欢迎参考和自定义。
+
+---
 
 自动化发布 npm 包是现代前端和 Node.js 开发的标配。本文将介绍两种常用的发布流程，这两套 Workflow 都可直接复用，适合绝大多数 npm 包项目的自动化集成。
 
-- [GitHub Actions 通用 npm 包自动发布实践](#github-actions-通用-npm-包自动发布实践)
+- [Git Actions 通用 npm 包自动发布实践](#git-actions-通用-npm-包自动发布实践)
   - [版本 1: 发布到 npm](#版本-1-发布到-npm)
     - [流程说明](#流程说明)
-  - [版本 2: 同时发布到 npm 和 GitHub Packages](#版本-2-同时发布到-npm-和-github-packages)
+  - [版本 2: 同时发布到 npm 和 Git Packages](#版本-2-同时发布到-npm-和-git-packages)
     - [流程说明](#流程说明-1)
   - [分支命名示例](#分支命名示例)
 
@@ -17,7 +23,7 @@
 
 ### 流程说明
 
-- 配置 `NPM_TOKEN`: GitHub → Settings → Secrets and variables → Actions → Repository secrets。
+- 配置 `NPM_TOKEN`: Git → Settings → Secrets and variables → Actions → Repository secrets。
 - 流程清晰: 测试 → 构建 → 发布 npm → 打 Tag。
 
 `.github/workflows/publish-npm.yml`:
@@ -93,14 +99,14 @@ jobs:
           git push origin "v$VERSION"
 ```
 
-## 版本 2: 同时发布到 npm 和 GitHub Packages
+## 版本 2: 同时发布到 npm 和 Git Packages
 
-将包同步分发到 GitHub Packages，可用下述 Workflow。对比版本 1，新增了 GitHub Packages 配置。
+将包同步分发到 Git Packages，可用下述 Workflow。对比版本 1，新增了 Git Packages 配置。
 
 ### 流程说明
 
-- GitHub Packages 需要额外配置 `.npmrc` 和包名 (如 `@user/project`)。
-- 发布前需确保有 `GITHUB_TOKEN` (GitHub Actions 默认提供无需设置)。
+- Git Packages 需要额外配置 `.npmrc` 和包名 (如 `@user/project`)。
+- 发布前需确保有 `GITHUB_TOKEN` (Git Actions 默认提供无需设置)。
 - 使用脚本 `scripts/change-package-name.js` 自动切换包名。
 
 `scripts/change-package-name.js`:
@@ -185,12 +191,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
 
-      - name: Configure .npmrc for GitHub Packages
+      - name: Configure .npmrc for Git Packages
         run: |
           echo "@${{ github.actor }}:registry=https://npm.pkg.github.com/" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-      - name: Publish to GitHub Packages
+      - name: Publish to Git Packages
         if: success()
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
