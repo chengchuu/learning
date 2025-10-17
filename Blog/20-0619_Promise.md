@@ -44,7 +44,7 @@ Promise 最早出现在 1988 年，由 Barbara Liskov、Liuba Shrira 首创 (论
 
 JavaScript 中，`Promise` 的流行是得益于 jQuery 的方法 [`jQuery.Deferred()`](https://api.jquery.com/category/deferred-object/)，其他也有一些更精简独立的 `Promise` 库，例如: [Q](https://github.com/kriskowal/q)、[When](https://github.com/cujojs/when)、[Bluebird](https://github.com/petkaantonov/bluebird)。
 
-```
+```javascript
 // Q/2009-2017
 import Q from 'q'
 
@@ -70,7 +70,7 @@ wantOdd()
 
 由于 jQuery 并没有严格按照规范来制定接口，促使了官方对 `Promise` 的实现标准进行了一系列重要的澄清，该实现规范被命名为 [Promise/A+](https://promisesaplus.com/)。后来 ES6 (也叫 ES2015，2015 年 6 月正式发布) 也在 Promise/A+ 的标准上官方实现了一个 [`Promise`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 接口。
 
-```
+```javascript
 new Promise( function(resolve, reject) {...} /* 执行器 */  )
 ```
 
@@ -87,7 +87,7 @@ new Promise( function(resolve, reject) {...} /* 执行器 */  )
 
 主流语言对于 `Promise` 的实现: [Golang/promise](https://github.com/chebyrash/promise)、[Python/promise](https://github.com/syrusakbary/promise)、[C#/Real-Serious-Games/c-sharp-promise](https://github.com/Real-Serious-Games/c-sharp-promise)、[PHP/Guzzle Promises](https://github.com/guzzle/promises)、[Java/IOU](https://github.com/ioweyou/iou-java)、[Objective-C/PromiseKit](https://github.com/dizzus/PromiseKit)、[Swift/FutureLib](https://github.com/couchdeveloper/FutureLib)、[Perl/stevan/promises-perl](https://github.com/stevan/promises-perl)。
 
-```
+```javascript
 // Golang Example
 func main() {
   p1 := promise.New(func(resolve func(int), reject func(error)) {
@@ -120,7 +120,7 @@ func main() {
 
 现实业务中依赖关系比较强的回调:
 
-```
+```javascript
 // 回调函数
 function renderPage() {
   const secret = genSecret()
@@ -160,7 +160,7 @@ function renderPage() {
 
 使用 `Promise` 梳理流程后:
 
-```
+```javascript
 // Promise
 function renderPage() {
   const secret = genSecret()
@@ -186,7 +186,7 @@ function renderPage() {
 
 若其中某个流程需要复用，单独把它抽离出来即可。
 
-```
+```javascript
 // 获取游戏列表
 // 仅为示例，与实际业务无关
 function getGameXYZ() {
@@ -232,7 +232,7 @@ function doABC() {
 
 `Promise` 的运转实际上是一个观察者模式，`then()` 中的匿名函数充当观察者，`Promise` 实例充当被观察者。
 
-```
+```javascript
 const p = new Promise(resolve => setTimeout(resolve.bind(null, 'from promise'), 3000))
 
 p.then(console.log.bind(null, 1))
@@ -246,7 +246,7 @@ p.then(console.log.bind(null, 5))
 
 ![观察者模式](http://blog.mazey.net/wp-content/uploads/2022/09/Watch-0908-800x412-1.jpg)
 
-```
+```javascript
 // 实现
 const defer = () => {
   let pending = [] // 充当状态并收集观察者
@@ -296,7 +296,7 @@ console.log('script end')
 
 ![回调函数](http://blog.mazey.net/wp-content/uploads/2022/09/Callback-0908-e1662652831315.jpeg)
 
-```
+```javascript
 // 常见的异步 Ajax 请求格式
 ajax(url, successCallback, errorCallback)
 ```
@@ -309,7 +309,7 @@ ajax(url, successCallback, errorCallback)
 
 使用回调函数:
 
-```
+```html
 <!-- 1. <script... -->
 <script src="https://example.com/pplugin@latest/pplugin.min.js"></script>
 <script>
@@ -332,7 +332,7 @@ PPlugin.init(data => {
 
 插件代码:
 
-```
+```javascript
 const PPlugin = {/* Pass */ }
 // 此处为理想情况，随着业务快速迭代，会变得不可控，往往需要多个状态判断
 let ppInitStatus = false
@@ -353,7 +353,7 @@ ppInitStatus = true
 
 使用 `Promise`:
 
-```
+```html
 <!-- 使用方式同上 -->
 <script src="https://example.com/pplugin@latest/pplugin.min.js"></script>
 <script>
@@ -367,7 +367,7 @@ ppInitStatus = true
 
 插件代码:
 
-```
+```javascript
 const PPlugin = {/* Pass */ }
 let initOk = null
 const ppInitStatus = new Promise(resolve => initOk = resolve)
@@ -384,7 +384,7 @@ initOk(/* 数据 */)
 
 插件代码:
 
-```
+```javascript
 const PPlugin = {/* Pass */ }
 let initOk = null
 PPlugin.init = new Promise(resolve => initOk = resolve)
@@ -396,7 +396,7 @@ initOk(/* 数据 */)
 
 使用插件:
 
-```
+```html
 <!-- 使用方式已变化 -->
 <script src="https://example.com/pplugin@latest/pplugin.min.js"></script>
 <script>
@@ -408,7 +408,7 @@ initOk(/* 数据 */)
 
 `then()` 必然返回一个 `Promise` 对象，`Promise` 对象又拥有一个 `then()` 方法，这正是 `Promise` 能够链式调用的原因。
 
-```
+```javascript
 const p = new Promise(r => r(1))
   .then(res => {
     console.log(res) // 1
@@ -433,7 +433,7 @@ p.then(console.log.bind(null, '是谁活到了最后:')) // 是谁活到了最�
 
 由于返回一个 `Promise` 结构体永远返回的是链式调用的最后一个 `then()`，所以在处理封装好的 `Promise` 接口时没必要在外面再包一层 `Promise`。
 
-```
+```javascript
 // 包一层 Promise
 function api() {
   return new Promise((resolve, reject) => {
@@ -459,7 +459,7 @@ function api() {
 
 `Promise.all()` / `Promise.race()` 可以将多个 `Promise` 实例包装成一个 Promise 实例，在处理并行的、没有依赖关系的请求时，能够节约大量的时间。
 
-```
+```javascript
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve.bind(null, ms), ms))
 }
@@ -479,7 +479,7 @@ Promise.race([wait(2000), wait(4000), wait(3000)])
 
 `async`&`await` 实际上只是建立在 `Promise` 之上的语法糖，让异步代码**看上去**更像同步代码，所以 `async`&`await` 在 JavaScript 线程中是非阻塞的，但在当前函数作用域内具备阻塞性质。
 
-```
+```javascript
 let ok = null
 async function foo() {
   console.log(1)
@@ -496,7 +496,7 @@ ok(2) // 2 3
 
 写更少的代码，不需要特地创建一个匿名函数，放入 `then()` 方法中等待一个响应。
 
-```
+```javascript
 // Promise
 function getUserInfo() {
   return getData().then(
@@ -516,7 +516,7 @@ async function getUserInfo() {
 
 当一个异步返回值是另一段逻辑的判断条件，链式调用将随着层级的叠加变得更加复杂，很容易让人混淆。使用 `async`&`await` 将使代码可读性变得更好。
 
-```
+```javascript
 // Promise
 function getGameInfo() {
   getUserAbValue().then(
@@ -554,7 +554,7 @@ async function getGameInfo() {
 
 异步函数常常存在一些异步返回值，作用仅限于成为下一段逻辑的入场券，如果经历层层链式调用，很容易成为另一种形式的“回调地狱”。
 
-```
+```javascript
 // Promise
 function getGameInfo() {
   getToken().then(
@@ -583,7 +583,7 @@ async function getGameInfo() {
 
 对于**多个**异步返回中间值，搭配 `Promise.all` 使用能够提升逻辑性和性能。
 
-```
+```javascript
 // async / await & Promise.all
 async function foo() {
   // ...
@@ -601,7 +601,7 @@ async function foo() {
 
 `await` 阻塞 `async` 函数中的代码执行，在上下文关联性不强的代码中略显累赘。
 
-```
+```javascript
 // async / await
 async function initGame() {
   render(await getGame()) // 等待获取游戏执行完毕再去获取用户信息
@@ -625,7 +625,7 @@ Node.js 14+ 版本后，可以在 [JavaScript module](https://developer.mozilla.
 
 [MDN 官方案例](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#top_level_await):
 
-```
+```javascript
 // fetch request
 const colors = fetch('../data/colors.json')
   .then((response) => response.json())
@@ -637,7 +637,7 @@ export default await colors
 
 1\. 链式调用中尽量结尾跟 `catch` 捕获错误，而不是第二个匿名函数。因为规范里注明了若 `then()` 方法里面的参数不是函数则什么都不做，所以 `catch(rejectionFn)` 其实就是 `then(null, rejectionFn)` 的别名。
 
-```
+```javascript
 anAsyncFn().then(
   resolveSuccess, // 无法捕获
   rejectError // `rejectError` 捕获 `anAsyncFn`
@@ -646,7 +646,7 @@ anAsyncFn().then(
 
 ↑在以上代码中，`anAsyncFn()` 抛出来的错误 `rejectError` 会正常接住，但是 `resolveSuccess` 抛出来的错误将无法捕获，所以更好的做法是永远使用 `catch`。
 
-```
+```javascript
 anAsyncFn()
   .then(resolveSuccess)
   .catch(rejectError) // 尽量使用 `catch`
@@ -654,7 +654,7 @@ anAsyncFn()
 
 若想错误管理精细一点，也可以通过 `rejectError` 来捕获 `anAsyncFn()` 的错误，`catch` 捕获 `resolveSuccess` 的错误。
 
-```
+```javascript
 anAsyncFn()
   .then(
     resolveSuccess,
@@ -669,7 +669,7 @@ anAsyncFn()
 - [`unhandledrejection`](https://developer.mozilla.org/zh-CN/docs/Web/Events/unhandledrejection) 当 Promise 被拒绝，并且没有提供拒绝处理程序时，触发该事件。
 - [`rejectionhandled`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/rejectionhandled_event) 当 Promise 被拒绝时，若拒绝处理程序被调用，触发该事件。
 
-```
+```javascript
 // 初始化列表
 const unhandledRejections = new Map()
 // 监听未处理拒绝状态
@@ -700,7 +700,7 @@ setInterval(() => {
 
 或者利用 `Promise.race()` 的机制来同时注入一个会超时的异步函数，但是 `Promise.race()` 结束后主程序其实还在 `pending` 中，占用的资源并没有释放。
 
-```
+```javascript
 Promise.race([anAsyncFn(), timeout(5000)])
 ```
 
@@ -708,7 +708,7 @@ Promise.race([anAsyncFn(), timeout(5000)])
 
 若想按顺序执行一堆异步程序，可使用 `reduce`。每次遍历返回一个 `Promise` 对象，在下一轮 `await` 住从而依次执行。相同的场景，也可以使用递归实现，但是在 JavaScript 中随着数量增加，超出调用栈最大次数，便会报错。
 
-```
+```javascript
 function wasteTime(ms) {
   return new Promise(resolve => setTimeout(() => {
     resolve(ms)
