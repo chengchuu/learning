@@ -506,7 +506,7 @@ function getUserInfo() {
   )
 }
 
-// async / await
+// Async/Await
 async function getUserInfo() {
   return await getData()
 }
@@ -538,7 +538,7 @@ function getGameInfo() {
   )
 }
 
-// async / await
+// Async/Await
 async function getGameInfo() {
   const abValue = await getUserAbValue()
   if (abValue === 1) {
@@ -572,7 +572,7 @@ function getGameInfo() {
   )
 }
 
-// async / await
+// Async/Await
 async function getGameInfo() {
   const token = await getToken()
   const level = await getLevel(token)
@@ -584,7 +584,7 @@ async function getGameInfo() {
 对于**多个**异步返回中间值，搭配 `Promise.all` 使用能够提升逻辑性和性能。
 
 ```javascript
-// async / await & Promise.all
+// Async/Await & Promise.all
 async function foo() {
   // ...
   const [a, b, c] = await Promise.all([promiseFnA(), promiseFnB(), promiseFnC()])
@@ -602,7 +602,7 @@ async function foo() {
 `await` 阻塞 `async` 函数中的代码执行，在上下文关联性不强的代码中略显累赘。
 
 ```javascript
-// async / await
+// Async/Await
 async function initGame() {
   render(await getGame()) // 等待获取游戏执行完毕再去获取用户信息
   report(await getUserInfo())
