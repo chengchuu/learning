@@ -1,6 +1,8 @@
 # Promise: 异步编程的理解和使用
 
-Promise 最早出现在 1988 年，由 Barbara Liskov、Liuba Shrira 首创（论文：Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems）。并且在语言 MultiLisp 和 Concurrent Prolog 中已经有了类似的实现。
+![Promise: 异步编程的理解和使用](http://blog.mazey.net/wp-content/uploads/2020/06/Promise_SF_7x3.jpg)
+
+Promise 最早出现在 1988 年，由 Barbara Liskov、Liuba Shrira 首创 (论文: Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems)。并且在语言 MultiLisp 和 Concurrent Prolog 中已经有了类似的实现。
 
 - [Promise: 异步编程的理解和使用](#promise-异步编程的理解和使用)
   - [一、什么是 `Promise`](#一什么是-promise)
@@ -18,7 +20,7 @@ Promise 最早出现在 1988 年，由 Barbara Liskov、Liuba Shrira 首创（�
         - [2.4.1.3 处理中间值](#2413-处理中间值)
         - [2.4.1.4 靠谱的 `await`](#2414-靠谱的-await)
       - [2.4.2 避免滥用 `async`\&`await`](#242-避免滥用-asyncawait)
-      - [2.4.3 ES2021 新特性：Top-level `await`](#243-es2021-新特性top-level-await)
+      - [2.4.3 ES2021 新特性: Top-level `await`](#243-es2021-新特性-top-level-await)
     - [2.5 错误处理](#25-错误处理)
     - [2.6 取消一个 `Promise`](#26-取消一个-promise)
     - [2.7 迭代器的应用](#27-迭代器的应用)
@@ -28,7 +30,7 @@ Promise 最早出现在 1988 年，由 Barbara Liskov、Liuba Shrira 首创（�
 
 ### 1.1 `Promise` 的背景介绍
 
-`Promise` 最早出现在 1988 年，由 [Barbara Liskov](https://dl.acm.org/profile/81100323833)、[Liuba Shrira](https://dl.acm.org/profile/81100088703) 首创（论文：[Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems](https://dl.acm.org/doi/10.1145/960116.54016)）。并且在语言 [MultiLisp](https://dl.acm.org/doi/10.1145/4472.4478) 和 [Concurrent Prolog](https://en.wikipedia.org/wiki/Prolog) 中已经有了类似的实现。
+`Promise` 最早出现在 1988 年，由 [Barbara Liskov](https://dl.acm.org/profile/81100323833)、[Liuba Shrira](https://dl.acm.org/profile/81100088703) 首创 (论文: [Promises: Linguistic Support for Efficient Asynchronous Procedure Calls in Distributed Systems](https://dl.acm.org/doi/10.1145/960116.54016))。并且在语言 [MultiLisp](https://dl.acm.org/doi/10.1145/4472.4478) 和 [Concurrent Prolog](https://en.wikipedia.org/wiki/Prolog) 中已经有了类似的实现。
 
 | 时间线 | 里程碑 |
 | --- | --- |
@@ -40,7 +42,7 @@ Promise 最早出现在 1988 年，由 Barbara Liskov、Liuba Shrira 首创（�
 | 2011 | jQuery 1.5 新增 `Deferred()` 方法 |
 | 2015 | ECMAScript 官方添加了 `Promise` 特性 |
 
-JavaScript 中，`Promise` 的流行是得益于 jQuery 的方法 [`jQuery.Deferred()`](https://api.jquery.com/category/deferred-object/)，其他也有一些更精简独立的 `Promise` 库，例如：[Q](https://github.com/kriskowal/q)、[When](https://github.com/cujojs/when)、[Bluebird](https://github.com/petkaantonov/bluebird)。
+JavaScript 中，`Promise` 的流行是得益于 jQuery 的方法 [`jQuery.Deferred()`](https://api.jquery.com/category/deferred-object/)，其他也有一些更精简独立的 `Promise` 库，例如: [Q](https://github.com/kriskowal/q)、[When](https://github.com/cujojs/when)、[Bluebird](https://github.com/petkaantonov/bluebird)。
 
 ```
 // Q/2009-2017
@@ -66,13 +68,13 @@ wantOdd()
     })
 ```
 
-由于 jQuery 并没有严格按照规范来制定接口，促使了官方对 `Promise` 的实现标准进行了一系列重要的澄清，该实现规范被命名为 [Promise/A+](https://promisesaplus.com/)。后来 ES6（也叫 ES2015，2015 年 6 月正式发布）也在 Promise/A+ 的标准上官方实现了一个 [`Promise`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 接口。
+由于 jQuery 并没有严格按照规范来制定接口，促使了官方对 `Promise` 的实现标准进行了一系列重要的澄清，该实现规范被命名为 [Promise/A+](https://promisesaplus.com/)。后来 ES6 (也叫 ES2015，2015 年 6 月正式发布) 也在 Promise/A+ 的标准上官方实现了一个 [`Promise`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 接口。
 
 ```
 new Promise( function(resolve, reject) {...} /* 执行器 */  )
 ```
 
-想要实现一个 `Promise`，必须要遵循如下规则：
+想要实现一个 `Promise`，必须要遵循如下规则:
 
 1. `Promise` 是一个提供符合[标准](https://promisesaplus.com/#the-then-method)的 `then()` 方法的对象。
 2. 初始状态是 `pending`，能够转换成 `fulfilled` 或 `rejected` 状态。
@@ -83,7 +85,7 @@ new Promise( function(resolve, reject) {...} /* 执行器 */  )
 
 > ECMAScript's Promise global is just one of many Promises/A+ implementations.
 
-主流语言对于 `Promise` 的实现：[Golang/promise](https://github.com/chebyrash/promise)、[Python/promise](https://github.com/syrusakbary/promise)、[C#/Real-Serious-Games/c-sharp-promise](https://github.com/Real-Serious-Games/c-sharp-promise)、[PHP/Guzzle Promises](https://github.com/guzzle/promises)、[Java/IOU](https://github.com/ioweyou/iou-java)、[Objective-C/PromiseKit](https://github.com/dizzus/PromiseKit)、[Swift/FutureLib](https://github.com/couchdeveloper/FutureLib)、[Perl/stevan/promises-perl](https://github.com/stevan/promises-perl)。
+主流语言对于 `Promise` 的实现: [Golang/promise](https://github.com/chebyrash/promise)、[Python/promise](https://github.com/syrusakbary/promise)、[C#/Real-Serious-Games/c-sharp-promise](https://github.com/Real-Serious-Games/c-sharp-promise)、[PHP/Guzzle Promises](https://github.com/guzzle/promises)、[Java/IOU](https://github.com/ioweyou/iou-java)、[Objective-C/PromiseKit](https://github.com/dizzus/PromiseKit)、[Swift/FutureLib](https://github.com/couchdeveloper/FutureLib)、[Perl/stevan/promises-perl](https://github.com/stevan/promises-perl)。
 
 ```
 // Golang Example
@@ -112,11 +114,11 @@ func main() {
 
 由于 JavaScript 是单线程[事件驱动](https://zh.wikipedia.org/wiki/%E4%BA%8B%E4%BB%B6%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)的编程语言，通过回调函数管理多个任务。在快速迭代的开发中，因为回调函数的滥用，很容易产生被人所诟病的[回调地狱](http://callbackhell.com/)问题。`Promise` 的异步编程解决方案比回调函数更加合理，可读性更强。
 
-传说中比较夸张的回调：
+传说中比较夸张的回调:
 
 ![回调地狱](http://blog.mazey.net/wp-content/uploads/2020/06/js-callback-hell.png)
 
-现实业务中依赖关系比较强的回调：
+现实业务中依赖关系比较强的回调:
 
 ```
 // 回调函数
@@ -156,7 +158,7 @@ function renderPage() {
 
 实际上更真实的情况，往往是一个回调函数在多个文件间透传，要搞清楚最终在哪里触发需要翻越整个项目。
 
-使用 `Promise` 梳理流程后：
+使用 `Promise` 梳理流程后:
 
 ```
 // Promise
@@ -301,11 +303,11 @@ ajax(url, successCallback, errorCallback)
 
 `Promise` 出现后使用 `then()` 接收事件的状态，且只会接收一次。
 
-**案例：插件初始化**
+**案例: 插件初始化**
 
 工作中使用封装好的插件时，往往需要等待插件初始化成功后进行下一步操作。
 
-使用回调函数：
+使用回调函数:
 
 ```
 <!-- 1. <script... -->
@@ -328,7 +330,7 @@ PPlugin.init(data => {
 })
 ```
 
-插件代码：
+插件代码:
 
 ```
 const PPlugin = {/* Pass */ }
@@ -349,7 +351,7 @@ ppInitCallback && ppInitCallback(/* 数据 */)
 ppInitStatus = true
 ```
 
-使用 `Promise`：
+使用 `Promise`:
 
 ```
 <!-- 使用方式同上 -->
@@ -363,7 +365,7 @@ ppInitStatus = true
 <!-- 其余省略 -->
 ```
 
-插件代码：
+插件代码:
 
 ```
 const PPlugin = {/* Pass */ }
@@ -380,7 +382,7 @@ initOk(/* 数据 */)
 
 相对于使用回调函数，逻辑更清晰，什么时候初始化完成和触发回调一目了然，不再需要重复判断状态和回调函数。当然更好的做法是只给使用方输出**状态**和**数据**，至于如何使用由使用方决定。
 
-插件代码：
+插件代码:
 
 ```
 const PPlugin = {/* Pass */ }
@@ -392,7 +394,7 @@ PPlugin.init = new Promise(resolve => initOk = resolve)
 initOk(/* 数据 */)
 ```
 
-使用插件：
+使用插件:
 
 ```
 <!-- 使用方式已变化 -->
@@ -443,7 +445,7 @@ function api() {
   })
 }
 
-// 更好的做法：利用链式调用
+// 更好的做法: 利用链式调用
 function api() {
   return axios.get(/* 链接 */).then(data => {
     // ...
@@ -617,11 +619,11 @@ function initGame() {
 }
 ```
 
-#### 2.4.3 ES2021 新特性：Top-level `await`
+#### 2.4.3 ES2021 新特性: Top-level `await`
 
 Node.js 14+ 版本后，可以在 [JavaScript module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 中使用 `await` 操作符。在这之前，只能通过在 `async` 声明的场景中使用 `await` 操作符。
 
-[MDN 官方案例](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#top_level_await)：
+[MDN 官方案例](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#top_level_await):
 
 ```
 // fetch request
@@ -663,7 +665,7 @@ anAsyncFn()
 
 2\. 通过全局属性监听未被处理的 `Promise` 错误。
 
-浏览器环境（`window`）的拒绝状态监听事件：
+浏览器环境 (`window`) 的拒绝状态监听事件:
 - [`unhandledrejection`](https://developer.mozilla.org/zh-CN/docs/Web/Events/unhandledrejection) 当 Promise 被拒绝，并且没有提供拒绝处理程序时，触发该事件。
 - [`rejectionhandled`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/rejectionhandled_event) 当 Promise 被拒绝时，若拒绝处理程序被调用，触发该事件。
 
@@ -690,7 +692,7 @@ setInterval(() => {
 }, 5000)
 ```
     
-注意：`Promise.reject()` 和 `new Promise((resolve, reject) => reject())` 这种方式不能直接触发 `unhandledrejection` 事件，必须是满足已经进行了 `then()` 链式调用的 `Promise` 对象才行。
+注意: `Promise.reject()` 和 `new Promise((resolve, reject) => reject())` 这种方式不能直接触发 `unhandledrejection` 事件，必须是满足已经进行了 `then()` 链式调用的 `Promise` 对象才行。
 
 ### 2.6 取消一个 `Promise`
 
@@ -731,8 +733,8 @@ arr.reduce(async (last, curr) => {
 5. 使用 `Promise.all()` 去运行多个 `Promise`。
 6. 倘若想在 `then()` 或 `catch()` 后都做点什么，可使用 `finally()`。
 7. 可以将多个 `then()` 挂载在同一个 `Promise` 上。
-8. `async` （异步）函数返回一个 `Promise`，所有返回 `Promise` 的函数也可以被视作一个异步函数。
-9. `await` 用于调用异步函数，直到其状态改变（`fulfilled` or `rejected`）。
+8. `async` (异步) 函数返回一个 `Promise`，所有返回 `Promise` 的函数也可以被视作一个异步函数。
+9. `await` 用于调用异步函数，直到其状态改变 (`fulfilled` or `rejected`)。
 10. 使用 `async` / `await` 时要考虑上下文的依赖性，避免造成不必要的阻塞。
 
 **版权声明**
