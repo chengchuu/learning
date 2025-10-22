@@ -3,10 +3,12 @@
 
 **Table of Contents:**
 
-- [25-0605 Don’t Even Think Once](#25-0605-dont-even-think-once)
-- [25-0603 Moments with a Little Cat](#25-0603-moments-with-a-little-cat)
-- [25-0602 Tired All the Time](#25-0602-tired-all-the-time)
-- [25-0521 Gundam Statue](#25-0521-gundam-statue)
+- [25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)](#25-0608-kumamoto-熊本kumamotokyushujapan)
+- [25-0305 Gion (祇園;Kyoto,Kansai,Japan)](#25-0305-gion-祇園kyotokansaijapan)
+- [25-0605 Don't Even Think Once (嘟嘟;Shanghai,China)](#25-0605-dont-even-think-once-嘟嘟shanghaichina)
+- [25-0603 Moments with a Little Cat (嘟嘟;Shanghai,China)](#25-0603-moments-with-a-little-cat-嘟嘟shanghaichina)
+- [25-0602 Tired All the Time (嘟嘟;Shanghai,China)](#25-0602-tired-all-the-time-嘟嘟shanghaichina)
+- [25-0521 Gundam Statue (福岡;Fukuoka,Kyushu,Japan)](#25-0521-gundam-statue-福岡fukuokakyushujapan)
 - [25-0303 Mount Rokkō (六甲山天覧台;Kobe,Japan)](#25-0303-mount-rokkō-六甲山天覧台kobejapan)
 - [25-0304 Maiko Park (舞子公園;Kobe,Japan)](#25-0304-maiko-park-舞子公園kobejapan)
 - [25-0503 Lucicun (芦茨村;Tonglu,China)](#25-0503-lucicun-芦茨村tongluchina)
@@ -46,12 +48,67 @@
 - [24-1115 Cape Kure](#24-1115-cape-kure)
 - [24-1122 Tawara Beach](#24-1122-tawara-beach)
 - [24-1129 Kushimoto Sunrise (串本の日の出;Wakayama,Japan)](#24-1129-kushimoto-sunrise-串本の日の出wakayamajapan)
-- [24-1221 Kumano Hayatama Taisha](#24-1221-kumano-hayatama-taisha)
+- [24-1221 Kumano Hayatama Taisha (熊野速玉大社;Wakayama,Kansai,Japan)](#24-1221-kumano-hayatama-taisha-熊野速玉大社wakayamakansaijapan)
 - [24-1228 Walk in Wakayama (和歌山)](#24-1228-walk-in-wakayama-和歌山)
-- [24-1213 王子ヶ浜](#24-1213-王子ヶ浜)
-- [24-1206 The Animals of Wakayama Castle](#24-1206-the-animals-of-wakayama-castle)
+- [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
+- [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 
-## 25-0605 Don’t Even Think Once
+## 25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)
+
+桜の馬場城彩苑
+
+zh:
+
+熊本｜街景与古迹
+漫步熊本城、水前寺庭园和城彩苑。
+#熊本 #熊本城 #水前寺成趣园 #城彩苑 #路飞像 #九州 #熊本熊 #樱之马场 #福冈 #熊本站 #稻荷神社
+
+#熊本#熊本城#水前寺成趣园#城彩苑#路飞像#九州#熊本熊#樱之马场#福冈#熊本站#稻荷神社
+#熊本# #熊本城# #水前寺成趣园# #城彩苑# #路飞像# #九州# #熊本熊# #樱之马场# #福冈# #熊本站# #稻荷神社#
+
+en:
+
+Kumamoto: Streets and Stories from the Past
+Strolling through Kumamoto Castle, Suizenji Garden, and Josaien.
+#Kumamoto #KumamotoCastle #SuizenjiGarden #Josaien #LuffyStatue #Kyushu #Kumamon #SakuraNoBaba #Fukuoka #KumamotoStation #InariShrine #JapanTravel #Travel #TravelDiary
+
+#Kumamoto#KumamotoCastle#SuizenjiGarden#Josaien#LuffyStatue#Kyushu#Kumamon#SakuraNoBaba#Fukuoka#KumamotoStation
+
+jp:
+
+熊本｜城下町の風景と昔日の記憶
+熊本城、水前寺庭園、城彩苑を歩きながら、歴史の余韻が街に溶け込んでいく。
+
+## 25-0305 Gion (祇園;Kyoto,Kansai,Japan)
+
+祇園町
+
+zh:
+
+祇园｜暮色中路过八坂神社
+灯光透出街角，傍晚的人影缓缓交错。
+#京都 #祇园枝垂坂 #八坂神社 #关西 #街头光影 #傍晚 #城市 #和风 #旅游 #旅行 #旅行日记
+#京都#祇园枝垂坂#八坂神社#关西#街头光影#傍晚#城市#和风#旅游#旅行#旅行日记
+#京都# #祇园枝垂坂# #八坂神社# #关西# #街头光影# #傍晚# #城市# #和风# #旅游# #旅行# #旅行日记#
+
+en:
+
+Gion: Passing by Yasaka Shrine at Dusk
+Streetlights glow at the corners, as evening figures slowly cross paths.
+#Kyoto #GionShidarezakura #YasakaShrine #Kansai #StreetLights #EveningMood #UrbanScene #JapaneseStyle
+
+#Kyoto#GionShidarezakura#YasakaShrine#Kansai#StreetLights#EveningMood#UrbanScene#JapaneseStyle
+
+jp:
+
+祇園｜暮れゆく八坂神社を通りすがる
+街角の灯りが滲み、黄昏の人影がゆっくりとすれ違う。
+
+## 25-0605 Don't Even Think Once (嘟嘟;Shanghai,China)
+
+猫咪日常・嘟嘟
+
+zh:
 
 嘟嘟｜小猫不想思考
 
@@ -62,18 +119,22 @@
 
 en:
 
-Dudu: I Don’t Even Think Once
+Dudu: I Don't Even Think Once
 As if her thoughts just powered off.
 #ZonedOutCat #SpacingOut #Cat #Kitten #Cute #Pet #DailyLife #LovelyPet #CatRoutine #CatLover #SlowLiving
+
 #ZonedOutCat#SpacingOut#Cat#Kitten#Cute#Pet#DailyLife#LovelyPet#CatRoutine#CatLover
 
-jp：
+jp:
+
 ドゥドゥ｜考えるのをやめた猫
 まるで思考が電源オフになったみたい。
 #猫ぼーっと #ぼーっと #猫 #子猫 #かわいい #ペット #日常生活 #癒しのペット #猫の毎日 #猫好き #スローライフ
 #猫ぼーっと#ぼーっと#猫#子猫#かわいい#ペット#日常生活#癒しのペット#猫の毎日#猫好き
 
-## 25-0603 Moments with a Little Cat
+## 25-0603 Moments with a Little Cat (嘟嘟;Shanghai,China)
+
+猫咪日常・嘟嘟
 
 zh:
 
@@ -86,7 +147,8 @@ en:
 
 Dudu: Moments with a Little Cat
 A gentle pause, flowing slowly with soft rhythm.
-#Hakimi #Kitten #CuteCat #PetLife #HomeVibes #CatLover #CozyScene #DailyCat #SlowLiving #CutenessOverload #Travel #TravelDiary
+#Hakimi #Kitten #CuteCat #PetLife #HomeVibes #CatLover #CozyScene #DailyCat #SlowLiving #CutenessOverload
+
 #Hakimi#Kitten#CuteCat#PetLife#HomeVibes#CatLover#CozyScene#DailyCat#SlowLiving#CutenessOverload
 
 jp:
@@ -94,7 +156,7 @@ jp:
 ドゥドゥ｜子猫と過ごすやさしい時間
 音楽とともに、静かに流れるまどろみのひととき。
 
-## 25-0602 Tired All the Time
+## 25-0602 Tired All the Time (嘟嘟;Shanghai,China)
 
 Guilin Park
 
@@ -123,7 +185,7 @@ jp:
 Tired All the Time｜ソファで一日中眠い猫
 「ずっと眠い」を体現する猫、上海の部屋で今日もぐっすり。
 
-## 25-0521 Gundam Statue
+## 25-0521 Gundam Statue (福岡;Fukuoka,Kyushu,Japan)
 
 Gundam Side-F 福岡
 
@@ -884,14 +946,14 @@ Kushimoto Sunrise: A Stunning Coastal Morning
 Experience the serene beauty of a Kushimoto sunrise.
 #Sunrise #Beach #Coastline #Kansai #Wakayama #NaturePhotography #ScenicView #HiddenGem #TravelSpot #Japan #JapanTravel #Travel #TravelDiary
 
-## 24-1221 Kumano Hayatama Taisha
+## 24-1221 Kumano Hayatama Taisha (熊野速玉大社;Wakayama,Kansai,Japan)
 
 熊野速玉大社 #神社 #徒步 #世界遗产 #熊野古道 #关西 #和歌山 #新宫 #旅游 #旅行 #旅行日记
 
 zh:
 
 熊野速玉大社｜千年历史的神圣之地
-探访熊野速玉大社，走进世界遗产的文化魅力。
+沿熊野古道缓步而行，抵达世界遗产中静默千年的神殿。
 #神社 #徒步 #世界遗产 #熊野古道 #关西 #和歌山 #新宫 #文化旅行 #历史遗迹 #自然风光 #旅游 #旅行 #旅行日记
 
 en:
@@ -916,30 +978,30 @@ Walk in Wakayama: Sunset and Nature's Serenity
 Enjoy peaceful walks through Wakayama’s scenic spots.
 #Walk #Sunset #Park #Ojicho #Shingu #Kansai #Wakayama #Kushimoto #Taiji #NatureEscape #Japan #JapanTravel #Travel #TravelDiary
 
-## 24-1213 王子ヶ浜
+## 24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)
 
 王子ヶ浜 #日落 #海滩 #海边 #Park #Ojicho #Shingu #王子町 #关西 #和歌山 #新宫 #旅游 #旅行 #旅行日记
 
 zh:
 
-王子ヶ浜｜迷人日落与海岸风光
-在王子ヶ浜欣赏日落，感受平静与美好。
+王子ヶ浜｜落日缓缓坠海，天光铺满长滩
+夕阳洒落海面，风静浪柔，一切都慢了下来。
 #日落 #海滩 #海边 #王子町 #关西 #和歌山 #新宫 #自然风光 #摄影打卡 #浪漫旅行 #旅游 #旅行 #旅行日记
 
 en:
 
-王子ヶ浜: A Tranquil Coastal Escape
+Ojicho: A Tranquil Coastal Escape
 Catch the serene sunset at the beach.
 #Sunset #Beach #Coastline #Park #Ojicho #Shingu #Wakayama #Kansai #NatureBeauty #RomanticTrip #Japan #JapanTravel #Travel #TravelDiary
 
-## 24-1206 The Animals of Wakayama Castle
+## 24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)
 
 和歌山城的小动物们 #动物园 #童话园 #水禽园 #马 #鹦鹉 #城堡 #和歌山城公园 #关西 #和歌山 #旅游 #旅行 #旅行日记
 
 zh:
 
-和歌山城的小动物们｜童话般的奇妙乐园
-探索和歌山城，邂逅可爱动物。
+和歌山城｜童话城堡里的毛茸茸日常
+古城环抱下，小马、鹦鹉与水禽自在穿行。
 #动物园 #童话园 #水禽园 #马 #鹦鹉 #城堡 #和歌山城公园 #关西 #自然探索 #亲子游 #旅游 #旅行 #旅行日记
 
 en:
