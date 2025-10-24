@@ -3,6 +3,7 @@
 
 **Table of Contents:**
 
+- [25-0603 Rock That Body](#25-0603-rock-that-body)
 - [25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)](#25-0608-kumamoto-熊本kumamotokyushujapan)
 - [25-0305 Gion (祇園;Kyoto,Kansai,Japan)](#25-0305-gion-祇園kyotokansaijapan)
 - [25-0605 Don't Even Think Once (嘟嘟;Shanghai,China)](#25-0605-dont-even-think-once-嘟嘟shanghaichina)
@@ -52,6 +53,13 @@
 - [24-1228 Walk in Wakayama (和歌山)](#24-1228-walk-in-wakayama-和歌山)
 - [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
+
+## 25-0603 Rock That Body
+
+Rock That Body
+彩光之下，律动猫影。
+#猫咪 #小猫 #摇摆 #可爱 #Rock #萌宠 #猫咪日常 #猫奴 #慢生活
+#猫咪#小猫#摇摆#可爱#Rock#萌宠#猫咪日常#猫奴#摇滚
 
 ## 25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)
 
