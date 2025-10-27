@@ -1,6 +1,6 @@
-# 创建一个新的 TypeScript 项目
+# 从零到一｜创建一个新的 TypeScript 项目
 
-- [创建一个新的 TypeScript 项目](#创建一个新的-typescript-项目)
+- [从零到一｜创建一个新的 TypeScript 项目](#从零到一创建一个新的-typescript-项目)
   - [一、初始化 npm 项目](#一初始化-npm-项目)
   - [二、安装 TypeScript](#二安装-typescript)
   - [三、初始化配置文件 `tsconfig.json`](#三初始化配置文件-tsconfigjson)
@@ -21,11 +21,15 @@
 
 ## 一、初始化 npm 项目
 
-```bash
-# npm
-npm init
+npm:
 
-# Git
+```bash
+npm init
+```
+
+Git:
+
+```bash
 git init
 ```
 
@@ -33,8 +37,11 @@ git init
 
 ```bash
 npm i typescript -D
+```
 
-# 查看版本
+查看版本:
+
+```bash
 npx tsc --version
 ```
 
@@ -69,13 +76,13 @@ function say(): string {
 console.log(say());
 ```
 
-**编译:**
+编译:
 
 ```bash
-npx tsc src/index.ts
+npx tsc src/index.ts --outDir dist
 ```
 
-**结果:**
+结果:
 
 ```javascript
 var ProjectName = "new-typescript-project";
@@ -88,7 +95,7 @@ console.log(say());
 监听文件变化:
 
 ```bash
-npx tsc -w
+npx tsc --watch src/index.ts --outDir dist
 ```
 
 ## 五、使用 webpack 打包
@@ -137,7 +144,7 @@ module.exports = {
 npx webpack --config webpack.config.js
 ```
 
-**结果:**
+结果:
 
 ```javascript
 (()=>{"use strict";console.log("This project is new-typescript-project.")})();
@@ -253,6 +260,8 @@ const ProjectName = "new-typescript-project"
 ## 附录
 
 案例: [GitHub: new-typescript-project](https://github.com/chengchuu/new-typescript-project)
+
+本文章首次编辑于 2020-08-18，最近更新于 2025-10-27。项目代码在 Node.js 16.x 上已测试可稳定运行。
 
 **版权声明**
 
