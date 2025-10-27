@@ -1,5 +1,7 @@
 # 从零到一｜创建一个新的 TypeScript 项目
 
+![创建一个新的 TypeScript 项目](http://blog.mazey.net/wp-content/uploads/2020/08/TypeScript_SF_7x3.jpg)
+
 介绍了如何初始化 npm 项目并安装 TypeScript，通过 tsconfig.json 配置和 tsc 编译 .ts 文件。使用 webpack 和 ts-loader 实现打包，并通过 ESLint 配置代码规范检测与修复。详细说明了各步骤的依赖安装、配置文件创建及命令运行。
 
 - [从零到一｜创建一个新的 TypeScript 项目](#从零到一创建一个新的-typescript-项目)
