@@ -16,7 +16,7 @@ cd project_path
 touch .gitlab-ci.yml
 ```
 
-创建一个简单的 CI/CD 配置：
+创建一个简单的 CI/CD 配置:
 
 ```
 # 指定使用的镜像
@@ -59,13 +59,13 @@ deploy-job:
     -  npm run deploy
 ```
 
-`.gitlab-ci.yml` 常用配置：
+`.gitlab-ci.yml` 常用配置:
 
 
 | 配置 | 说明 |
 | --- | --- |
 | image | 镜像 |
-| jobs | 如上所示：`install-job`、`build-job` 便是 jobs，是 `.gitlab-ci.yml` 最基本的元素。 |
+| jobs | 如上所示: `install-job`、`build-job` 便是 jobs，是 `.gitlab-ci.yml` 最基本的元素。 |
 | stages | 用来组合 jobs 按步骤工作，jobs 下面对应的 stage 和 stages 的子集对应。 |
 | only | 指定 jobs 的执行场景，相对应的是 except。 |
 
@@ -75,7 +75,7 @@ CLI（命令行界面）和 CI 类似，都是解决重复劳动，例如用来�
 
 ### 使用 aliyunoss-cli 自动上传阿里云 OSS
 
-下载安装 CLI：
+下载安装 CLI:
 
 ```
 npm install aliyunoss-cli --save-dev
@@ -84,7 +84,7 @@ npx aliyunoss-cli --version
 1.1.1
 ```
 
-创建配置文件 `alioss.config.json`：
+创建配置文件 `alioss.config.json`:
 
 ```
 {
@@ -95,7 +95,7 @@ npx aliyunoss-cli --version
 }
 ```
 
-在配置文件中添加各环境对应 OSS 路径：
+在配置文件中添加各环境对应 OSS 路径:
 
 ```
 {
@@ -120,7 +120,7 @@ npx aliyunoss-cli --version
 }
 ```
 
-发布命令：
+发布命令:
 
 ```
 # 测试
@@ -131,14 +131,14 @@ npx aliyunoss-cli --releaseEnv pre
 npx aliyunoss-cli --releaseEnv prd
 ```
 
-直接使用命令行拼接参数指定路径：
+直接使用命令行拼接参数指定路径:
 
 ```
 # 测试
 npx aliyunoss-cli --source dist/ --target home/dev/
 ```
 
-配合 `.gitlab-ci.yml` 添加 `script` 命令行：
+配合 `.gitlab-ci.yml` 添加 `script` 命令行:
 
 ```
 "deploy": "aliyunoss-cli --releaseEnv dev",
@@ -147,4 +147,9 @@ npx aliyunoss-cli --source dist/ --target home/dev/
 
 **版权声明**
 
-本博客所有的原创文章，作者皆保留版权。转载必须包含本声明，保持本文完整，并以超链接形式注明作者[后除](https://blog.mazey.net/author/mazey)和本文原始地址：[https://blog.mazey.net/1695.html](https://blog.mazey.net/1695.html)
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/1695.html>
+
+(完)
