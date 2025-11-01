@@ -10,7 +10,7 @@ CD（持续部署）是经过 CI 后，代码自动部署到服务器。
 
 [GitLab](https://docs.gitlab.com/ee/README.html) CI/CD 通 [`.gitlab-ci.yml`](https://docs.gitlab.com/ee/ci/yaml/README.html) 配置文件来部署。
 
-```
+```bash
 cd project_path
 
 touch .gitlab-ci.yml
@@ -18,7 +18,7 @@ touch .gitlab-ci.yml
 
 创建一个简单的 CI/CD 配置:
 
-```
+```plain
 # 指定使用的镜像
 image: node:latest
 
@@ -77,16 +77,15 @@ CLI（命令行界面）和 CI 类似，都是解决重复劳动，例如用来�
 
 下载安装 CLI:
 
-```
+```bash
 npm install aliyunoss-cli --save-dev
 
 npx aliyunoss-cli --version
-1.1.1
 ```
 
 创建配置文件 `alioss.config.json`:
 
-```
+```json
 {
   "region": "-",
   "accessKeyId": "-",
@@ -97,7 +96,7 @@ npx aliyunoss-cli --version
 
 在配置文件中添加各环境对应 OSS 路径:
 
-```
+```json
 {
   "region": "-",
   "accessKeyId": "-",
@@ -122,7 +121,7 @@ npx aliyunoss-cli --version
 
 发布命令:
 
-```
+```bash
 # 测试
 npx aliyunoss-cli --releaseEnv dev
 # 预发布
@@ -133,14 +132,14 @@ npx aliyunoss-cli --releaseEnv prd
 
 直接使用命令行拼接参数指定路径:
 
-```
+```bash
 # 测试
 npx aliyunoss-cli --source dist/ --target home/dev/
 ```
 
 配合 `.gitlab-ci.yml` 添加 `script` 命令行:
 
-```
+```plain
 "deploy": "aliyunoss-cli --releaseEnv dev",
 "publish": "npm i && npm run build && npm run deploy"
 ```
