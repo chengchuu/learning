@@ -1,5 +1,7 @@
 # 使用 GitLab CI/CD 和阿里云 CLI 自动部署前端项目
 
+![使用 GitLab CI/CD 和阿里云 CLI 自动部署前端项目](http://blog.mazey.net/wp-content/uploads/2025/09/Git_SF_7x3.jpg)
+
 介绍了 CI/CD 的概念及其在 GitLab 中的实现，通过 .gitlab-ci.yml 配置文件定义镜像、阶段和执行条件，实现自动化构建、打包和部署。详细说明了 CLI 的用途及使用方法，包括配置 OSS 参数和执行发布命令，支持多环境发布并与 CI/CD 流程集成，提升开发和部署效率。
 
 - [使用 GitLab CI/CD 和阿里云 CLI 自动部署前端项目](#使用-gitlab-cicd-和阿里云-cli-自动部署前端项目)
