@@ -71,7 +71,7 @@ deploy-job:
 
 ## 二、什么是 CLI
 
-CLI（命令行界面）和 CI 类似，都是解决重复劳动，例如用来初始化项目的 Vue-Cli、Create-React-App 和上传静态资源到阿里云的 [aliyunoss-cli](https://github.com/mazeyqian/aliyunoss-cli)。
+CLI（命令行界面）和 CI 类似，都是解决重复劳动，例如用来初始化项目的 Vue-Cli、Create-React-App 和上传静态资源到阿里云的 [aliyunoss-cli](https://github.com/chengchuu/aliyunoss-cli)。
 
 ### 使用 aliyunoss-cli 自动上传阿里云 OSS
 
