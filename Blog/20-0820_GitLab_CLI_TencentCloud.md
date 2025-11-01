@@ -1,14 +1,20 @@
-# 使用 GitLab CI/CD 和阿里云 CLI 自动部署前端项目
+# 使用 GitLab CI/CD 和 CLI 自动部署前端项目
 
-![使用 GitLab CI/CD 和阿里云 CLI 自动部署前端项目](http://blog.mazey.net/wp-content/uploads/2025/09/Git_SF_7x3.jpg)
+![使用 GitLab CI/CD 和 CLI 自动部署前端项目](http://blog.mazey.net/wp-content/uploads/2025/09/Git_SF_7x3.jpg)
+
+**内容声明**
+
+本文仅用于技术分享和学习交流，内容不包含任何广告、推广、引流、付费课程或外链信息。所有示例和配置均为技术实践，欢迎参考和自定义。
+
+---
 
 介绍了 CI/CD 的概念及其在 GitLab 中的实现，通过 .gitlab-ci.yml 配置文件定义镜像、阶段和执行条件，实现自动化构建、打包和部署。详细说明了 CLI 的用途及使用方法，包括配置 OSS 参数和执行发布命令，支持多环境发布并与 CI/CD 流程集成，提升开发和部署效率。
 
-- [使用 GitLab CI/CD 和阿里云 CLI 自动部署前端项目](#使用-gitlab-cicd-和阿里云-cli-自动部署前端项目)
+- [使用 GitLab CI/CD 和 CLI 自动部署前端项目](#使用-gitlab-cicd-和-cli-自动部署前端项目)
   - [一、什么是 CI/CD？](#一什么是-cicd)
     - [在 GitLab 中部署 CI/CD](#在-gitlab-中部署-cicd)
   - [二、什么是 CLI](#二什么是-cli)
-    - [使用 aliyunoss-cli 自动上传阿里云 OSS](#使用-aliyunoss-cli-自动上传阿里云-oss)
+    - [使用 aliyunoss-cli 自动上传 OSS](#使用-aliyunoss-cli-自动上传-oss)
 
 ## 一、什么是 CI/CD？
 
@@ -80,9 +86,9 @@ deploy-job:
 
 ## 二、什么是 CLI
 
-CLI (命令行界面) 和 CI 类似，都是解决重复劳动，例如用来初始化项目的 Vue-Cli、Create-React-App 和上传静态资源到阿里云的 [aliyunoss-cli](https://github.com/chengchuu/aliyunoss-cli)。
+CLI (命令行界面) 和 CI 类似，都是解决重复劳动，例如用来初始化项目的 Vue-Cli、Create-React-App 和上传静态资源到云的 [aliyunoss-cli](https://github.com/chengchuu/aliyunoss-cli)。
 
-### 使用 aliyunoss-cli 自动上传阿里云 OSS
+### 使用 aliyunoss-cli 自动上传 OSS
 
 下载安装 CLI:
 
