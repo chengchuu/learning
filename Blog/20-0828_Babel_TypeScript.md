@@ -122,7 +122,7 @@ npm install typescript -D
 }
 ```
 
-修改 `package.json`，添加脚本命令:
+修改 `package.json`，添加脚本命令和 Browserslist:
 
 ```plain
 {
