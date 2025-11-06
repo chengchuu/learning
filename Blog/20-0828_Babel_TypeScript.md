@@ -32,7 +32,7 @@ npm install @babel/preset-typescript @babel/plugin-proposal-class-properties @ba
 
 ## 三、修改 Webapck 配置
 
-```
+```plain
 // ...
 {
     test: /\.tsx?$/,
@@ -50,13 +50,13 @@ resolve: {
 
 安装 `typescript`：
 
-```
+```bash
 npm install --save-dev typescript
 ```
 
 配置 `tsconfig.json`：
 
-```
+```json
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
@@ -130,7 +130,7 @@ npm install --save-dev typescript
 
 添加 `check-type` 脚本命令：
 
-```
+```plain
 "scripts": {
     "check-types": "tsc"
 }
