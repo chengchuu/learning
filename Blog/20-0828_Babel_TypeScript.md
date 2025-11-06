@@ -4,13 +4,13 @@
 
 ## 一、安装 Babel
 
-安装 webpack 所必要的 Babel 依赖：
+安装 webpack 所必要的 Babel 依赖:
 
 ```bash
 npm i @babel/cli @babel/core @babel/preset-env babel-loader --save-dev
 ```
 
-安装编译 TypeScript 需要的 Babel 依赖：
+安装编译 TypeScript 需要的 Babel 依赖:
 
 ```bash
 npm install @babel/preset-typescript @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread --save-dev
@@ -20,13 +20,13 @@ npm install @babel/preset-typescript @babel/plugin-proposal-class-properties @ba
 
 ```json
 {
-	"presets": [
-		"@babel/typescript"
-	],
-	"plugins": [
-		"@babel/proposal-class-properties",
-		"@babel/proposal-object-rest-spread"
-	]
+  "presets": [
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ]
 }
 ```
 
@@ -35,26 +35,26 @@ npm install @babel/preset-typescript @babel/plugin-proposal-class-properties @ba
 ```plain
 // ...
 {
-    test: /\.tsx?$/,
-    use: 'babel-loader',
-    exclude: /node_modules/
+  test: /\.tsx?$/,
+  use: 'babel-loader',
+  exclude: /node_modules/
 },
 // ...
 resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+  extensions: ['.ts', '.tsx', '.js', '.json']
 }
 // ...
 ```
 
 ## 四、配置 TypeScript 环境
 
-安装 `typescript`：
+安装 `typescript`:
 
 ```bash
 npm install --save-dev typescript
 ```
 
-配置 `tsconfig.json`：
+配置 `tsconfig.json`:
 
 ```json
 {
@@ -128,11 +128,11 @@ npm install --save-dev typescript
 }
 ```
 
-添加 `check-type` 脚本命令：
+添加 `check-type` 脚本命令:
 
 ```plain
 "scripts": {
-    "check-types": "tsc"
+  "check-types": "tsc"
 }
 ```
 
