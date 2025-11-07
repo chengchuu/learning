@@ -2,7 +2,7 @@
 
 使用 ts-loader 在构建打包生产代码时面对重重问题，比如 Polyfill 的自动注入等，于是转变为用 Babel 来编译 TypeScript。
 
-## 一、安装 Babel
+## 安装 Babel
 
 安装 webpack 和 TypeScript 所必要的 Babel 依赖:
 
@@ -14,7 +14,7 @@ npm install @babel/core @babel/cli @babel/preset-env @babel/preset-typescript ba
 npm install @babel/runtime @babel/runtime-corejs3 -S
 ```
 
-## 二、配置 `babel.config.js`
+## 配置 `babel.config.js`
 
 ```javascript
 module.exports = function (api) {
@@ -59,7 +59,7 @@ module.exports = function (api) {
 };
 ```
 
-## 三、修改 webpack 配置
+## 修改 webpack 配置
 
 ```javascript
 module.exports = {
@@ -88,7 +88,7 @@ module.exports = {
 };
 ```
 
-## 四、配置 TypeScript 环境
+## 配置 TypeScript 环境
 
 安装 `typescript`:
 
@@ -136,3 +136,18 @@ npm install typescript -D
   ]
 }
 ```
+
+## 附录
+
+案例: [GitHub: new-typescript-project/release/babel](https://github.com/chengchuu/new-typescript-project/tree/release/babel)
+
+本文章首次编辑于 2020-08-28，最近更新于 2025-11-07。项目代码在 Node.js 16.x 上已测试可稳定运行。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/1722.html>
+
+(完)
