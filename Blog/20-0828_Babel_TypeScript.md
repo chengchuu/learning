@@ -1,6 +1,15 @@
 # 使用 Babel 编译 TypeScript
 
+![使用 Babel 编译 TypeScript](http://blog.mazey.net/wp-content/uploads/2020/08/TypeScript_SF_7x3.jpg)
+
 使用 ts-loader 在构建打包生产代码时面对重重问题，比如 Polyfill 的自动注入等，于是转变为用 Babel 来编译 TypeScript。
+
+- [使用 Babel 编译 TypeScript](#使用-babel-编译-typescript)
+  - [安装 Babel](#安装-babel)
+  - [配置 `babel.config.js`](#配置-babelconfigjs)
+  - [修改 webpack 配置](#修改-webpack-配置)
+  - [配置 TypeScript 环境](#配置-typescript-环境)
+  - [附录](#附录)
 
 ## 安装 Babel
 
