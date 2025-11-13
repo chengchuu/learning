@@ -3,6 +3,7 @@
 
 **Table of Contents:**
 
+- [25-0606](#25-0606)
 - [25-0603 Rock That Body](#25-0603-rock-that-body)
 - [25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)](#25-0608-kumamoto-熊本kumamotokyushujapan)
 - [25-0305 Gion (祇園;Kyoto,Kansai,Japan)](#25-0305-gion-祇園kyotokansaijapan)
@@ -53,6 +54,30 @@
 - [24-1228 Walk in Wakayama (和歌山)](#24-1228-walk-in-wakayama-和歌山)
 - [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
+
+## 25-0606
+
+福岡市博物館 Fukuoka City Museum
+
+zh:
+
+福冈市博物馆｜「鬼灭之刃」柱展
+九柱一一亮相，气场全开。
+#鬼灭之刃 #柱展 #福冈市博物馆 #九柱 #展览 #福冈 #九州 #富冈义勇 #时透无一郎
+#鬼灭之刃#柱展#福冈市博物馆#九柱#动漫#展览#福冈#九州#漫画#旅游
+#鬼灭之刃# #柱展# #福冈市博物馆# #九柱# #动漫# #展览# #福冈# #九州# #漫画# #旅游#
+
+en:
+
+Fukuoka City Museum: Demon Slayer Hashira Exhibition
+The nine Hashira appear one by one—each radiating overwhelming presence.
+#DemonSlayer #HashiraExhibition #FukuokaCityMuseum #NineHashira #AnimeEvent #MangaCulture #Fukuoka #Kyushu #Exhibition #JapanTravel #Travel #TravelDiary
+#DemonSlayer#HashiraExhibition#FukuokaCityMuseum#NineHashira#AnimeEvent#MangaCulture#Fukuoka#Kyushu#Exhibition#JapanTravel
+
+jp:
+
+福岡市博物館｜鬼滅の刃 柱展
+九人の柱が次々に登場、それぞれ圧巻の存在感。
 
 ## 25-0603 Rock That Body
 
