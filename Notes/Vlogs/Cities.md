@@ -3,13 +3,9 @@
 
 **Table of Contents:**
 
-- [25-0606](#25-0606)
-- [25-0603 Rock That Body](#25-0603-rock-that-body)
+- [25-0606 福岡市博物館 (福岡;Fukuoka,Kyushu,Japan)](#25-0606-福岡市博物館-福岡fukuokakyushujapan)
 - [25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)](#25-0608-kumamoto-熊本kumamotokyushujapan)
 - [25-0305 Gion (祇園;Kyoto,Kansai,Japan)](#25-0305-gion-祇園kyotokansaijapan)
-- [25-0605 Don't Even Think Once (嘟嘟;Shanghai,China)](#25-0605-dont-even-think-once-嘟嘟shanghaichina)
-- [25-0603 Moments with a Little Cat (嘟嘟;Shanghai,China)](#25-0603-moments-with-a-little-cat-嘟嘟shanghaichina)
-- [25-0602 Tired All the Time (嘟嘟;Shanghai,China)](#25-0602-tired-all-the-time-嘟嘟shanghaichina)
 - [25-0521 Gundam Statue (福岡;Fukuoka,Kyushu,Japan)](#25-0521-gundam-statue-福岡fukuokakyushujapan)
 - [25-0303 Mount Rokkō (六甲山天覧台;Kobe,Japan)](#25-0303-mount-rokkō-六甲山天覧台kobejapan)
 - [25-0304 Maiko Park (舞子公園;Kobe,Japan)](#25-0304-maiko-park-舞子公園kobejapan)
@@ -55,7 +51,7 @@
 - [24-1213 王子ヶ浜 (王子町;Wakayama,Kansai,Japan)](#24-1213-王子ヶ浜-王子町wakayamakansaijapan)
 - [24-1206 The Animals of Wakayama Castle (和歌山城;Wakayama,Kansai,Japan)](#24-1206-the-animals-of-wakayama-castle-和歌山城wakayamakansaijapan)
 
-## 25-0606
+## 25-0606 福岡市博物館 (福岡;Fukuoka,Kyushu,Japan)
 
 福岡市博物館 Fukuoka City Museum
 
@@ -64,27 +60,22 @@ zh:
 福冈市博物馆｜「鬼灭之刃」柱展
 九柱一一亮相，气场全开。
 #鬼灭之刃 #柱展 #福冈市博物馆 #九柱 #展览 #福冈 #九州 #富冈义勇 #时透无一郎
-#鬼灭之刃#柱展#福冈市博物馆#九柱#动漫#展览#福冈#九州#漫画#旅游
-#鬼灭之刃# #柱展# #福冈市博物馆# #九柱# #动漫# #展览# #福冈# #九州# #漫画# #旅游#
+#鬼灭之刃#柱展#福冈市博物馆#九柱#展览#福冈#九州#富冈义勇#时透无一郎
+#鬼灭之刃# #柱展# #福冈市博物馆# #九柱# #展览# #福冈# #九州# #富冈义勇# #时透无一郎#
 
 en:
 
 Fukuoka City Museum: Demon Slayer Hashira Exhibition
-The nine Hashira appear one by one—each radiating overwhelming presence.
-#DemonSlayer #HashiraExhibition #FukuokaCityMuseum #NineHashira #AnimeEvent #MangaCulture #Fukuoka #Kyushu #Exhibition #JapanTravel #Travel #TravelDiary
-#DemonSlayer#HashiraExhibition#FukuokaCityMuseum#NineHashira#AnimeEvent#MangaCulture#Fukuoka#Kyushu#Exhibition#JapanTravel
+The nine Hashira appear one by one, each radiating their full presence.
+#DemonSlayer #HashiraExhibition #FukuokaCityMuseum #NineHashira #Exhibition #Fukuoka #Kyushu #GiyuTomioka #MuichiroTokito
+
+#DemonSlayer#HashiraExhibition#FukuokaCityMuseum#NineHashira#Exhibition#Fukuoka#Kyushu#GiyuTomioka#MuichiroTokito
+#DemonSlayer# #HashiraExhibition# #FukuokaCityMuseum# #NineHashira# #Exhibition# #Fukuoka# #Kyushu# #GiyuTomioka# #MuichiroTokito#
 
 jp:
 
 福岡市博物館｜鬼滅の刃 柱展
 九人の柱が次々に登場、それぞれ圧巻の存在感。
-
-## 25-0603 Rock That Body
-
-Rock That Body
-彩光之下，律动猫影。
-#猫咪 #小猫 #摇摆 #可爱 #Rock #萌宠 #猫咪日常 #猫奴 #慢生活
-#猫咪#小猫#摇摆#可爱#Rock#萌宠#猫咪日常#猫奴#摇滚
 
 ## 25-0608 Kumamoto (熊本;Kumamoto,Kyushu,Japan)
 
@@ -136,87 +127,6 @@ jp:
 
 祇園｜暮れゆく八坂神社を通りすがる
 街角の灯りが滲み、黄昏の人影がゆっくりとすれ違う。
-
-## 25-0605 Don't Even Think Once (嘟嘟;Shanghai,China)
-
-猫咪日常・嘟嘟
-
-zh:
-
-嘟嘟｜小猫不想思考
-
-仿佛思绪也停了电。
-
-#猫咪发呆 #发呆 #猫咪 #小猫 #可爱 #宠物 #日常生活 #萌宠 #猫咪日常 #猫奴 #慢生活
-#猫咪发呆#发呆#猫咪#小猫#可爱#宠物#日常生活#萌宠#猫咪日常#猫奴#慢生活
-
-en:
-
-Dudu: I Don't Even Think Once
-As if her thoughts just powered off.
-#ZonedOutCat #SpacingOut #Cat #Kitten #Cute #Pet #DailyLife #LovelyPet #CatRoutine #CatLover #SlowLiving
-
-#ZonedOutCat#SpacingOut#Cat#Kitten#Cute#Pet#DailyLife#LovelyPet#CatRoutine#CatLover
-
-jp:
-
-ドゥドゥ｜考えるのをやめた猫
-まるで思考が電源オフになったみたい。
-#猫ぼーっと #ぼーっと #猫 #子猫 #かわいい #ペット #日常生活 #癒しのペット #猫の毎日 #猫好き #スローライフ
-#猫ぼーっと#ぼーっと#猫#子猫#かわいい#ペット#日常生活#癒しのペット#猫の毎日#猫好き
-
-## 25-0603 Moments with a Little Cat (嘟嘟;Shanghai,China)
-
-猫咪日常・嘟嘟
-
-zh:
-
-嘟嘟｜小猫时光
-温柔片刻缓缓流淌。
-#哈基米 #猫咪 #小猫 #可爱 #宠物 #日常生活 #萌宠 #猫咪日常 #猫奴 #慢生活 #家居生活
-#哈基米#猫咪#小猫#可爱#宠物#日常生活#萌宠#猫咪日常#猫奴#慢生活#家居生活
-
-en:
-
-Dudu: Moments with a Little Cat
-A gentle pause, flowing slowly with soft rhythm.
-#Hakimi #Kitten #CuteCat #PetLife #HomeVibes #CatLover #CozyScene #DailyCat #SlowLiving #CutenessOverload
-
-#Hakimi#Kitten#CuteCat#PetLife#HomeVibes#CatLover#CozyScene#DailyCat#SlowLiving#CutenessOverload
-
-jp:
-
-ドゥドゥ｜子猫と過ごすやさしい時間
-音楽とともに、静かに流れるまどろみのひととき。
-
-## 25-0602 Tired All the Time (嘟嘟;Shanghai,China)
-
-Guilin Park
-
-zh:
-
-嘟嘟｜我太累了
-
-打盹的小猫咪。
-
-#猫咪 #打盹 #小猫 #可爱 #宠物 #日常生活 #萌宠 #猫咪日常 #慵懒生活 #猫咪视频 #猫奴 #慢生活 #猫咪摄影
-
-#猫咪#打盹#小猫#可爱#宠物#日常生活#萌宠#猫咪日常#慵懒生活#猫咪视频#猫奴#慢生活#猫咪摄影
-
-en:
-
-Tired All the Time: A Cat’s Couch Routine
-
-All-day tiredness, perfectly embodied by one sleepy cat on a sofa.
-
-#Cat #TiredAllDay #SleepyCat #LazyMood #CatNap #AtHomeScene #DailyCatLife #CouchVibes #SlowVlog #CuteAnimals
-
-#Cat#TiredAllDay#SleepyCat#LazyMood#CatNap#AtHomeScene#DailyCatLife#CouchVibes#SlowVlog#CuteAnimals
-
-jp:
-
-Tired All the Time｜ソファで一日中眠い猫
-「ずっと眠い」を体現する猫、上海の部屋で今日もぐっすり。
 
 ## 25-0521 Gundam Statue (福岡;Fukuoka,Kyushu,Japan)
 
