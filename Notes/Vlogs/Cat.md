@@ -5,13 +5,13 @@
 **Table of Contents:**
 
 - [Cat](#cat)
-  - [25-0626](#25-0626)
+  - [25-0626 Am I Not a Genius (嘟嘟)](#25-0626-am-i-not-a-genius-嘟嘟)
   - [25-0603 Rock That Body (嘟嘟)](#25-0603-rock-that-body-嘟嘟)
   - [25-0605 Don't Even Think Once (嘟嘟;Shanghai,China)](#25-0605-dont-even-think-once-嘟嘟shanghaichina)
   - [25-0603 Moments with a Little Cat (嘟嘟;Shanghai,China)](#25-0603-moments-with-a-little-cat-嘟嘟shanghaichina)
   - [25-0602 Tired All the Time (嘟嘟;Shanghai,China)](#25-0602-tired-all-the-time-嘟嘟shanghaichina)
 
-## 25-0626
+## 25-0626 Am I Not a Genius (嘟嘟)
 
 zh:
 
