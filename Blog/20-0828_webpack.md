@@ -1,6 +1,6 @@
 # 使用 webpack-merge 合并 webpack 配置
 
-使用 webpack 搭建项目时会配置开发、测试、预发布、生产环境，这里面充斥着大量重复的配置，例如：入口、加载器等。[webpack-merge](https://www.npmjs.com/package/webpack-merge) 作为 webpack 的配置合并工具，功能类似于 JavaScript 的 [Object.assign\(\)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
+使用 webpack 搭建项目时会配置开发、测试、预发布、生产环境，这里面充斥着大量重复的配置，例如：入口、加载器等。[webpack-merge](https://www.npmjs.com/package/webpack-merge) 作为 webpack 的配置合并工具，功能类似于 JavaScript 的 [`Object.assign()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
 
 示例：
 
