@@ -1,5 +1,11 @@
 # 使用 webpack-merge 合并 webpack 配置
 
+![使用 webpack-merge 合并 webpack 配置](http://blog.mazey.net/wp-content/uploads/2025/09/webpack_SF_7x3.jpg)
+
+使用 webpack-merge 将多环境配置合并，减少入口、加载器等重复内容，并支持以 common 为基础扩展 dev 与 prod 配置。示例展示了常用 loader、缓存、静态资源处理、开发模式的源码映射与 dev server 设置，以及生产模式中通过 mergeWithRules 替换样式链路并优化构建体积。
+
+- [使用 webpack-merge 合并 webpack 配置](#使用-webpack-merge-合并-webpack-配置)
+
 使用 webpack 搭建项目时会配置开发、测试、预发布、生产环境，这里面充斥着大量重复的配置，例如: 入口、加载器等。[webpack-merge](https://www.npmjs.com/package/webpack-merge) 作为 webpack 的配置合并工具，功能类似于 JavaScript 的 [`Object.assign()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
 
 快速安装:
@@ -27,11 +33,10 @@ const { resolve } = require('./utils');
 
 module.exports = {
   entry: {
-    index: resolve('src/index.tsx') // 或 index.ts
+    index: resolve('src/index.tsx')
   },
   output: {
     path: resolve('dist'),
-    // 具体 filename 在各环境中覆盖（开发不需要 contenthash）
     filename: '[name].js',
     assetModuleFilename: 'assets/[hash][ext][query]'
   },
@@ -53,7 +58,6 @@ module.exports = {
           target: 'es2017'
         }
       },
-      // 资源模块（替代 file-loader / url-loader）
       {
         test: /\.(png|jpe?g|gif|svg|webp)$/,
         type: 'asset',
@@ -102,7 +106,7 @@ module.exports = merge(common, {
       {
         test: /\.s?css$/,
         use: [
-          'style-loader', // 开发直接注入，速度快
+          'style-loader',
           {
             loader: 'css-loader',
             options: { sourceMap: true, importLoaders: 1 }
@@ -141,7 +145,7 @@ const prodConfig = {
   devtool: 'source-map',
   output: {
     filename: '[name].[contenthash:8].js',
-    clean: true // webpack 5 output.clean 可替代 CleanWebpackPlugin，在 simple 场景下更方便
+    clean: true // webpack 5 output.clean 可替代 CleanWebpackPlugin，在简单场景下更方便
   },
   module: {
     rules: [
@@ -158,7 +162,7 @@ const prodConfig = {
       chunks: 'all',
       maxInitialRequests: 25,
       maxAsyncRequests: 50,
-      // 典型的缓存组配置可在此处展开
+      // 缓存组配置可在此处展开
     }
   },
   plugins: [
