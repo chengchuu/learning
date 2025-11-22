@@ -1,7 +1,6 @@
 # 使用 webpack-merge 合并 webpack 配置
 
-使用 webpack 搭建项目时会配置开发、测试、预发布、生产环境，这里面充斥着大量重复的配置，例如：入口、加载器等。[webpack-merge](https://www.npmjs.com/package/webpack-merge) 作为 webpack 的配置合并工具，功能类似于 JavaScript 的 [`Object.assign()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
-
+使用 webpack 搭建项目时会配置开发、测试、预发布、生产环境，这里面充斥着大量重复的配置，例如: 入口、加载器等。[webpack-merge](https://www.npmjs.com/package/webpack-merge) 作为 webpack 的配置合并工具，功能类似于 JavaScript 的 [`Object.assign()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
 
 快速安装:
 
@@ -9,7 +8,7 @@
 npm install -D webpack webpack-cli webpack-dev-server webpack-merge html-webpack-plugin clean-webpack-plugin mini-css-extract-plugin css-loader postcss-loader postcss postcss-preset-env sass sass-loader esbuild-loader
 ```
 
-示例：
+示例:
 
 `utils.js`
 ```javascript
@@ -68,7 +67,7 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)$/,
         type: 'asset/resource'
       }
-      // 注意：样式 loader 在各环境中不同（见下面 dev/prod）
+      // 注意: 样式 loader 在各环境中不同 (见下面 dev/prod)
     ]
   },
   plugins: [
@@ -174,7 +173,7 @@ const merged = mergeWithRules({
   module: {
     rules: {
       test: 'match',
-      // use 数组用 replace（生产直接替换掉开发用的 style-loader）
+      // use 数组用 replace (生产直接替换掉开发用的 style-loader)
       use: 'replace'
     }
   }
