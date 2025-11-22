@@ -183,3 +183,16 @@ const merged = mergeWithRules({
 // 供外部 require
 module.exports = merged;
 ```
+
+**更新记录**
+
+本文首次编辑于 2020-08-28，最近更新于 2025-11-22。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/1724.html>
+
+(完)
