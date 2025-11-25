@@ -1,6 +1,8 @@
 # Linux 安装 PHP
 
-Linux 安装 PHP 需先安装 Vim，再下载 php-7.1.5.tar.gz 并解压；安装依赖 libxml2 及 devel，切换到 PHP 目录，通过 ./configure 生成 Makefile，编译后安装。最后创建 test.php 并运行 phpinfo () 验证。
+![Linux 安装 PHP](http://blog.mazey.net/wp-content/uploads/2017/05/Linux_SF_7x3.jpg)
+
+Linux 安装 PHP 需先安装 Vim，再下载 php-7.1.5.tar.gz 并解压；安装依赖 libxml2 及 devel，切换到 PHP 目录，通过 ./configure 生成 Makefile，编译后安装。最后创建 test.php 并运行 phpinfo() 验证。
 
 - [Linux 安装 PHP](#linux-安装-php)
   - [安装 Vim](#安装-vim)
