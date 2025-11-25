@@ -1,5 +1,19 @@
 # SQLServer 中 exists 和 except 用法
 
+![SQLServer](http://blog.mazey.net/wp-content/uploads/2017/07/SQL_SF_7x3.jpg)
+
+EXISTS/NOT EXISTS 按内查询结果集是否为空返回 BOOL 值，性能优于 IN/INNER JOIN；INTERSECT 功能同 EXISTS，EXCEPT 同 NOT EXISTS，但后两者查询开销更大。EXCEPT 自动去重，NOT EXISTS 则不会，文中附相关 SQL 示例与测试数据。
+
+- [SQLServer 中 exists 和 except 用法](#sqlserver-中-exists-和-except-用法)
+  - [一、exists](#一exists)
+    - [1.1 说明](#11-说明)
+    - [1.2 示例](#12-示例)
+    - [1.3 intersect/2017-07-21](#13-intersect2017-07-21)
+  - [二、except](#二except)
+    - [2.1 说明](#21-说明)
+    - [2.2 示例](#22-示例)
+  - [三、测试数据](#三测试数据)
+
 ## 一、exists
 
 ### 1.1 说明
@@ -67,7 +81,7 @@ cherrie
 
 查询结果上 EXCEPT = NOT EXISTS，INTERSECT = EXISTS，但是 EXCEPT/INTERSECT 的「查询开销」会比 NOT EXISTS/EXISTS 大很多。
 
-except 自动去重复，not in/not exists不会。
+except 自动去重复，not in/not exists 不会。
 
 ![SQLServer](http://blog.mazey.net/wp-content/uploads/2021/12/201707141150.jpg)
 
