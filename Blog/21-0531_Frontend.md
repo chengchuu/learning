@@ -2,7 +2,7 @@
 
 ![前端部署](http://blog.mazey.net/wp-content/uploads/2021/05/Frontend_SF_7x3.jpg)
 
-介绍了前端项目部署在 CDN 上因缓存未及时刷新导致静态资源访问异常的问题，提出在构建打包时为文件或文件夹添加版本号标识（递增版本号、Hash 值或时间戳）并保留旧资源的解决方案，确保资源更新后仍可正常访问。提供了目录结构示例与参考代码链接。
+本文介绍了前端项目部署在 CDN 上因缓存未及时刷新导致静态资源访问异常的问题，提出在构建打包时为文件或文件夹添加版本号标识（递增版本号、Hash 值或时间戳）并保留旧资源的解决方案，确保资源更新后仍可正常访问。提供了目录结构示例与参考代码链接。
 
 - [前端部署中添加版本和保留旧版本的必要性](#前端部署中添加版本和保留旧版本的必要性)
   - [背景](#背景)
@@ -40,7 +40,7 @@
 
 ![制品仓中的资源](http://blog.mazey.net/wp-content/uploads/2021/05/fe-folder-crop-w-800.jpg)
 
-代码参考: [GitGub: multipage-template](https://github.com/chengchuu/multipage-template)
+代码参考: [GitHub: multipage-template](https://github.com/chengchuu/multipage-template)
 
 **更新记录**
 
