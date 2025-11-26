@@ -1,5 +1,20 @@
 # 使用 webpack-bundle-analyzer 分析与优化构建体积
 
+![使用 webpack-bundle-analyzer 分析与优化构建体积](http://blog.mazey.net/wp-content/uploads/2025/09/webpack_SF_7x3.jpg)
+
+使用 webpack-bundle-analyzer 可可视化分析构建产物并生成 stats.json，帮助定位体积来源。结合 ESBuild 或 SWC 加速转译、优化 Terser 参数、配置 Tree Shaking 与 sideEffects、压缩图片、替换大型依赖，可有效缩小最终 bundle 并提升构建性能。
+
+- [使用 webpack-bundle-analyzer 分析与优化构建体积](#使用-webpack-bundle-analyzer-分析与优化构建体积)
+  - [安装](#安装)
+  - [配置示例](#配置示例)
+  - [运行分析](#运行分析)
+  - [常用的构建体积优化项](#常用的构建体积优化项)
+    - [使用 ESBuild/SWC 作为 JS/TS 转译器](#使用-esbuildswc-作为-jsts-转译器)
+    - [使用 TerserPlugin 的 parallel + compress](#使用-terserplugin-的-parallel--compress)
+    - [Tree Shaking 结合 sideEffects](#tree-shaking-结合-sideeffects)
+    - [压缩 \& 优化图片](#压缩--优化图片)
+    - [减少 Moment、Lodash 等大体积依赖](#减少-momentlodash-等大体积依赖)
+
 ## 安装
 
 ```bash
@@ -82,3 +97,16 @@ webpack5 默认已集成 Terser，但可调整参数进一步缩小体积。
 
 - 使用 date-fns 或 dayjs 替代 moment。
 - 使用 lodash-es 或按需导入。
+
+**更新记录**
+
+本文首次编辑于 2021-01-04，最近更新于 2025-11-26。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/1781.html>
+
+(完)
