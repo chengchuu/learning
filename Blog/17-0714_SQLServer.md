@@ -18,11 +18,11 @@ EXISTS/NOT EXISTS 按内查询结果集是否为空返回 BOOL 值，性能优�
 
 ### 1.1 说明
 
-EXISTS (包括 NOT EXISTS) 子句的返回值是一个 BOOL 值。EXISTS 内部有一个子查询语句 (SELECT ... FROM...)，我将其称为 EXIST 的内查询语句。其内查询语句返回一个结果集。EXISTS 子句根据其内查询语句的结果集空或者非空，返回一个布尔值。[Link](https://www.cnblogs.com/netserver/archive/2008/12/25/1362615.html)
+EXISTS (包括 NOT EXISTS) 子句的返回值是一个 BOOL 值。EXISTS 内部有一个子查询语句 (SELECT ... FROM...)，将其称为 EXIST 的内查询语句。其内查询语句返回一个结果集。EXISTS 子句根据其内查询语句的结果集空或者非空，返回一个布尔值。[Link](https://www.cnblogs.com/netserver/archive/2008/12/25/1362615.html)
 
 exists: 强调的是是否返回结果集，不要求知道返回什么，比如: `select name from student where sex = 'm' and mark exists(select 1 from grade where ...) `，只要 exists 引导的子句有结果集返回，那么 exists 这个条件就算成立了，大家注意返回的字段始终为 1，如果改成 `select 2 from grade where ...`，那么返回的字段就是 2，这个数字没有意义。所以 exists 子句不在乎返回什么，而是在乎是不是有结果集返回。EXISTS = IN，意思相同不过语法上有点点区别，好像使用 IN 效率要差点，应该是不会执行索引的原因。[Link](https://www.cnblogs.com/mytechblog/articles/2105785.html)
 
-相对于 inner join，exists 性能要好一些，当它找到第一个符合条件的记录时，就会立即停止搜索返回 TRUE。
+相对于 inner join，exists 性能要好一些，当他找到第一个符合条件的记录时，就会立即停止搜索返回 TRUE。
 
 ### 1.2 示例
 
