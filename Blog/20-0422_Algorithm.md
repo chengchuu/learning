@@ -1,5 +1,11 @@
 # 对数据进行模糊匹配搜索 (动态规划、最长公共子串、最长公共子序列)
 
+![对数据进行模糊匹配搜索](http://blog.mazey.net/wp-content/uploads/2020/04/Algorithm_SF_7x3.jpg)
+
+本文介绍利用动态规划可计算字符串的相似度，通过 LCS Substring 判断最长公共子串，通过 LCS Subsequence 获得更完整的共同序列，用于提升模糊匹配效果。适用于输入纠错、相似词推荐及搜索提示等场景，在不同数据间衡量包含与相似关系更为准确。
+
+---
+
 在搜索时常常在输入一半或者输入错误时，搜索引擎就给出智能提示。
 
 ![搜索框](http://blog.mazey.net/wp-content/uploads/2020/04/search-10.49.11.png)
@@ -78,3 +84,16 @@ function lcsSubsequence(a, b) {
 
 lcsSubsequence("fish", "finish"); // 4
 ```
+
+**更新记录**
+
+本文首次编辑于 2020-04-22，最近更新于 2025-12-03。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/1595.html>
+
+(完)
