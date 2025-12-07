@@ -1,241 +1,319 @@
-## 一、Commit message 的作用
+1、标题
 
-格式化的 Commit message，有几个好处。
+`<h1>` ~ `<h6>`，所有标题的行高都是 1.1（也就是 `font-size` 的 1.1 倍）。
 
-**（1）提供更多的历史信息，方便快速浏览。**
+2、副标题
 
-比如，下面的命令显示上次发布后的变动，每个commit占据一行。你只看行首，就知道某次 commit 的目的。
+`<small>`，行高都是 1，灰色（`#999`）。
 
-```
-git log <last tag> HEAD --pretty=format:%s
-```
-
-![](http://blog.mazey.net/wp-content/uploads/2021/07/bg2016010604.png)
-
-**（2）可以过滤某些commit（比如文档改动），便于快速查找信息。**
-
-比如，下面的命令仅仅显示本次发布新增加的功能。
-
-```
-git log <last release> HEAD --grep feature
+```html
+<h1>
+    主标题
+    <small>副标题</small>
+</h1>
 ```
 
-**（3）可以直接从commit生成Change log。**
-
-Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。
-
-![](http://blog.mazey.net/wp-content/uploads/2021/07/bg2016010603.png)
-
-## 二、Commit message 的格式
-
-每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。
-
-```
-<type>(<scope>): <subject>
-// 空一行
-<body>
-// 空一行
-<footer>
-```
-
-其中，Header 是必需的，Body 和 Footer 可以省略。
-
-不管是哪一个部分，任何一行都不得超过72个字符（或100个字符）。这是为了避免自动换行影响美观。
-
-### 2.1 Header
-
-Header部分只有一行，包括三个字段：`type`（必需）、`scope`（可选）和`subject`（必需）。
-
-**（1）type**
-
-`type`用于说明 commit 的类别，只允许使用下面7个标识。
-
-* feat：新功能（feature）
-* fix：修补bug
-* docs：文档（documentation）
-* style： 格式（不影响代码运行的变动）
-* refactor：重构（即不是新增功能，也不是修改bug的代码变动）
-* test：增加测试
-* chore：构建过程或辅助工具的变动
-
-如果`type`为`feat`和`fix`，则该 commit 将肯定出现在 Change log 之中。其他情况（`docs`、`chore`、`style`、`refactor`、`test`）由你决定，要不要放入 Change log，建议是不要。
-
-**（2）scope**
-
-`scope`用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
-
-**（3）subject**
-
-`subject`是 commit 目的的简短描述，不超过50个字符。
-
-* 以动词开头，使用第一人称现在时，比如change，而不是changed或changes
-* 第一个字母小写
-* 结尾不加句号（.）
-
-### 2.2 Body
-
-Body 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例。
-
-```
-More detailed explanatory text, if necessary.  Wrap it to 
-about 72 characters or so. 
-
-Further paragraphs come after blank lines.
-
-- Bullet points are okay, too
-- Use a hanging indent
-```
-
-有两个注意点。
-
-（1）使用第一人称现在时，比如使用change而不是changed或changes。
-
-（2）应该说明代码变动的动机，以及与以前行为的对比。
-
-### 2.3 Footer
-
-Footer 部分只用于两种情况。
-
-**（1）不兼容变动**
-
-如果当前代码与上一个版本不兼容，则 Footer 部分以`BREAKING CHANGE`开头，后面是对变动的描述、以及变动理由和迁移方法。
-
-```
-BREAKING CHANGE: isolate scope bindings definition has changed.
-
-    To migrate the code follow the example below:
-
-    Before:
-
-    scope: {
-      myAttr: 'attribute',
-    }
-
-    After:
-
-    scope: {
-      myAttr: '@',
-    }
-
-    The removed `inject` wasn't generaly useful for directives so there should be no code using it.
-```
-
-**（2）关闭 Issue**
-
-如果当前 commit 针对某个issue，那么可以在 Footer 部分关闭这个 issue 。
-
-```
-Closes #234
-```
-
-也可以一次关闭多个 issue。
-
-```
-Closes #123, #245, #992
-```
-
-### 2.4 Revert
-
-还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以`revert:`开头，后面跟着被撤销 Commit 的 Header。
-
-```
-revert: feat(pencil): add 'graphiteWidth' option
-
-This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
-```
-
-Body部分的格式是固定的，必须写成`This reverts commit &lt;hash>.`，其中的`hash`是被撤销 commit 的 SHA 标识符。
-
-如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的`Reverts`小标题下面。
-
-## 三、Commitizen
-
-[Commitizen](https://github.com/commitizen/cz-cli)是一个撰写合格 Commit message 的工具。
-
-安装命令如下。
-
-```
-npm install -g commitizen
-```
-
-然后，在项目目录里，运行下面的命令，使其支持 Angular 的 Commit message 格式。
-
-```
-commitizen init cz-conventional-changelog --save --save-exact
-```
-
-以后，凡是用到`git commit`命令，一律改为使用`git cz`。这时，就会出现选项，用来生成符合格式的 Commit message。
-
-![](http://blog.mazey.net/wp-content/uploads/2021/07/bg2016010605.png)
-
-## 四、validate-commit-msg
-
-[validate-commit-msg](https://github.com/conventional-changelog-archived-repos/validate-commit-msg) 用于检查 Node 项目的 Commit message 是否符合格式。
-
-它的安装是手动的。首先，拷贝下面这个[JS文件](https://github.com/conventional-changelog-archived-repos/validate-commit-msg/blob/master/index.js)，放入你的代码库。文件名可以取为`validate-commit-msg.js`。
-
-接着，把这个脚本加入 Git 的 hook。下面是在`package.json`里面使用 [ghooks](https://www.npmjs.com/package/ghooks)，把这个脚本加为`commit-msg`时运行。
-
-```
-  "config": {
-    "ghooks": {
-      "commit-msg": "./validate-commit-msg.js"
-    }
-  }
-```
-
-然后，每次`git commit`的时候，这个脚本就会自动检查 Commit message 是否合格。如果不合格，就会报错。
-
-```
-git add -A 
-git commit -m "edit markdown" 
-INVALID COMMIT MSG: does not match "<type>(<scope>): <subject>" ! was: edit markdown
-```
-
-## 五、生成 Change log
-
-如果你的所有 Commit 都符合 Angular 格式，那么发布新版本时， Change log 就可以用脚本自动生成（[例1](https://github.com/ajoslin/conventional-changelog/blob/master/CHANGELOG.md)，[例2](https://github.com/karma-runner/karma/blob/master/CHANGELOG.md)，[例3](https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md)）。
-
-生成的文档包括以下三个部分。
-
-* New features
-* Bug fixes
-* Breaking changes.
-
-每个部分都会罗列相关的 commit ，并且有指向这些 commit 的链接。当然，生成的文档允许手动修改，所以发布前，你还可以添加其他内容。
-
-[conventional-changelog](https://github.com/ajoslin/conventional-changelog) 就是生成 Change log 的工具，运行下面的命令即可。
-
-```
-npm install -g conventional-changelog
-cd my-project
-conventional-changelog -p angular -i CHANGELOG.md -w
-```
-
-上面命令不会覆盖以前的 Change log，只会在`CHANGELOG.md`的头部加上自从上次发布以来的变动。
-
-如果你想生成所有发布的 Change log，要改为运行下面的命令。
-
-```
-conventional-changelog -p angular -i CHANGELOG.md -w -r 0
-```
-
-为了方便使用，可以将其写入`package.json`的`scripts`字段。
-
-```
-{
-  "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
-  }
+3、`Body` 样式
+
+```css
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
 }
 ```
 
-以后，直接运行下面的命令即可。
+4、`<p>`，段落样式
 
+```css
+p { margin: 0 0 10px; }
 ```
-npm run changelog
+
+5、强调样式 `.lend`
+
+```css
+.lead {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 1.4;
+}
 ```
 
-**版权声明**
+6、粗体 `<b>`、`<strong>`
 
-本博客所有的转载文章，作者皆保留版权。转载必须包含本声明，保持本文完整，并以超链接形式注明作者[阮一峰](http://www.ruanyifeng.com/home.html)和本文原始地址：[https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html](https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+```css
+b, strong {
+    font-weight: bold; /*文本加粗*/
+}
+```
+
+7、斜体 `<i>`、`<em>`
+
+`<em>`、`<strong>` 一般是展现给爬虫看的（偏重语义），`<i>`、`<b>` 是展现给用户的（偏重视觉效果）。
+
+8、字体颜色
+
+`.text-muted`：提示，使用浅灰色（`#999`）
+`.text-primary`：主要，使用蓝色（`#428bca`）
+`.text-success`：成功，使用浅绿色（`#3c763d`）
+`.text-info`：通知信息，使用浅蓝色（`#31708f`）
+`.text-warning`：警告，使用黄色（`#8a6d3b`）
+`.text-danger`：危险，使用褐色（`#a94442`）
+
+9、文字对齐方式
+
+```css
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+```
+
+10、列表去点 `.list-unstyled`
+
+```css
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+```
+
+11、水平导航 `.list-inline`
+
+```css
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+```
+
+```html
+<ul class="list-inline">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+```
+
+12、定义列表
+
+```html
+<dl>
+    <dt>主题一</dt>
+    <dd>内容一</dd>
+    <dt>主题二</dt>
+    <dd>内容二</dd>
+</dl>
+```
+
+水平定义列表 `.dl-horizontal`。
+
+13、输入代码样式
+
+（1）`<code>`：一般是针对于单个单词或单个句子的代码
+（2）`<pre>`：一般是针对于多行代码（也就是成块的代码）
+（3）`<kbd>`：一般是表示用户要通过键盘输入的内容
+
+14、表格样式
+
+`.table`：基础表格 - 不可缺少
+`.table-striped`：斑马线表格
+`.table-bordered`：带边框的表格
+`.table-hover`：鼠标悬停高亮的表格 - 可以与其他表格样式叠加使用
+`.table-condensed`：紧凑型表格
+`.table-responsive`：响应式表格 - 小屏添加滚动条
+
+表格背景颜色
+
+![](http://blog.mazey.net/wp-content/uploads/2021/02/bootstrap-table-2211-e1613830381117.png)
+
+15、基础表单
+
+`role` 是一个 html5 的属性，`role="form"` 告诉辅助设备（如屏幕阅读器）这个元素所扮演的角色是个表单。
+
+16、水平表单
+
+类名 `.form-horizontal`
+
+17、内联表单
+
+```html
+<div class="form-group">
+  <label >QQQ</label>
+  <input type="">
+</div>
+```
+
+18、输入框 `input`
+
+输入类型 - `email`
+
+`email` 输入类型用于应该包含电邮地址的输入字段。
+
+当提交表单时，会自动地对 `email` 字段的值进行验证。
+
+19、复选框 `checkbox` 和单选择按钮 `radio`
+
+`.checkbox`
+
+```html
+<div class="checkbox">
+    <label>
+      <input type="checkbox" value="">
+      QQQ
+    </label>
+</div>
+```
+
+`.radio` 
+
+```html
+<div class="radio">
+    <label>
+      <input type="radio" value="love" checked>
+      CCC
+    </label>
+</div>
+```
+
+水平显示
+
+```html
+<div class="form-group">
+    <label class="radio-inline">
+        <input type="radio" value="mazey" name="mazey">
+        男性
+    </label>
+    <label class="radio-inline">
+        <input type="radio" value="mazey" name="mazey">
+        中性
+    </label>
+    <label class="radio-inline">
+        <input type="radio" value="mazey" name="mazey">
+        女性
+    </label>
+</div>
+```
+
+1. 如果 `checkbox` 需要水平排列，只需要在 `label` 标签上添加类名 `checkbox-inline`。
+2. 如果 `radio` 需要水平排列，只需要在 `label` 标签上添加类名`radio-inline`。
+
+20、表单控件大小 - 仅改变高度
+
+1. `input-sm`：让控件比正常大小更小
+2. `input-lg`：让控件比正常大小更大
+
+21、表单验证状态
+
+1. `.has-warning`：警告状态（黄色）
+2. `.has-error`：错误状态（红色）
+3. `.has-success`：成功状态（绿色）
+
+显示勾号叉号要加 `.has-feedback`
+
+```html
+<div class="form-group has-success has-feedback">
+      <label class="control-label" for="qqq">E-Mail地址</label>
+      <input type="text" class="form-control" id="qqq" placeholder="qqq">
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+</div>
+```
+
+表单提示文字 `.help-block`
+
+```html
+<div class="form-group has-error has-feedback">    
+    <label class="control-label" for="inputError1">错误状态</label>
+    <input type="text" class="form-control" id="inputError1" placeholder="错误状态">
+    <span class="help-block">你输入的信息是错误的</span>
+    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+</div>
+```
+
+22、按钮样式
+
+`.btn`、`.btn-default` 可以用在 `a`、`span`、`div`  等标签中。
+
+```html
+<button class="btn" type="button">基础按钮.btn</button>
+<button class="btn btn-default" type="button">默认按钮.btn-default</button>
+<button class="btn btn-primary" type="button">主要按钮.btn-primary</button>
+<button class="btn btn-success" type="button">成功按钮.btn-success</button>
+<button class="btn btn-info" type="button">信息按钮.btn-info</button>
+<button class="btn btn-warning" type="button">警告按钮.btn-warning</button>
+<button class="btn btn-danger" type="button">危险按钮.btn-danger</button>
+<button class="btn btn-link" type="button">链接按钮.btn-link</button>
+```
+
+HTML `<button>` 标签的 `type` 属性值描述：
+
+* `submit` 该按钮是提交按钮（除了 Internet Explorer，该值是其他浏览器的默认值）。
+* `button` 该按钮是可点击的按钮（Internet Explorer 的默认值）。
+* `reset` 该按钮是重置按钮（清除表单数据）
+
+23、按钮大小
+
+```html
+<button class="btn btn-primary btn-lg" type="button">大型按钮.btn-lg</button>
+<button class="btn btn-primary" type="button">正常按钮</button>
+<button class="btn btn-primary btn-sm" type="button">小型按钮.btn-sm</button>
+<button class="btn btn-primary btn-xs" type="button">超小型按钮.btn-xs</button>
+```
+
+24、块状按钮
+
+`.btn-block` 使按钮充满整个容器（父级元素）。
+
+25、按钮状态
+
+当按钮处理正在点击状态（也就是鼠标按下的未松开的状态），对于 `<button>` 元素是通过 `:active` 伪类实现，而对于 `<a>` 这样的标签元素则是通过添加类名 `.active` 来实现。
+
+禁用状态 `.disabled`
+
+`disabled="disabled"` 用类禁用可能有禁用样式，但没有禁用效果，依然可以点。
+
+26、图像
+
+1. `img-responsive`：响应式图片，主要针对于响应式设计
+2. `img-rounded`：圆角图片
+3. `img-circle`：圆形图片
+4. `img-thumbnail`：缩略图片
+
+由于样式没有对图片做大小上的样式限制，所以在实际使用的时候，需要通过其他的方式来处理图片大小。比如说控制图片容器大小。（注意不可以通过 CSS 样式直接修改 img 图片的大小，这样操作就不响应了）对于圆角图片和圆形图片效果，因为是使用了 CSS3 的圆角样式来实现的，所以注意对于 IE8 以及其以下版本不支持，是没有圆角效果的。
+
+27、图标
+
+这里说的图标就是 Web 制作中常看到的小 icon 图标，可以说这些小 icon 图标是一个优秀 Web 中不可缺少的一部分，起到画龙点睛的效果。在 Bootstrap 框架中也为大家提供了近 200 个不同的 icon 图片，而这些图标都是使用 CSS3 的 `@font-face` 属性配合字体来实现的 icon 效果。
+
+```html
+<span class="glyphicon glyphicon-search"></span>
+<span class="glyphicon glyphicon-asterisk"></span>
+<span class="glyphicon glyphicon-plus"></span>
+<span class="glyphicon glyphicon-cloud"></span>
+```
+
+还有 Font Awesome 字体。
+
+定制图标网站：[https://www.runoob.com/try/demo_source/bootstrap-glyph-customization.htm](https://www.runoob.com/try/demo_source/bootstrap-glyph-customization.htm)

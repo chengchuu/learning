@@ -1,0 +1,70 @@
+# 短链接生成原理
+
+## 一、背景
+
+日常生活中经常通过网站链接来传播信息，但是在各种社交媒体或通讯软件中对单个信息的长度是有限制的，所以将一个长链接转换成短链接是个刚需功能。
+
+![社交媒体](http://blog.mazey.net/wp-content/uploads/2021/01/twitter-com-limit-01-10.jpg)
+
+## 二、短链接访问流程
+
+1. 浏览器访问短链接 `https://www.example.com/t/kbkbkb`。
+2. 服务器拿到短链接 Key 值 `kbkbkb`，在库中找到相应的长链接地址 `https://xxx`。
+3. 重定向到长链接 `https://xxx`。
+
+## 三、短链接生成原理
+
+1. 获取长链接，将链接转换（MD5）为 32 位 HASH 值。
+2. 查找数据库内是否已存在相应 HASH 值，若存在则说明之前已经生成过短链接，则返回已有的短链接。
+3. 若不存在相应 HASH 值，则将长链接入库并返回相应数据库自增的 ID。
+4. 将 10 进制的 ID 转换为 26 进制，例如：1 => a、28 => ab。
+5. 将转换的 26 进制字符串作为短链接的 Key 值入库并返回，例如：ab => `https://www.example.com/t/ab`。
+
+## 附录: 代码参考（Node.js）
+
+SQL结构（ORM） - [Sequelize](https://sequelize.org/master/index.html)：
+
+```javascript
+const TinyUrl = sqlIns.define('TinyUrl', {
+  tiny_id: { // 自增 ID
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  ori_link: { // 长链接
+    type: DataTypes.STRING(350),
+  },
+  ori_md5: { // 长链接 MD5 HASH
+    type: DataTypes.STRING(40),
+  },
+  tiny_link: { // 短链接 https://www.example.com/t/abcdef
+    type: DataTypes.STRING(30),
+  },
+  tiny_key: { // Key abcdef
+    type: DataTypes.STRING(20),
+  },
+}, {
+  tableName: 'tiny_url',
+  createdAt: 'create_at',
+  updatedAt: false
+})
+```
+
+10 进制转换 26 进制：
+
+```
+function convert26(num) {
+  return (num <= 26 ?
+    String.fromCharCode(num + 64) :
+    convert26(~~((num - 1) / 26)) + convert26(num % 26 || 26)).toLowerCase();
+}
+
+convert26(1) // 'a'
+convert26(28) // 'ab'
+```
+
+## 附录二：示例（DEMO）
+
+访问地址：<https://blog.mazey.net/tiny>
+
+![Demo](http://blog.mazey.net/wp-content/uploads/2021/01/tiny-online-01-10.jpg)
