@@ -1,5 +1,7 @@
 # 记一次 iOS 环境 H5 页面突然白屏
 
+![记一次 iOS 环境 H5 页面突然白屏](http://blog.mazey.net/wp-content/uploads/2024/10/ios-h5-white-screen-w1190-v1.jpg)
+
 在新版本 iOS 系统中，某页面出现白屏，原因是 Safari 浏览器新增的全局变量 browser 与旧项目中的同名变量冲突。通过临时修复和代码重构解决了此问题，并加强代码审查和监控机制，以防止类似情况再次发生。
 
 - [记一次 iOS 环境 H5 页面突然白屏](#记一次-ios-环境-h5-页面突然白屏)
