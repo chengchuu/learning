@@ -10,6 +10,8 @@
 
 ## 生成 SSH Key
 
+平台兼容 RSA:
+
 ```bash
 # check
 cd ~
@@ -17,6 +19,12 @@ ls -a
 
 # generate
 ssh-keygen -t rsa -C "name@example.com"
+```
+
+2025 年主流 Ed25519:
+
+```bash
+ssh-keygen -t ed25519 -C "name@example.com"
 ```
 
 ## 添加到平台
