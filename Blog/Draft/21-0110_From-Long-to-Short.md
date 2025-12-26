@@ -52,7 +52,7 @@ const TinyUrl = sqlIns.define('TinyUrl', {
 
 10 进制转换 26 进制：
 
-```
+```javascript
 function convert26(num) {
   return (num <= 26 ?
     String.fromCharCode(num + 64) :
