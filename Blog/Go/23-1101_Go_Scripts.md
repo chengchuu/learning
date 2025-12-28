@@ -21,7 +21,7 @@
 
 定制化一键 ESLint，执行文件下载地址：
 
-<https://github.com/mazeyqian/go-gin-gee/releases/tag/v1.4.0>
+<https://github.com/chengchuu/go-gin-gee/releases/tag/v1.4.0>
 
 ![Assets](http://blog.mazey.net/wp-content/uploads/2023/10/assets-Releasev1.4.0-mazeyqian_go-gin-gee.png)
 

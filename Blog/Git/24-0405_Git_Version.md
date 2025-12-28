@@ -73,7 +73,7 @@
 
 ![Workflows](http://blog.mazey.net/wp-content/uploads/2024/04/workflows-11-51-tiny.jpg?width=800px)
 
-案例项目：[https://github.com/mazeyqian/mazey/actions](https://github.com/mazeyqian/mazey/actions/workflows/test.yml)
+案例项目：<https://github.com/chengchuu/mazey/actions>
 
 ## 2\. 代码提交规范
 
@@ -109,7 +109,7 @@
 
 ![Git Commits](http://blog.mazey.net/wp-content/uploads/2024/04/commits-13-20-w600-tiny.jpg)
 
-案例项目：<https://github.com/mazeyqian/mazey>
+案例项目：<https://github.com/chengchuu/mazey>
 
 ## 3\. Merge Request（MR）的实践
 
