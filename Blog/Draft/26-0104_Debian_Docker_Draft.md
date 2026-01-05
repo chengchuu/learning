@@ -2,7 +2,7 @@
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 
-本文介绍如何在腾讯云轻量应用服务器 (或 CVM) 上安装 Debian 12 系统，配置 Docker 环境，并通过上传镜像的方式部署容器服务。适用于想规避 Docker Hub 网络波动或需要私有化部署的场景。
+本文介绍如何在腾讯云轻量应用服务器 (或云服务器 CVM) 上安装 Debian 12 系统，配置 Docker 环境，并通过上传镜像的方式部署容器服务。适用于想规避 Docker Hub 网络波动或需要私有化部署的场景。
 
 - [Debian 12.x Docker 从安装配置到容器部署全流程](#debian-12x-docker-从安装配置到容器部署全流程)
   - [安装系统](#安装系统)
@@ -19,7 +19,7 @@
 
 安装 Debian 12.x 操作系统。
 
-IMAGE: 安装系统 - Debian
+![安装系统 - Debian](http://blog.mazey.net/wp-content/uploads/2026/01/debian-2026-01-04_15-27.jpeg)
 
 ## 安装 Docker
 
@@ -70,7 +70,7 @@ TriggeredBy: ● docker.socket
 
 考虑到官方 Docker 库有网络问题，而云服务商的独享镜像托管服务需要开通"企业版"，所以选择手动上传镜像文件来部署服务。
 
-IMAGE: 容器镜像服务 - 产品概述
+![容器镜像服务 - 产品概述](http://blog.mazey.net/wp-content/uploads/2026/01/debian-2026-01-04_15-15.jpeg)
 
 ### 镜像准备
 
@@ -100,7 +100,7 @@ sftp> bye
 SCP 示例:
 
 ```bash
-scp IMAGE_FILE.tar.gz USER@YOUR_SERVER_IP:/path/to/destination/
+scp IMAGE_FILE.tar.gz USER@YOUR_SERVER_IP:/PATH/DESTINATION/
 ```
 
 服务端加载镜像:
@@ -123,7 +123,7 @@ docker run --name CONTAINER_NAME -d -p PORT1:PORT2 IMAGE_NAME:TAG
 - `--restart`: 重启策略，例如 `unless-stopped`、`always` 等。
 - `-d`: 后台运行容器。
 - `-p PORT1:PORT2`: 端口映射，将宿主机的 `PORT1` 端口映射到容器的 `PORT2` 端口。
-- `-v /host/path:/container/path`: 数据卷映射，将宿主机的 `/host/path` 目录映射到容器的 `/container/path` 目录。
+- `-v /HOST/PATH:/CONTAINER/PATH`: 数据卷映射，将宿主机的 `/HOST/PATH` 目录映射到容器的 `/CONTAINER/PATH` 目录。
 - `IMAGE_NAME:TAG`: 指定要运行的镜像名称和标签。
 
 ### 容器管理
@@ -213,15 +213,17 @@ netstat -tulnp | grep PORT_NUMBER
 
 检查云服务商 - 防火墙 - 规则:
 
-IMAGE: 防火墙
+![防火墙](http://blog.mazey.net/wp-content/uploads/2026/01/debian-2026-01-04_14-23.jpeg)
 
-IMAGE: 防火墙 - 添加规则
+防火墙 - 添加规则:
+
+![添加规则](http://blog.mazey.net/wp-content/uploads/2026/01/debian-2026-01-04_14-26.jpeg)
 
 **版权声明**
 
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <http://blog.mazey.net/>
+原文: <http://blog.mazey.net/6103.html>
 
 (完)
