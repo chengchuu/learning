@@ -146,6 +146,23 @@ docker exec -it CONTAINER_NAME bash
 docker update --restart=unless-stopped CONTAINER_NAME
 ```
 
+其他常用命令:
+
+```bash
+# Network
+docker network ls
+docker network create NETWORK_NAME
+docker network rm NETWORK_NAME
+
+# Volume
+docker volume ls
+docker volume create VOLUME_NAME
+docker volume rm VOLUME_NAME
+
+# Container
+docker ps -a
+```
+
 ## 防火墙管理
 
 检查 `nftables` 状态:
@@ -201,8 +218,9 @@ ufw allow PORT_NUMBER/tcp
 
 ```bash
 ufw allow 80/tcp
-ufw allow 443/tcp
 ufw allow 22/tcp
+ufw allow 443/tcp
+ufw allow 3306/tcp
 ```
 
 验证端口是否开放:
