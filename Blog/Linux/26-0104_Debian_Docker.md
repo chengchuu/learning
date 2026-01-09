@@ -161,6 +161,13 @@ docker volume rm VOLUME_NAME
 
 # Container
 docker ps -a
+
+# Images
+docker images
+docker rmi IMAGE_ID
+docker rmi IMAGE_NAME:TAG
+# 警告: 这会删除所有未被运行或停止的容器使用的镜像
+docker image prune -a
 ```
 
 ## 防火墙管理
