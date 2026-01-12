@@ -161,6 +161,7 @@ docker volume rm VOLUME_NAME
 
 # Container
 docker ps -a
+docker cp CONTAINER_NAME:/PATH/IN/CONTAINER /PATH/ON/HOST
 
 # Images
 docker images
