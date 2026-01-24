@@ -6,6 +6,7 @@
 
 - [Git 平台常见 PR \& Issue 标签及用途说明](#git-平台常见-pr--issue-标签及用途说明)
   - [标签分类及用途一览](#标签分类及用途一览)
+  - [技能相关标签](#技能相关标签)
   - [实践建议](#实践建议)
   - [示例应用](#示例应用)
 
@@ -47,6 +48,35 @@
 | `breaking change`    | 不兼容变更 / Breaking change                   | Release           | `#b60205`   |
 | `hotfix`             | 紧急修复 / Hotfix for critical issue           | Release           | `#d93f0b`   |
 | `ready for release`  | 可发布 / Ready for release                     | Release           | `#0e8a16`   |
+
+## 技能相关标签
+
+| 标签名称        | 说明                                                                                 | 颜色        |
+|----------------|-------------------------------------------------------------------------------------|-------------|
+| `go`           | Go 语言相关 / Go language related                                                    | `#00ADD8`   |
+| `javascript`   | JavaScript 相关 / JavaScript language related                                       | `#f1e05a`   |
+| `typescript`   | TypeScript 相关 / TypeScript language related                                       | `#3178c6`   |
+| `shell`        | Shell 脚本相关 / Shell scripting related                                             | `#89e051`   |
+| `docker`       | Docker 相关 / Docker related                                                        | `#384d54`   |
+| `html`         | HTML 相关 / HTML related                                                            | `#e34c26`   |
+| `css`          | CSS 相关 / CSS related                                                              | `#663399`   |
+| `nginx`        | Nginx 相关 / Nginx related                                                          | `#009639`   |
+| `sql`          | SQL 相关 / SQL language related                                                     | `#e38c00`   |
+| `php`          | PHP 相关 / PHP language related                                                     | `#4F5D95`   |
+| `python`       | Python 相关 / Python language related                                               | `#3572A5`   |
+| `java`         | Java 相关 / Java language related                                                   | `#b07219`   |
+| `c++`          | C++ 相关 / C++ language related                                                     | `#f34b7d`   |
+| `c#`           | C# 相关 / C# language related                                                       | `#178600`   |
+| `rust`         | Rust 相关 / Rust language related                                                   | `#dea584`   |
+| `ruby`         | Ruby 相关 / Ruby language related                                                   | `#701516`   |
+| `kotlin`       | Kotlin 相关 / Kotlin language related                                               | `#A97BFF`   |
+| `swift`        | Swift 相关 / Swift language related                                                 | `#ffac45`   |
+| `dart`         | Dart 相关 / Dart language related                                                   | `#00B4AB`   |
+| `scala`        | Scala 相关 / Scala language related                                                 | `#c22d40`   |
+| `objective-c`  | Objective-C 相关 / Objective-C language related                                     | `#438eff`   |
+| `elixir`       | Elixir 相关 / Elixir language related                                               | `#6e4a7e`   |
+
+> 小提示: 颜色参考 [GitHub 语言颜色](https://github.com/ozh/github-colors/blob/master/colors.json)。
 
 ## 实践建议
 
