@@ -50,8 +50,8 @@ EdgeOne 的规则引擎是一个强大的工具，他支持更细粒度的自定
 
 例如：
 
-1. `http://blog.mazey.net/xmlrpc.php` 重定向至 `https://i.mazey.net/x/markdown/`。
-2. `http://blog.mazey.net/wp-login.php` 重定向至 `https://i.mazey.net/bootstrap-blueprints/`。
+1. `http://blog.mazey.net/xmlrpc.php` 重定向至 `http://i.mazey.net/x/markdown/`。
+2. `http://blog.mazey.net/wp-login.php` 重定向至 `http://i.mazey.net/bootstrap-blueprints/`。
 
 ![指定页面重定向](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-163005-w1000.png)
 
