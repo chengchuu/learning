@@ -52,44 +52,44 @@
 
 ## 技能相关标签
 
-| Label Name     | Description                                        | Color       |
-|----------------|----------------------------------------------------|-------------|
-| `go`           | Go 语言相关 / Go language related                   | `#00ADD8`   |
-| `javascript`   | JavaScript 相关 / JavaScript language related      | `#f1e05a`   |
-| `typescript`   | TypeScript 相关 / TypeScript language related      | `#3178c6`   |
-| `shell`        | Shell 脚本相关 / Shell scripting related            | `#89e051`   |
-| `docker`       | Docker 相关 / Docker related                       | `#384d54`   |
-| `html`         | HTML 相关 / HTML related                           | `#e34c26`   |
-| `css`          | CSS 相关 / CSS related                             | `#663399`   |
-| `nginx`        | Nginx 相关 / Nginx related                         | `#009639`   |
-| `sql`          | SQL 相关 / SQL language related                    | `#e38c00`   |
-| `php`          | PHP 相关 / PHP language related                    | `#4F5D95`   |
-| `python`       | Python 相关 / Python language related              | `#3572A5`   |
-| `java`         | Java 相关 / Java language related                  | `#b07219`   |
-| `c++`          | C++ 相关 / C++ language related                    | `#f34b7d`   |
-| `c#`           | C# 相关 / C# language related                      | `#178600`   |
-| `rust`         | Rust 相关 / Rust language related                  | `#dea584`   |
-| `ruby`         | Ruby 相关 / Ruby language related                  | `#701516`   |
-| `kotlin`       | Kotlin 相关 / Kotlin language related              | `#A97BFF`   |
-| `swift`        | Swift 相关 / Swift language related                | `#ffac45`   |
-| `dart`         | Dart 相关 / Dart language related                  | `#00B4AB`   |
-| `scala`        | Scala 相关 / Scala language related                | `#c22d40`   |
-| `objective-c`  | Objective-C 相关 / Objective-C language related    | `#438eff`   |
-| `elixir`       | Elixir 相关 / Elixir language related              | `#6e4a7e`   |
+| Label Name     | Description                     | Color       |
+|----------------|---------------------------------|-------------|
+| `go`           | Go language related             | `#00ADD8`   |
+| `javascript`   | JavaScript language related     | `#f1e05a`   |
+| `typescript`   | TypeScript language related     | `#3178c6`   |
+| `shell`        | Shell scripting related         | `#89e051`   |
+| `docker`       | Docker related                  | `#384d54`   |
+| `html`         | HTML related                    | `#e34c26`   |
+| `css`          | CSS related                     | `#663399`   |
+| `nginx`        | Nginx related                   | `#009639`   |
+| `sql`          | SQL language related            | `#e38c00`   |
+| `php`          | PHP language related            | `#4F5D95`   |
+| `python`       | Python language related         | `#3572A5`   |
+| `java`         | Java language related           | `#b07219`   |
+| `c++`          | C++ language related            | `#f34b7d`   |
+| `c#`           | C# language related             | `#178600`   |
+| `rust`         | Rust language related           | `#dea584`   |
+| `ruby`         | Ruby language related           | `#701516`   |
+| `kotlin`       | Kotlin language related         | `#A97BFF`   |
+| `swift`        | Swift language related          | `#ffac45`   |
+| `dart`         | Dart language related           | `#00B4AB`   |
+| `scala`        | Scala language related          | `#c22d40`   |
+| `objective-c`  | Objective-C language related    | `#438eff`   |
+| `elixir`       | Elixir language related         | `#6e4a7e`   |
 
-> 小提示: 颜色参考 [GitHub 语言颜色](https://github.com/ozh/github-colors/blob/master/colors.json)。
+> 提示: 颜色参考 [GitHub 语言颜色](https://github.com/ozh/github-colors/blob/master/colors.json)。
 
 ## 项目标签
 
-| Label Name         | Description                                  | Color       |
-|--------------------|----------------------------------------------|-------------|
-| `web`              | Web 相关 / Web related                        | `#c5def5`  |
-| `mobile`           | 移动端相关 / Mobile related                   | `#f4f1bb`   |
-| `blog`             | 博客相关 / Blog related                       | `#ffe0b2`   |
-| `link`             | 链接相关 / Link related                       | `#b2dfdb`   |
-| `koa`              | Koa 相关 / Koa related                        | `#a7ffeb`   |
-| `scripts`          | 脚本相关 / Scripts related                    | `#c8e6c9`   |
-| `x`                | x 相关 / x related                            | `#d1c4e9`   |
+| Label Name     | Description                     | Color       |
+|----------------|---------------------------------|-------------|
+| `web`          | Web related                     | `#c5def5`   |
+| `mobile`       | Mobile related                  | `#f4f1bb`   |
+| `blog`         | Blog related                    | `#ffe0b2`   |
+| `link`         | Link related                    | `#b2dfdb`   |
+| `koa`          | Koa related                     | `#a7ffeb`   |
+| `scripts`      | Scripts related                 | `#c8e6c9`   |
+| `x`            | x related                       | `#d1c4e9`   |
 
 ## 实践建议
 
