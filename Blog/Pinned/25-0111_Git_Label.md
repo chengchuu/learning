@@ -7,6 +7,7 @@
 - [Git 平台常见 PR \& Issue 标签及用途说明](#git-平台常见-pr--issue-标签及用途说明)
   - [标签分类及用途](#标签分类及用途)
   - [技能相关标签](#技能相关标签)
+  - [项目标签](#项目标签)
   - [实践建议](#实践建议)
   - [示例应用](#示例应用)
 
@@ -21,7 +22,7 @@
 | `question`           | 需要进一步的信息 / Further information needed   | Categories        | `#d876e3`   |
 | `task`               | 一般任务或待办事项 / Task or to-do item         | Categories        | `#d4c5f9`   |
 | `refactor`           | 代码重构或清理 / Code refactoring               | Type of Work      | `#f7cbcc`   |
-| `design`             | UI / UX 或设计相关更改 / UI / UX or design change | Scope          | `#a2eeef`   |
+| `design`             | UI/UX 或设计相关更改 / UI/UX or design change   | Scope             | `#a2eeef`   |
 | `help wanted`        | 需要额外关注或帮助 / Extra attention needed     | Community         | `#008672`   |
 | `discussion`         | 社区讨论 / Community discussion                | Community         | `#6f42c1`   |
 | `duplicate`          | 已存在相同问题 / Duplicate issue or PR          | Community         | `#cfd3d7`   |
@@ -77,6 +78,18 @@
 | `elixir`       | Elixir 相关 / Elixir language related                                               | `#6e4a7e`   |
 
 > 小提示: 颜色参考 [GitHub 语言颜色](https://github.com/ozh/github-colors/blob/master/colors.json)。
+
+## 项目标签
+
+| 标签名称            | 说明                                         | 颜色        |
+|--------------------|----------------------------------------------|-------------|
+| `web`              | Web 相关 / Web related                        | `#c5def5`  |
+| `mobile`           | 移动端相关 / Mobile related                   | `#f4f1bb`   |
+| `blog`             | 博客相关 / Blog related                       | `#ffe0b2`   |
+| `link`             | 链接相关 / Link related                       | `#b2dfdb`   |
+| `koa`              | Koa 相关 / Koa related                        | `#a7ffeb`   |
+| `scripts`          | 脚本相关 / Scripts related                    | `#c8e6c9`   |
+| `x`                | x 相关 / x related                            | `#d1c4e9`   |
 
 ## 实践建议
 
