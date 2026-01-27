@@ -1,1 +1,1 @@
-# Mazey-Study
+# The Go Programming Language

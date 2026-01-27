@@ -3,7 +3,7 @@ node_modules
 /dist
 /dist的副本
 
-# local env files
+# Local env files
 .env.local
 .env.*.local
 
@@ -21,7 +21,7 @@ yarn-error.log*
 *.sln
 *.sw*
 
-# mazey's dev
+# Dev
 # /mazey-ui
 # *.scss
 # _*.css
