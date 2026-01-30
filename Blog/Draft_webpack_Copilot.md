@@ -3,15 +3,15 @@
 - [Using Multiple Configurations in webpack: Exporting an Array of Config Objects](#using-multiple-configurations-in-webpack-exporting-an-array-of-config-objects)
   - [My Experience: From Multiple Files to Multi-Config](#my-experience-from-multiple-files-to-multi-config)
     - [The Turning Point](#the-turning-point)
-  - [Why Is This Useful?](#why-is-this-useful)
-  - [How Does It Work?](#how-does-it-work)
+  - [Why Is This Useful](#why-is-this-useful)
+  - [How Does It Work](#how-does-it-work)
   - [Things to Keep in Mind](#things-to-keep-in-mind)
   - [Example: Multiple HTML and JS Bundles](#example-multiple-html-and-js-bundles)
   - [Conclusion](#conclusion)
 
 If you've ever worked on a web project with multiple entry points or distinct build requirements—such as separate bundles for the BUNDLE_A, BUNDLE_B, and BUNDLE_C—you might have wondered: Can I manage all builds efficiently with one webpack setup?
 
-The answer is yes! webpack natively supports exporting an array of configuration objects, a feature known as "multi-compiler mode." This is a powerful capability that can streamline complex builds and make your workflow much simpler.
+The answer is yes! webpack natively supports exporting an array of configuration objects, a feature known as "multi-compiler mode". This is a powerful capability that can streamline complex builds and make your workflow much simpler.
 
 ## My Experience: From Multiple Files to Multi-Config
 
@@ -27,7 +27,7 @@ Each file had its own build/watch command, and I often ran three terminal sessio
 
 I discovered that I could combine all three configurations into one file by simply exporting an array in my JavaScript config:
 
-```js
+```javascript
 // webpack.config.all.js
 const BUNDLE_A = require('./webpack.config.BUNDLE_A');
 const BUNDLE_B = require('./webpack.config.BUNDLE_B');
@@ -46,23 +46,31 @@ With this, I could build and watch all three bundles at once:
 npx webpack --config ./scripts/webpack.config.all.js --watch
 ```
 
-No more juggling multiple terminals or convoluted scripts—Webpack handles all three builds using a single command!
+No more juggling multiple terminals or convoluted scripts—webpack handles all three builds using a single command!
 
-## Why Is This Useful?
+Targeted builds are still possible too:
+
+```bash
+npx webpack --config ./scripts/webpack.config.all.js --config-name BUNDLE_A
+```
+
+If you name your configs (using the `name: 'BUNDLE_A'` property), you can still trigger them individually.
+
+## Why Is This Useful
 
 - Efficiency: All configs run in one process. webpack watches all defined entries and outputs in parallel, automatically rebuilding when relevant files change.
 - Maintainability: Shared plugins, settings, or loader rules can be defined in one place and reused.
 - Flexibility: Each config can specify its own entry, output, plugins, and loaders. Completely separation, or partial sharing, is possible.
 
-## How Does It Work?
+## How Does It Work
 
 webpack "multi-compiler mode" kicks in whenever you export an array of config objects:
 
 ```javascript
 module.exports = [
-  { ...config for BUNDLE_A... },
-  { ...config for BUNDLE_B... },
-  { ...config for BUNDLE_C... }
+  { /* config for BUNDLE_A ... */ },
+  { /* config for BUNDLE_B ... */ },
+  { /* config for BUNDLE_C ... */ }
 ];
 ```
 
@@ -82,7 +90,7 @@ webpack will process each configuration independently but in the same process. T
 
 Here's a sample `webpack.config.js` using the array pattern:
 
-```js
+```javascript
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -110,5 +118,3 @@ module.exports = [
 
 Exporting an array of config objects in webpack is a best practice for complex builds.  
 It simplifies your workflow, reduces duplication, and lets you manage even large, multi-bundle projects efficiently.
-
-Embracing this feature was a game-changer for my projects—and I highly recommend you give it a try whenever you’re working with multiple entry points or distinct build targets!
