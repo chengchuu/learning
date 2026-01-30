@@ -1,26 +1,28 @@
-Title: Troubleshooting "exec /path/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes
+# Troubleshooting "exec /path/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes
 
-Overview
+## Overview
+
 - Symptoms: Docker container fails at startup with errors like:
-  - exec /web/entrypoint.sh: no such file or directory
-  - standard_init_linux.go:xxx: exec user process caused: permission denied
-  - exec user process caused: exec format error
+  - `exec /web/entrypoint.sh: no such file or directory`
+  - `standard_init_linux.go:xxx: exec user process caused: permission denied`
+  - `exec user process caused: exec format error`
 - Common root causes: CRLF line endings, missing execute bit, wrong shebang/interpreter, bind mount shadowing files, architecture mismatch, and EOL base-image package repository issues.
 - This article explains why each happens, how to diagnose it, and practical fixes (including examples for Debian- and Node-based images such as debian:bookworm-slim and node:10-buster).
 
-Why "entrypoint.sh exists but won't exec"
+## Why "entrypoint.sh exists but won't exec"
+
 1. CRLF vs LF line endings
-- If the script has Windows CRLF endings, the shebang line (e.g. #!/bin/sh) may end with a carriage return (^M). The kernel then tries to exec an interpreter with a name that includes a trailing CR, which doesn't exist → "no such file or directory" or similar.
+  If the script has Windows CRLF endings, the shebang line (e.g. #!/bin/sh) may end with a carriage return (^M). The kernel then tries to exec an interpreter with a name that includes a trailing CR, which doesn't exist → "no such file or directory" or similar.
 2. Not executable (permission denied)
-- The file must have the executable bit set inside the image. Host bind mounts may lose the bit on some platforms.
+  The file must have the executable bit set inside the image. Host bind mounts may lose the bit on some platforms.
 3. Wrong interpreter in shebang
-- The shebang might reference /bin/bash which is absent (e.g. alpine images) or a wrong path.
+  The shebang might reference /bin/bash which is absent (e.g. alpine images) or a wrong path.
 4. Bind mount overwrote the image file
-- A host directory mounted to the same path replaces the image contents; if the host lacks entrypoint.sh, the container won't find it.
+  A host directory mounted to the same path replaces the image contents; if the host lacks entrypoint.sh, the container won't find it.
 5. Binary format/architecture mismatch
-- If entrypoint is a binary for a different CPU architecture, you'll get "exec format error".
+  If entrypoint is a binary for a different CPU architecture, you'll get "exec format error".
 6. Package repository / apt errors during build
-- Older distro tags (e.g., buster) may be archived; apt-get install may fail during build (e.g., when installing dos2unix).
+  Older distro tags (e.g., buster) may be archived; apt-get install may fail during build (e.g., when installing dos2unix).
 
 Quick diagnostics you can run (from host)
 - Run an interactive shell in the image:
