@@ -29,12 +29,13 @@
 | `testing`            | 测试相关 / Testing or test improvements        | Type of Work      | `#e4e669`   |
 | `cannot merge`       | 因冲突无法合并 / Cannot be merged               | Status            | `#b60205`   |
 | `ready to merge`     | 可合并 / Ready to be merged                    | Status            | `#0e8a16`   |
+| `ready for review`   | 等待评审 / Ready for review                    | Status            | `#0366d6`   |
+| `ready for release`  | 可发布 / Ready for release                     | Release           | `#0e8a16`   |
 | `priority: high`     | 高优先级 / High priority                       | Priority          | `#b60205`   |
 | `priority: medium`   | 中优先级 / Medium priority                     | Priority          | `#fbca04`   |
 | `priority: low`      | 低优先级 / Low priority                        | Priority          | `#0e8a16`   |
 | `in progress`        | 正在处理 / In progress                         | Status            | `#c2e0c6`   |
 | `blocked`            | 阻塞 / Blocked due to issue                    | Status            | `#f9d0c4`   |
-| `ready for review`   | 等待评审 / Ready for review                    | Status            | `#0366d6`   |
 | `needs feedback`     | 需要反馈 / Needs feedback                      | Status            | `#fef2c0`   |
 | `performance`        | 性能优化 / Performance optimization            | Type of Work      | `#d4e157`   |
 | `security`           | 安全相关 / Security vulnerabilities            | Type of Work      | `#ff6f00`   |
@@ -43,12 +44,10 @@
 | `hard`               | 高复杂度 / Hard or challenging                 | Difficulty        | `#d93f0b`   |
 | `frontend`           | 前端相关 / Frontend development                | Scope             | `#1d76db`   |
 | `backend`            | 后端相关 / Backend development                 | Scope             | `#d4c5f9`   |
-| `api`                | API 相关 / API-related work                    | Scope             | `#5319e7`   |
 | `wontfix`            | 不予修复 / Won't be fixed                      | Community         | `#ffffff`   |
 | `invalid`            | 无效问题 / Not valid or actionable             | Community         | `#e4e669`   |
 | `breaking change`    | 不兼容变更 / Breaking change                   | Release           | `#b60205`   |
 | `hotfix`             | 紧急修复 / Hotfix for critical issue           | Release           | `#d93f0b`   |
-| `ready for release`  | 可发布 / Ready for release                     | Release           | `#0e8a16`   |
 
 ## 技能标签
 
@@ -84,6 +83,7 @@
 | Label Name     | Description                     | Color       |
 |----------------|---------------------------------|-------------|
 | `web`          | Web related                     | `#c5def5`   |
+| `api`          | API related                     | `#5319e7`   |
 | `mobile`       | Mobile related                  | `#f4f1bb`   |
 | `blog`         | Blog related                    | `#ffe0b2`   |
 | `link`         | Link related                    | `#b2dfdb`   |
