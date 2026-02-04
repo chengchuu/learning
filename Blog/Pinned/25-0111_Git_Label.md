@@ -15,7 +15,7 @@
 
 | Label Name           | Description                                   | Category          | Color       |
 |----------------------|-----------------------------------------------|-------------------|-------------|
-| `bug`                | 功能异常或出现错误 / Something isn't working    | Categories        | `#d73a4a`   |
+| `bug`                | 功能异常或出现错误 / Something is not working   | Categories        | `#d73a4a`   |
 | `dependencies`       | 更新依赖文件相关的 PR / Updates dependency file | Categories        | `#0366d6`   |
 | `enhancement`        | 新功能或需求请求 / New feature or request       | Categories        | `#84b6eb`   |
 | `documentation`      | 文档更新或改进 / Documentation updates          | Categories        | `#63EB75`   |
