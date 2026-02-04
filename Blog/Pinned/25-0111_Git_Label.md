@@ -44,7 +44,7 @@
 | `hard`               | 高复杂度 / Hard or challenging                 | Difficulty        | `#d93f0b`   |
 | `frontend`           | 前端相关 / Frontend development                | Scope             | `#1d76db`   |
 | `backend`            | 后端相关 / Backend development                 | Scope             | `#d4c5f9`   |
-| `wontfix`            | 不予修复 / Won't be fixed                      | Community         | `#ffffff`   |
+| `wontfix`            | 不予修复 / Not going to be fixed               | Community         | `#ffffff`   |
 | `invalid`            | 无效问题 / Not valid or actionable             | Community         | `#e4e669`   |
 | `breaking change`    | 不兼容变更 / Breaking change                   | Release           | `#b60205`   |
 | `hotfix`             | 紧急修复 / Hotfix for critical issue           | Release           | `#d93f0b`   |
