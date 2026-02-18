@@ -1,0 +1,73 @@
+# GitLab 指定 Runner 执行任务 (CI/CD/JOB)
+
+![GitLab 指定 Runner 执行任务](http://blog.mazey.net/wp-content/uploads/2025/09/Git_SF_7x3.jpg)
+
+通过为 GitLab Runner 与 Job 设置相同的 Tags，可将任务绑定到指定 Runner，确保脚本在预期环境运行。配置方式包括在 Runner 设置中添加 Tags，并在 .gitlab-ci.yml 的对应 Job 中声明相同标签，从而实现更明确的构建资源分配与管理。
+
+- [GitLab 指定 Runner 执行任务 (CI/CD/JOB)](#gitlab-指定-runner-执行任务-cicdjob)
+  - [前言](#前言)
+  - [为 Runner 添加 Tags](#为-runner-添加-tags)
+  - [为 GitLab Job 添加 Tags](#为-gitlab-job-添加-tags)
+  - [总结](#总结)
+
+## 前言
+
+为了让 GitLab/CI 任务脚本指定 Runner 执行，需要为 Runner 和 Job 标记相同的 Tags。
+
+## 为 Runner 添加 Tags
+
+找到指定 Runner:
+
+![GitLab CI/CD Runners](http://blog.mazey.net/wp-content/uploads/2020/09/gitlab-ci-cd-ranners.jpg)
+
+编辑 Runner 配置添加 Tags:
+
+![GitLab CI/CD Runners Tags](http://blog.mazey.net/wp-content/uploads/2020/09/gitlab-ci-cd-ranners-tags.jpg)
+
+例如此处添加 Tags 为 `yoyo`。
+
+## 为 GitLab Job 添加 Tags
+
+编辑 `.gitlab-ci.yml`:
+
+```yml
+stages:
+  - publish
+
+publish-branch:
+  stage: publish
+  except:
+    - main
+  tags:
+    - yoyo
+  script:
+    - echo '功能测试'
+
+publish-prd:
+  stage: publish
+  only:
+    - main
+  script:
+    - echo '生产环境发布'
+```
+
+至此每次 `publish-branch` 便会指定绑定了 Tags 为 `yoyo` 的 Runner 执行脚本。
+
+![GitLab CI/CD Runners Scripts with Tags](http://blog.mazey.net/wp-content/uploads/2020/09/gitlab-ci-cd-ranners-scripts-with-tags.jpg)
+
+## 总结
+
+通过为 GitLab Runner 和 Job 添加相同的 Tags，可以指定特定的 Runner 来执行 CI/CD 任务脚本。这种方式有助于更好地管理和分配构建资源，确保任务在合适的环境中运行。
+
+**更新记录**
+
+本文首次编辑于 2020-09-11，最近更新于 2025-11-22。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/1744.html>
+
+(完)

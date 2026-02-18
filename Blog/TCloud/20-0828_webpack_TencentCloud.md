@@ -2,7 +2,11 @@
 
 ![使用 webpack-merge 合并 webpack 配置](http://blog.mazey.net/wp-content/uploads/2025/09/webpack_SF_7x3.jpg)
 
-使用 webpack-merge 将多环境配置合并，减少入口、加载器等重复内容，并支持以 common 为基础扩展 dev 与 prod 配置。示例展示了常用 loader、缓存、静态资源处理、开发模式的源码映射与 dev server 设置，以及生产模式中通过 mergeWithRules 替换样式链路并优化构建体积。
+**内容声明**
+
+本文仅用于技术分享和学习交流，内容不包含任何广告、推广、引流、付费课程或外链信息。所有示例和配置均为技术实践，欢迎参考和自定义。
+
+---
 
 - [使用 webpack-merge 合并 webpack 配置](#使用-webpack-merge-合并-webpack-配置)
 
