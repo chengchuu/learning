@@ -698,32 +698,32 @@ if ('serviceWorker' in navigator) {
   "theme_color": "#F3F3F3",
   "icons": [
     {
-      "src": "https://mazey.cn/fav/logo-dark-circle-32x32.png",
+      "src": "//blog.mazey.net/mazey-cn/fav/logo-dark-circle-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "https://mazey.cn/fav/logo-dark-circle-144x144.png",
+      "src": "//blog.mazey.net/mazey-cn/fav/logo-dark-circle-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "https://mazey.cn/fav/logo-dark-circle-152x152.png",
+      "src": "//blog.mazey.net/mazey-cn/fav/logo-dark-circle-152x152.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "https://mazey.cn/fav/logo-dark-circle-180x180.png",
+      "src": "//blog.mazey.net/mazey-cn/fav/logo-dark-circle-180x180.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "https://mazey.cn/fav/logo-dark-circle-192x192.png",
+      "src": "//blog.mazey.net/mazey-cn/fav/logo-dark-circle-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://mazey.cn/fav/logo-dark-circle-512x512.png",
+      "src": "//blog.mazey.net/mazey-cn/fav/logo-dark-circle-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -738,32 +738,32 @@ if ('serviceWorker' in navigator) {
 
 ```
 <!--Mazey's favicon begin-->
-<link rel="shortcut icon" type="image/png" href="https://mazey.cn/fav/logo-dark-circle-transparent-144x144.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://mazey.cn/fav/logo-dark-circle-transparent-32x32.png">
-<link rel="apple-touch-icon" sizes="144x144" href="https://mazey.cn/fav/logo-dark-circle-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="https://mazey.cn/fav/logo-dark-circle-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://mazey.cn/fav/logo-dark-circle-180x180.png">
-<link rel="apple-touch-icon" sizes="192x192" href="https://mazey.cn/fav/logo-dark-circle-192x192.png">
-<link rel="apple-touch-icon" sizes="512x512" href="https://mazey.cn/fav/logo-dark-circle-512x512.png">
+<link rel="shortcut icon" type="image/png" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-transparent-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-transparent-32x32.png">
+<link rel="apple-touch-icon" sizes="144x144" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-180x180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-192x192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-512x512.png">
 <!--Mazey's favicon end-->
 <!--Mazey's pwa manifest.json-->
 <link rel="manifest" href="/wp-content/themes/polestar/manifest.json">
 <!-- 开机图片 - begin -->
 <!-- iPhone Xs Max (1242px × 2688px) -->
-<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="https://i.mazey.net/asset/read/cat-lovers-1242x2688.jpg" sizes="1242x2688">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="//blog.mazey.net/i-mazey-net/asset/read/cat-lovers-1242x2688.jpg" sizes="1242x2688">
 <!-- iPhone Xr (828px x 1792px) -->
-<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="https://i.mazey.net/asset/read/cat-lovers-828x1792.jpg" sizes="828x1792">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="//blog.mazey.net/i-mazey-net/asset/read/cat-lovers-828x1792.jpg" sizes="828x1792">
 <!-- iPhone X, Xs (1125px x 2436px) -->
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="https://i.mazey.net/asset/read/cat-lovers-1125x2436.jpg" sizes="1125x2436">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="//blog.mazey.net/i-mazey-net/asset/read/cat-lovers-1125x2436.jpg" sizes="1125x2436">
 <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://i.mazey.net/asset/read/cat-lovers-750x1334.jpg" sizes="750x1334">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="//blog.mazey.net/i-mazey-net/asset/read/cat-lovers-750x1334.jpg" sizes="750x1334">
 <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
-<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="https://i.mazey.net/asset/read/cat-lovers-1242x2208.jpg" sizes="1242x2208">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="//blog.mazey.net/i-mazey-net/asset/read/cat-lovers-1242x2208.jpg" sizes="1242x2208">
 <!-- iPhone 5 (640px x 1136px) -->
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://i.mazey.net/asset/read/cat-lovers-640x1136.jpg" sizes="640x1136">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="//blog.mazey.net/i-mazey-net/asset/read/cat-lovers-640x1136.jpg" sizes="640x1136">
 <!-- 开机图片 - end -->
 <!-- Touch Bar区域显示的网站图标 -->
-<link rel="mask-icon" href="https://mazey.cn/fav/logo-dark-circle.svg" color="#F3F3F3">
+<link rel="mask-icon" href="//blog.mazey.net/mazey-cn/fav/logo-dark-circle.svg" color="#F3F3F3">
 <!-- 主题色 = manifest.json theme_color -->
 <meta name="theme-color" content="#F3F3F3">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -772,7 +772,7 @@ if ('serviceWorker' in navigator) {
 <!-- 应用名 -->
 <meta name="apple-mobile-web-app-title" content="不知不问">
 <!-- 在Windows 8上，我们可以将网站固定在开始屏幕上，而且支持个性化自定义色块icon和背景图片。这个标签是用来定义色块的背景图的。色块图应该为144*144像素的png格式图片，背景透明。 -->
-<meta name="msapplication-TileImage" content="https://mazey.cn/fav/logo-dark-circle-transparent-144x144.png">
+<meta name="msapplication-TileImage" content="//blog.mazey.net/mazey-cn/fav/logo-dark-circle-transparent-144x144.png">
 <!-- 同前一个元数据msapplication-TileImage类似，这个功能是用来设置颜色值，个性化自定义色块（磁贴）icon -->
 <meta name="msapplication-TileColor" content="#F3F3F3">
 ```

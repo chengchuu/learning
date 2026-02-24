@@ -60,7 +60,7 @@ EdgeOne 的规则引擎是一个强大的工具，他支持更细粒度的自定
 
 ### 案例 1：指定页面不缓存
 
-例如期望留言板页面 `https://blog.mazey.net/message-board` 永远是最新的内容。
+例如期望留言板页面 `http://blog.mazey.net/message-board` 永远是最新的内容。
 
 ![指定页面不缓存](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-161559-w1000.png)
 
@@ -68,8 +68,8 @@ EdgeOne 的规则引擎是一个强大的工具，他支持更细粒度的自定
 
 例如：
 
-1. `https://blog.mazey.net/xmlrpc.php` 重定向至 `https://i.mazey.net/x/markdown/`。
-2. `https://blog.mazey.net/wp-login.php` 重定向至 `https://i.mazey.net/bootstrap-blueprints/`。
+1. `http://blog.mazey.net/xmlrpc.php` 重定向至 `https://i.mazey.net/x/markdown/`。
+2. `http://blog.mazey.net/wp-login.php` 重定向至 `https://i.mazey.net/bootstrap-blueprints/`。
 
 ![指定页面重定向](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-163005-w1000.png)
 
@@ -87,7 +87,7 @@ gif;png;bmp;jpeg;jpg;html;htm;shtml;xml;json;mp3;wma;flv;mp4;wmv;ogg;avi;doc;doc
 
 ### 案例 4：过滤查询字符串
 
-因为 `https://blog.mazey.net/?s=123` 只需要保留查询参数 `s`，所以可以过滤掉不需要的查询参数，提升网站的性能，并规避部分 DDoS 攻击和安全问题。
+因为 `http://blog.mazey.net/?s=123` 只需要保留查询参数 `s`，所以可以过滤掉不需要的查询参数，提升网站的性能，并规避部分 DDoS 攻击和安全问题。
 
 ![匹配类型](http://blog.mazey.net/wp-content/uploads/2023/10/edge-one-type-w800-v2.png)
 
@@ -102,6 +102,6 @@ gif;png;bmp;jpeg;jpg;html;htm;shtml;xml;json;mp3;wma;flv;mp4;wmv;ogg;avi;doc;doc
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <https://blog.mazey.net/4114.html>
+原文: <http://blog.mazey.net/4114.html>
 
 (完)
