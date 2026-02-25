@@ -18,3 +18,12 @@
 原文: <http://blog.mazey.net/xxxx.html>
 
 (完)
+
+**Copyright Notice**
+
+This article is an original work. The author reserves all rights. If you wish to republish, please retain the full content of this article and include a hyperlink referencing both the author and the source.
+
+Author: [Cheng](https://github.com/chengchuu)  
+Source: <http://blog.mazey.net/xxxx.html>
+
+(The End)

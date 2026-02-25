@@ -1,201 +1,89 @@
-![Install MongoDB on Debian](//blog.mazey.net/mazey-cn/asset/how-to-install-mongodb-on-debian-10.webp)
+## 一、EdgeOne 产品简介
 
-MongoDB is a free and open-source document database. It belongs to a family of databases called NoSQL, which is different from the traditional table-based SQL databases like MySQL and PostgreSQL.
+腾讯云边缘安全加速平台 EdgeOne（Tencent cloud EdgeOne），基于腾讯边缘计算节点，提供了一体化的加速和安全解决方案。EdgeOne 服务不仅可以提供 DDoS 防护、Rate Limit、WEB 安全防护、API 安全防护等不同的安全防护服务，更重要的是，他具备强大的缓存功能，可以大大提升数据访问的速度和稳定性。
 
-In MongoDB, data is stored in flexible, [JSON-like](https://www.json.org/json-en.html) documents where fields can vary from document to document. It does not require a predefined schema, and data structure can be changed over time.
+### 1\.1 开通服务
 
-In this tutorial, we will explain how to install and configure the latest version of MongoDB Community Edition on Debian 10 Buster.
+开通流程可以跟随官方文档「[从零开始快速接入 EdgeOne](https://cloud.tencent.com/document/product/1552/87601 "从零开始快速接入 EdgeOne")」。
 
-## Installing MongoDB
+![EdgeOne 提供安全加速一站式服务，为业务保驾护航](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-144707-w800.jpg)
 
-MongoDB is not available in the standard Debian Buster repositories. We’ll enable the official MongoDB repository and install the packages.
+### 1\.2 部署服务
 
-At the time of writing this article, the latest version of MongoDB is version 4.2. Before starting with the installation, head over to the [Install on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) page of MongoDB’s documentation and check if there is a new version available.
+待状态全面开“绿灯”后，就代表服务正常运行了。
 
-Perform the following steps as root or [user with sudo privileges](https://linuxize.com/post/how-to-create-a-sudo-user-on-debian/) to install MongoDB on a Debian system:
+![添加域名](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-152657-w800.jpg)
 
-**1\. Install the packages required for adding a new repository:**
+## 二、EdgeOne 的缓存功能详解
 
-```
-sudo apt install dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl
-```
+当客户端向 EdgeOne 边缘节点发起 HTTP 请求后，节点将判断当前文件是否命中缓存。如果未命中，则回源向源站发起请求获取最新文件。在源站正确响应文件后，EdgeOne 将根据用户设置的缓存规则结合平台默认缓存策略，对文件进行缓存。
 
-**2\. Add the MongoDB GPG key to your system:**
+这种缓存策略既保证了数据的实时性，又提高了数据访问的效率。由于边缘节点更贴近用户，这种策略有效地降低了数据访问时间延迟，避免了数据传输抖动，保障了大量数据传输的稳定性和有效性。
 
-```
-curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
-```
+### 2\.1 默认缓存配置
 
-**3\. Enable the MongoDB repository:**
+![缓存配置](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-capture_054_w1000.jpg)
 
-```
-sudo add-apt-repository 'deb https://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main'
-```
+EdgeOne 的默认缓存策略基于 HTTP 响应头部信息。如果 `Cache-Control: private` 出现时，文件不被缓存。如果 `Cache-Control: s-maxage` 出现时，文件按设定时间缓存，多个响应头存在时，按 `s-maxage` > `max-age` > `Expires` 优先级决定缓存时间。无以上头部时，执行配置规则：若有 `Last-Modified`，根据其值计算缓存时间；若无 `Last-Modified`，则按文件后缀应用平台默认缓存规则，不同文件类型有不同默认缓存时间。
 
-Packages with older versions of MongoDB are not available for Debian 10.
+![默认文件缓存时间](http://blog.mazey.net/wp-content/uploads/2023/10/edge_one_images-w800-v1.png)
 
-**4\. Update the packages list and install the `mongodb-org` meta-package:**
+更多详情可见文档：[EdgeOne 内容缓存规则](https://cloud.tencent.com/document/product/1552/87651)
 
-```
-sudo apt update
-sudo apt install mongodb-org
-```
+## 2\.2 自定义策略
 
-The following packages will be installed on the system as a part of the `mongodb-org` package:
+EdgeOne 的规则引擎是一个强大的工具，他支持更细粒度的自定义配置。这意味着可以针对特定的子域名或请求 URL，配置与全局设置不同的缓存、访问和回源等规则。这种自定义配置的优先级更高，可以确保对特定请求的精细控制。规则引擎不仅可以自定义缓存规则，还支持其他配置功能。例如，可以使用 URL 重写功能来改变请求 URL 的结构，也可以修改 HTTP 头部信息，以改变服务器和客户端之间的交互方式。此外，规则引擎还允许自定义错误页面，以提供更个性化的用户体验。
 
-* `mongodb-org-server` - The `mongod` daemon and corresponding init scripts and configurations.
-* `mongodb-org-mongos` - The `mongos` daemon.
-* `mongodb-org-shell` - The mongo shell is an interactive JavaScript interface to MongoDB. It is used to perform administrative tasks through the command line.
-* `mongodb-org-tools` - Contains several MongoDB tools for importing and exporting data, statistics, as well as other utilities.
+![规则引擎支持更细粒度自定义配置](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-160103-w1100.png)
 
-**5\. Start the MongoDB service and enable it to start on boot:**
+规则引擎关键术语：
 
-```
-sudo systemctl enable mongod --now
-```
+![关键术语](http://blog.mazey.net/wp-content/uploads/2023/10/edge-one-ifelse-w600.png)
 
-**6\. To verify whether the installation has completed successfully, connect to the MongoDB database server using the `mongo` tool and print the connection status:**
+### 案例 1：指定页面不缓存
 
-```
-mongo --eval 'db.runCommand({ connectionStatus: 1 })'
-```
+例如期望留言板页面 `http://blog.mazey.net/message-board` 永远是最新的内容。
 
-The output will look like this:
+![指定页面不缓存](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-161559-w1000.png)
 
-```
-MongoDB shell version v4.2.1
-connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
-Implicit session: session { "id" : UUID("09f11c53-605f-44ad-abec-ec5801bb6b06") }
-MongoDB server version: 4.2.1
-{
-	"authInfo" : {
-		"authenticatedUsers" : [ ],
-		"authenticatedUserRoles" : [ ]
-	},
-	"ok" : 1
-}
+### 案例 2：指定页面重定向
+
+例如：
+
+1. `http://blog.mazey.net/xmlrpc.php` 重定向至 `http://i.mazey.net/x/markdown/`。
+2. `http://blog.mazey.net/wp-login.php` 重定向至 `http://i.mazey.net/bootstrap-blueprints/`。
+
+![指定页面重定向](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-163005-w1000.png)
+
+### 案例 3：扩展静态资源后缀
+
+常规情况下，可以将静态资源的类型和缓存时间适当扩大些。
+
+静态资源后缀：
+
+```text
+gif;png;bmp;jpeg;jpg;html;htm;shtml;xml;json;mp3;wma;flv;mp4;wmv;ogg;avi;doc;docx;xls;xlsx;ppt;pptx;txt;pdf;zip;exe;tat;ico;css;js;swf;apk;m3u8;ts
 ```
 
-A value of `1` for the `ok` field indicates success.
+![静态资源后缀](http://blog.mazey.net/wp-content/uploads/2023/10/EdgeOne-20231016-164717-w1200.png)
 
-## Configuring MongoDB
+### 案例 4：过滤查询字符串
 
-The MongoDB configuration file is named `mongod.conf` and is located in the `/etc` directory. The file is in [YAML](https://yaml.org/) format.
+因为 `http://blog.mazey.net/?s=123` 只需要保留查询参数 `s`，所以可以过滤掉不需要的查询参数，提升网站的性能，并规避部分 DDoS 攻击和安全问题。
 
-The default configuration settings are sufficient for most users. However, for production environments, it is recommended to uncomment the security section and enable authorization, as shown below:
+![匹配类型](http://blog.mazey.net/wp-content/uploads/2023/10/edge-one-type-w800-v2.png)
 
-```
-security:
-  authorization: enabled
-```
+另外，匹配类型也支持其他各种自定义需求。
 
-The `authorization` option enables [Role-Based Access Control \(RBAC\)](https://docs.mongodb.com/manual/core/authorization/) that regulates users access to database resources and operations. If this option is disabled, each user can access all databases and perform any action.
+![匹配类型](http://blog.mazey.net/wp-content/uploads/2023/10/edge-one-type-w800-v2.png)
 
-After editing the configuration file, restart the mongod service for changes to take effect:
-
-```
-sudo systemctl restart mongod
-```
-
-To find more information about the configuration options available in MongoDB 4.2, visit the [Configuration File Options](https://docs.mongodb.com/manual/reference/configuration-options/) documentation page.
-
-### Creating Administrative MongoDB User
-
-If you enabled the MongoDB authentication, you’ll need to create an administrative user that can access and manage the MongoDB instance. To do so, access the mongo shell with:
-
-```
-mongo
-```
-
-From inside the MongoDB shell, type the following command to connect to the `admin` database:
-
-```
-use admin
-```
-
-```
-switched to db admin
-```
-
-Issue the following command to create a new user named `mongoAdmin` with the `userAdminAnyDatabase` role:
-
-```
-db.createUser(
-  {
-    user: "mongoAdmin", 
-    pwd: "changeMe", 
-    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
-  }
-)
-```
-
-```
-Successfully added user: {
-	"user" : "mongoAdmin",
-	"roles" : [
-		{
-			"role" : "userAdminAnyDatabase",
-			"db" : "admin"
-		}
-	]
-}
-```
-
-> You can name the administrative MongoDB user as you want.
-
-Exit the mongo shell with:
-
-```
-quit()
-```
-
-To test the changes, access the mongo shell using the administrative user you have previously created:
-
-```
-mongo -u mongoAdmin -p --authenticationDatabase admin
-```
-
-Enter the password when prompted. Once you are inside the MongoDB shell connect to the `admin` database:
-
-```
-use admin
-```
-
-```
-switched to db admin
-```
-
-Now, print the users with:
-
-```
-show users
-```
-
-```
-{
-	"_id" : "admin.mongoAdmin",
-	"userId" : UUID("cdc81e0f-db58-4ec3-a6b8-829ad0c31f5c"),
-	"user" : "mongoAdmin",
-	"db" : "admin",
-	"roles" : [
-		{
-			"role" : "userAdminAnyDatabase",
-			"db" : "admin"
-		}
-	],
-	"mechanisms" : [
-		"SCRAM-SHA-1",
-		"SCRAM-SHA-256"
-	]
-}
-```
-
-## Conclusion
-
-We have shown you how to install MongoDB 4.2 on Debian 10, Buster. Visit [the MongoDB Manual](https://docs.mongodb.com/manual/) for more information on this topic.
-
-If you hit a problem or have feedback, leave a comment below.
+总的来说，规则引擎是一个强大而灵活的工具，可以帮助网站更好地控制和优化网络服务。
 
 **版权声明**
 
-本博客所有的转载文章，作者皆保留版权。转载必须包含本声明，保持本文完整，并以超链接形式注明作者[Linuxize](https://linuxize.com/)和本文原始地址：[https://linuxize.com/post/how-to-install-mongodb-on-debian-10/](https://linuxize.com/post/how-to-install-mongodb-on-debian-10/)
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/4114.html>
+
+(完)
