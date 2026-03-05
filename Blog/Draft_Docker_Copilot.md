@@ -1,5 +1,9 @@
 # Troubleshooting "exec /PATH/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes
 
+![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
+
+This guide analyzes common Docker startup failures like "no such file or directory" or "permission denied" involving "entrypoint.sh". Key causes include CRLF line endings, missing execution bits, incorrect shebangs, and architecture mismatches. It provides diagnostic steps (e.g., "sed -n l") and fixes such as using ".gitattributes" for LF normalization, applying "sed -i 's/\r$//'" in Dockerfiles to avoid extra packages, and handling archived Debian repositories (e.g., "node:10-buster") for legacy builds.
+
 - [Troubleshooting "exec /PATH/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes](#troubleshooting-exec-pathentrypointsh-docker-errors--causes-diagnostics-and-fixes)
   - [Overview](#overview)
   - [Why "entrypoint.sh exists but won't exec"](#why-entrypointsh-exists-but-wont-exec)
@@ -190,3 +194,12 @@
 ## TL;DR
 
 The most common cause of "exec /PATH/entrypoint.sh" failures when the file exists is CRLF line endings. Fix by converting to LF (preferably in source or CI). Use `sed -i 's/\r$//'` in Dockerfile if you want a package-free fix. Ensure executable bit, correct shebang, and beware host bind mounts that can overwrite image files. Prefer upgrading from EOL images (e.g., "node:10-buster") to supported images; if you must use EOL images and apt, point apt to archive.debian.org (temporary and insecure).
+
+**Copyright Notice**
+
+This article is an original work. The author reserves all rights. If you wish to republish, please retain the full content of this article and include a hyperlink referencing both the author and the source.
+
+Author: [Cheng](https://github.com/chengchuu)  
+Source: <http://blog.mazey.net/6205.html>
+
+(The End)
