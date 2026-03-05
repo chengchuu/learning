@@ -62,6 +62,7 @@
 | `css`          | CSS related                     | `#663399`   |
 | `nginx`        | Nginx related                   | `#009639`   |
 | `sql`          | SQL language related            | `#e38c00`   |
+| `PowerShell`   | PowerShell related              | `#012456`   |
 | `php`          | PHP language related            | `#4F5D95`   |
 | `python`       | Python language related         | `#3572A5`   |
 | `java`         | Java language related           | `#b07219`   |
