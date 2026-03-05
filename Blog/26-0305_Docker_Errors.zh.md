@@ -2,7 +2,7 @@
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 
-本文聚焦 Docker 启动时 entrypoint.sh 存在却执行失败的问题，梳理 CRLF、权限、shebang、挂载覆盖、架构不匹配与 EOL 镜像仓库异常等根因，提供诊断命令与修复路径，并给出兼顾稳定性与可维护性的 Dockerfile、CI 与镜像升级建议。
+本文聚焦 Docker 启动时 "entrypoint.sh" 存在却执行失败的问题，梳理 CRLF、权限、shebang、挂载覆盖、架构不匹配与 EOL 镜像仓库异常等根因，提供诊断命令与修复路径，并给出兼顾稳定性与可维护性的 Dockerfile、CI 与镜像升级建议。
 
 - [Docker 容器启动时报错 "entrypoint.sh" 的排查与修复指南](#docker-容器启动时报错-entrypointsh-的排查与修复指南)
   - [概述](#概述)
