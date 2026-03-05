@@ -285,7 +285,7 @@ IOC（International Olympic Committee，国际奥林匹克委员会）。这样�
 引用第三方内容时，应注明出处。
 
 ```
-One man’s constant is another man’s variable. — Alan Perlis
+One man's constant is another man's variable. — Alan Perlis
 ```
 
 如果是全篇转载，请在全文开头显著位置注明作者和出处，并链接至原文。
@@ -438,7 +438,7 @@ $1,000
 （2）引号里面还要用引号时，外面一层用双引号，里面一层用单引号（`' '`），注意前后单引号不同。
 
 ```
-例句: 鲍勃解释道: "我要放音乐，可萨利说，‘不行！’。"
+例句: 鲍勃解释道: "我要放音乐，可萨利说，'不行！'。"
 ```
 
 ## 括号
