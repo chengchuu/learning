@@ -59,7 +59,7 @@ This guide analyzes common Docker startup failures like "no such file or directo
   # .gitattributes
   *.sh text eol=lf
   ```
-  
+
   Configure repos/CI to run dos2unix or equivalent as needed, so images never need the tool.
 
 (2) Convert line endings in Dockerfile without adding packages
@@ -156,7 +156,7 @@ This guide analyzes common Docker startup failures like "no such file or directo
 (10) Recommended final Dockerfile pattern (small, robust)
 
   Normalize line endings, set permissions, and avoid unnecessary packages:
-  
+
   ```dockerfile
   FROM debian:bookworm-slim
 
@@ -173,7 +173,7 @@ This guide analyzes common Docker startup failures like "no such file or directo
 ## CI and developer workflow suggestions
 
 - Enforce LF in repo via .gitattributes:
-  
+
   ```plain
   *.sh text eol=lf
   ```
@@ -199,7 +199,7 @@ The most common cause of "exec /PATH/entrypoint.sh" failures when the file exist
 
 This article is an original work. The author reserves all rights. If you wish to republish, please retain the full content of this article and include a hyperlink referencing both the author and the source.
 
-Author: [Cheng](https://github.com/chengchuu)  
+Author: [Cheng](https://github.com/chengchuu)
 Source: <http://blog.mazey.net/6205.html>
 
 (The End)
