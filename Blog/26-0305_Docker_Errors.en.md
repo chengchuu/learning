@@ -1,17 +1,17 @@
+<!-- omit from toc -->
 # [EN] Troubleshooting "exec /PATH/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 
 This guide analyzes common Docker startup failures like "no such file or directory" or "permission denied" involving "entrypoint.sh". Key causes include CRLF line endings, missing execution bits, incorrect shebangs, and architecture mismatches. It provides diagnostic steps (e.g., "sed -n l") and fixes such as using ".gitattributes" for LF normalization, applying "sed -i 's/\r$//'" in Dockerfiles to avoid extra packages, and handling archived Debian repositories (e.g., "node:10-buster") for legacy builds.
 
-- [\[EN\] Troubleshooting "exec /PATH/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes](#en-troubleshooting-exec-pathentrypointsh-docker-errors--causes-diagnostics-and-fixes)
-  - [Overview](#overview)
-  - [Why "entrypoint.sh exists but won't exec"](#why-entrypointsh-exists-but-wont-exec)
-  - [Quick diagnostics you can run (from host)](#quick-diagnostics-you-can-run-from-host)
-  - [Fixes and recommended patterns](#fixes-and-recommended-patterns)
-  - [CI and developer workflow suggestions](#ci-and-developer-workflow-suggestions)
-  - [Troubleshooting checklist](#troubleshooting-checklist)
-  - [TL;DR](#tldr)
+- [Overview](#overview)
+- [Why "entrypoint.sh exists but won't exec"](#why-entrypointsh-exists-but-wont-exec)
+- [Quick diagnostics you can run (from host)](#quick-diagnostics-you-can-run-from-host)
+- [Fixes and recommended patterns](#fixes-and-recommended-patterns)
+- [CI and developer workflow suggestions](#ci-and-developer-workflow-suggestions)
+- [Troubleshooting checklist](#troubleshooting-checklist)
+- [TL;DR](#tldr)
 
 ## Overview
 
