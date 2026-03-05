@@ -1,4 +1,36 @@
-# Workbox v6 (CLI + `workbox-config.js`) Practical Guide
+# Workbox v6 (CLI + "workbox-config.js") Practical Guide
+
+- [Workbox v6 (CLI + "workbox-config.js") Practical Guide](#workbox-v6-cli--workbox-configjs-practical-guide)
+  - [1) What is Workbox in v6?](#1-what-is-workbox-in-v6)
+  - [2) Install (v6)](#2-install-v6)
+  - [3) CLI config file basics (`workbox-config.js`)](#3-cli-config-file-basics-workbox-configjs)
+  - [4) `generateSW` mode (v6)](#4-generatesw-mode-v6)
+    - [Example `workbox-config.js` (v6, with runtime caching)](#example-workbox-configjs-v6-with-runtime-caching)
+  - [5) `skipWaiting` and `clientsClaim` explained (v6)](#5-skipwaiting-and-clientsclaim-explained-v6)
+    - [Default lifecycle (both false)](#default-lifecycle-both-false)
+    - [`skipWaiting`](#skipwaiting)
+    - [`clientsClaim`](#clientsclaim)
+    - [Recommended usage](#recommended-usage)
+  - [6) `injectManifest` mode (v6)](#6-injectmanifest-mode-v6)
+    - [`workbox-config.js` for `injectManifest`](#workbox-configjs-for-injectmanifest)
+    - [`src/sw.js` (v6-compatible example)](#srcswjs-v6-compatible-example)
+  - [7) `navigateFallback` example (v6)](#7-navigatefallback-example-v6)
+    - [Example config](#example-config)
+    - [`offline.html` sample](#offlinehtml-sample)
+  - [8) Precache vs Runtime cache (v6 best practice)](#8-precache-vs-runtime-cache-v6-best-practice)
+    - [Precache](#precache)
+    - [Runtime cache](#runtime-cache)
+    - [Can the same URL be in both?](#can-the-same-url-be-in-both)
+  - [9) Third-party domain caching in v6](#9-third-party-domain-caching-in-v6)
+  - [10) Strategy selection cheat sheet (v6)](#10-strategy-selection-cheat-sheet-v6)
+  - [11) Typical production recommendations](#11-typical-production-recommendations)
+  - [12) Register service worker (web app side)](#12-register-service-worker-web-app-side)
+  - [13) Debug checklist (v6)](#13-debug-checklist-v6)
+  - [14) Common pitfalls in v6](#14-common-pitfalls-in-v6)
+  - [15) Minimal `generateSW` config template (copy/paste)](#15-minimal-generatesw-config-template-copypaste)
+  - [16) Build script example (`package.json`)](#16-build-script-example-packagejson)
+  - [17) Final migration note (v6 project reading v7 docs)](#17-final-migration-note-v6-project-reading-v7-docs)
+  - [License / usage](#license--usage)
 
 > Target audience: projects using **Workbox v6.x** with **workbox-cli** and a `workbox-config.js` build file.  
 > This guide avoids v7-only wording and focuses on v6-compatible usage and patterns.
@@ -84,7 +116,7 @@ module.exports = {
     // Same-origin images
     {
       urlPattern: ({request, url}) =>
-        request.destination === 'image' && url.origin === 'self.origin', // DO NOT use this literal; see note below
+        request.destination === 'image' && url.origin === self.location.origin,
       handler: 'StaleWhileRevalidate',
       options: {
         cacheName: 'images',
@@ -131,20 +163,48 @@ module.exports = {
 };
 ```
 
-### Important correction for same-origin function matcher
+---
 
-Inside CLI config, use:
+## 5) `skipWaiting` and `clientsClaim` explained (v6)
+
+These options control **how quickly a new SW version takes over**.
+
+### Default lifecycle (both false)
+
+When a new SW is deployed:
+1. It installs and becomes **waiting**.
+2. It activates later (usually when old controlled tabs are closed/reloaded).
+
+This is safer for consistency because one page session usually stays on one SW version.
+
+### `skipWaiting`
 
 ```js
-urlPattern: ({request, url}) =>
-  request.destination === 'image' && url.origin === self.location.origin
+skipWaiting: true
 ```
 
-`'self.origin'` as a string is incorrect.
+- New SW skips waiting and activates sooner.
+- Faster rollout.
+- Risk: mixed-version issues if old page references removed/changed assets.
+
+### `clientsClaim`
+
+```js
+clientsClaim: true
+```
+
+- Once active, SW immediately controls open clients in scope.
+- No need to wait for next navigation.
+- Risk: behavior can change mid-session for users.
+
+### Recommended usage
+
+- **Conservative (safer):** `skipWaiting: false`, `clientsClaim: false`
+- **Aggressive rollout:** `skipWaiting: true`, `clientsClaim: true` (use with versioned assets + update UX prompt)
 
 ---
 
-## 5) `injectManifest` mode (v6)
+## 6) `injectManifest` mode (v6)
 
 Use this when you need custom SW logic/events.
 
@@ -242,7 +302,66 @@ registerRoute(
 
 ---
 
-## 6) Precache vs Runtime cache (v6 best practice)
+## 7) `navigateFallback` example (v6)
+
+`navigateFallback` is used for **navigation (HTML document) requests** when navigation fails (e.g., offline).
+
+### Example config
+
+```js
+module.exports = {
+  globDirectory: 'dist/',
+  globPatterns: ['**/*.{html,js,css,png,jpg,jpeg,svg,webp,woff,woff2}'],
+  swDest: 'dist/sw.js',
+
+  // Ensure offline.html is included by globPatterns
+  navigateFallback: '/offline.html',
+
+  // Optional: limit fallback to app pages only
+  navigateFallbackAllowlist: [/^\/$/, /^\/app(\/.*)?$/],
+
+  // Optional: exclude routes that should never fallback
+  navigateFallbackDenylist: [/^\/api\/.*$/, /^\/admin\/.*$/],
+
+  runtimeCaching: [
+    {
+      urlPattern: ({request}) => request.mode === 'navigate',
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'pages',
+        networkTimeoutSeconds: 3,
+        cacheableResponse: {statuses: [200]}
+      }
+    }
+  ]
+};
+```
+
+### `offline.html` sample
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Offline</title>
+  </head>
+  <body>
+    <h1>You are offline</h1>
+    <p>Please check your connection and try again.</p>
+  </body>
+</html>
+```
+
+> Notes:
+> - `navigateFallback` does **not** apply to API/script/image requests.
+> - It only applies to navigation requests.
+> - If network is fine and routes are reachable, normal pages should load instead of fallback.
+
+---
+
+## 8) Precache vs Runtime cache (v6 best practice)
 
 ### Precache
 - For build assets you control and version.
@@ -262,7 +381,7 @@ Do not intentionally cache the same URL in both precache and runtime routes.
 
 ---
 
-## 7) Third-party domain caching in v6
+## 9) Third-party domain caching in v6
 
 Yes, runtime caching can cache cross-origin assets if your `urlPattern` matches.
 
@@ -288,7 +407,7 @@ cacheableResponse: { statuses: [0, 200] }
 
 ---
 
-## 8) Strategy selection cheat sheet (v6)
+## 10) Strategy selection cheat sheet (v6)
 
 - `CacheFirst`  
   Best for hashed static assets, fonts, stable images.
@@ -303,7 +422,7 @@ cacheableResponse: { statuses: [0, 200] }
 
 ---
 
-## 9) Typical production recommendations
+## 11) Typical production recommendations
 
 1. **Set expiration limits** on every runtime cache.
 2. **Separate cache names** by resource type (`api-cache`, `images`, `cdn-assets`).
@@ -314,7 +433,7 @@ cacheableResponse: { statuses: [0, 200] }
 
 ---
 
-## 10) Register service worker (web app side)
+## 12) Register service worker (web app side)
 
 ```js
 if ('serviceWorker' in navigator) {
@@ -331,7 +450,7 @@ if ('serviceWorker' in navigator) {
 
 ---
 
-## 11) Debug checklist (v6)
+## 13) Debug checklist (v6)
 
 - DevTools → Application → Service Workers:
   - Is SW installed/activated?
@@ -344,7 +463,7 @@ if ('serviceWorker' in navigator) {
 
 ---
 
-## 12) Common pitfalls in v6
+## 14) Common pitfalls in v6
 
 1. **Wrong scope/path**
    - SW at `/dist/sw.js` may not control `/` pages as expected unless served correctly.
@@ -359,7 +478,7 @@ if ('serviceWorker' in navigator) {
 
 ---
 
-## 13) Minimal `generateSW` config template (copy/paste)
+## 15) Minimal `generateSW` config template (copy/paste)
 
 ```js
 module.exports = {
@@ -393,7 +512,7 @@ module.exports = {
 
 ---
 
-## 14) Build script example (`package.json`)
+## 16) Build script example (`package.json`)
 
 ```json
 {
@@ -407,7 +526,7 @@ module.exports = {
 
 ---
 
-## 15) Final migration note (v6 project reading v7 docs)
+## 17) Final migration note (v6 project reading v7 docs)
 
 If you read v7 docs while staying on v6:
 
