@@ -251,11 +251,11 @@ ENTRYPOINT ["/PATH/entrypoint.sh"]
 
 `entrypoint.sh` 存在却无法执行时，最常见根因是 CRLF 行尾。建议优先在源码和 CI 中统一 LF。如果需要在镜像内快速修复，可使用 `sed -i 's/\r$//'`。同时请确认执行位、解释器路径和挂载配置正确。对于 EOL 镜像，应尽快升级到受支持版本，以减少构建和安全风险。
 
-**版权说明**
+**版权声明**
 
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
-作者: [Cheng](https://github.com/chengchuu)
+作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/6215.html>
 
 (完)
