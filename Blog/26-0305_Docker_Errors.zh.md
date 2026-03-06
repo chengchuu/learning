@@ -1,4 +1,3 @@
-<!-- omit from toc -->
 # [ZH] Docker 容器启动时报错 "entrypoint.sh" 的排查与修复指南
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
@@ -34,10 +33,7 @@
 
 ## 概述
 
-本文聚焦一个核心问题: `entrypoint.sh` 文件存在，但容器启动仍然失败。
-常见报错包括 `no such file or directory`、`permission denied` 和 `exec format error`。
-本文解释根因，提供排查命令，并给出可直接落地的修复方案。
-适用镜像包括 Debian 系和 Node 系镜像，例如 `debian:bookworm-slim`、`node:10-buster`。
+明明把 `entrypoint.sh` 打进了镜像，容器一启动却直接退出。报错信息经常是 `no such file or directory`、`permission denied`，或者 `exec format error`。这类问题看起来像是"文件丢了"，但多数时候原因不在文件本身。下面按常见场景拆解原因，并给出排查思路和修复方式。
 
 ## 常见现象与根因
 
@@ -56,37 +52,27 @@
 
 ### CRLF 与 LF 行尾不一致
 
-如果脚本使用 Windows 的 CRLF 行尾，shebang 行末会带 `^M`。
-内核会把解释器路径识别为带回车符的路径，最终找不到解释器。
-此时常见报错是 `no such file or directory`。
+如果脚本使用 Windows 的 CRLF 行尾，shebang 行末会带 `^M`。内核会把解释器路径识别为带回车符的路径，最终找不到解释器。此时常见报错是 `no such file or directory`。
 
 ### 脚本没有可执行权限
 
-脚本在镜像内必须具备执行位。
-某些平台上的宿主机绑定挂载可能丢失执行位。
-此时常见报错是 `permission denied`。
+脚本在镜像内必须具备执行位，某些平台上的宿主机绑定挂载可能丢失执行位。此时常见报错是 `permission denied`。
 
 ### shebang 解释器不匹配
 
-脚本可能写了 `#!/bin/bash`，但镜像里只有 `/bin/sh`。
-例如 Alpine 镜像默认使用 BusyBox `sh`。
-解释器路径错误时，脚本同样无法执行。
+脚本可能写了 `#!/bin/bash`，但镜像里只有 `/bin/sh`。例如 Alpine 镜像默认使用 BusyBox `sh`。解释器路径错误时，脚本同样无法执行。
 
 ### 绑定挂载覆盖镜像内入口脚本
 
-如果将宿主机目录挂载到 `/PATH`，会覆盖镜像内 `/PATH` 的内容。
-若宿主机目录没有 `entrypoint.sh`，容器就找不到入口脚本。
+如果将宿主机目录挂载到 `/PATH`，会覆盖镜像内 `/PATH` 的内容。若宿主机目录没有 `entrypoint.sh`，容器就找不到入口脚本。
 
 ### 二进制架构不匹配
 
-如果入口文件是二进制，且架构与运行平台不一致，会触发 `exec format error`。
-例如在 x86 环境执行 ARM 二进制。
+如果入口文件是二进制，且架构与运行平台不一致，会触发 `exec format error`。例如在 x86 环境执行 ARM 二进制。
 
 ### EOL 镜像导致构建期 apt 失败
 
-旧版发行版 (如 buster) 可能已归档。
-构建时 `apt-get update`、`apt-get install` 可能返回 404 或 502。
-这会影响安装 `dos2unix` 等工具，间接导致行尾修复失败。
+旧版发行版 (如 buster) 可能已归档。构建时 `apt-get update`、`apt-get install` 可能返回 404 或 502。这会影响安装 `dos2unix` 等工具，间接导致行尾修复失败。
 
 ## 快速诊断命令
 
@@ -155,8 +141,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 ```
 
-如果使用旧版镜像 (如 `node:10-buster`)，apt 可能不可用。
-此时优先使用 `sed` 或 `tr` 方案，避免依赖 apt。
+如果使用旧版镜像 (如 `node:10-buster`)，apt 可能不可用。此时优先使用 `sed` 或 `tr` 方案，避免依赖 apt。
 
 ### 确保脚本具备执行权限
 
@@ -184,8 +169,7 @@ ENTRYPOINT ["sh", "/PATH/entrypoint.sh"]
 
 ### 处理 EOL Debian 镜像 (以 `node:10-buster` 为例)
 
-问题是 buster 仓库已归档，apt 更新失败。
-可选方案如下:
+问题是 buster 仓库已归档，apt 更新失败。可选方案如下:
 
 - 首选: 升级到受支持镜像，例如 `node:18`、`node:20-bullseye`、`node:20-bookworm`。
 - 最小改动: 不用 apt，改用 `sed` 或 `tr` 处理 CRLF。
@@ -205,8 +189,7 @@ RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /
 
 ### 关注绑定挂载覆盖问题
 
-如果在 `docker-compose` 中挂载 `./PATH:/PATH`，宿主机目录会覆盖镜像目录。
-当宿主机目录缺少入口脚本时，容器就无法找到它。
+如果在 `docker-compose` 中挂载 `./PATH:/PATH`，宿主机目录会覆盖镜像目录。当宿主机目录缺少入口脚本时，容器就无法找到它。
 
 示例 (风险配置):
 
@@ -217,8 +200,7 @@ volumes:
 
 ### Windows 宿主机的执行位问题
 
-Windows 绑定挂载可能不保留执行位。
-可采用以下方式降低风险:
+Windows 绑定挂载可能不保留执行位。可采用以下方式降低风险:
 
 - 使用 `ENTRYPOINT ["sh", "/PATH/entrypoint.sh"]`。
 - 优先使用命名卷，而不是宿主机目录绑定挂载。
@@ -226,9 +208,7 @@ Windows 绑定挂载可能不保留执行位。
 
 ### 架构不匹配问题
 
-若入口为二进制文件，请确认其架构与目标平台一致。
-例如 ARM 二进制不能直接在 x86 环境执行。
-可使用多架构镜像，或按目标平台重新构建二进制。
+若入口为二进制文件，请确认其架构与目标平台一致，例如 ARM 二进制不能直接在 x86 环境执行。可使用多架构镜像，或按目标平台重新构建二进制。
 
 ## 推荐的最终 Dockerfile 模式
 
@@ -269,11 +249,7 @@ ENTRYPOINT ["/PATH/entrypoint.sh"]
 
 ## 结论
 
-`entrypoint.sh` 存在却无法执行时，最常见根因是 CRLF 行尾。
-建议优先在源码和 CI 中统一 LF。
-如果需要在镜像内快速修复，可使用 `sed -i 's/\r$//'`。
-同时请确认执行位、解释器路径和挂载配置正确。
-对于 EOL 镜像，应尽快升级到受支持版本，以减少构建和安全风险。
+`entrypoint.sh` 存在却无法执行时，最常见根因是 CRLF 行尾。建议优先在源码和 CI 中统一 LF。如果需要在镜像内快速修复，可使用 `sed -i 's/\r$//'`。同时请确认执行位、解释器路径和挂载配置正确。对于 EOL 镜像，应尽快升级到受支持版本，以减少构建和安全风险。
 
 **版权说明**
 
