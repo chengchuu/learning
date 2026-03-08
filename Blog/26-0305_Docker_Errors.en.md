@@ -1,5 +1,5 @@
 <!-- omit from toc -->
-# [EN] Troubleshooting "exec /PATH/entrypoint.sh" Docker Errors — Causes, Diagnostics, and Fixes
+# [EN] Troubleshooting `exec /PATH/entrypoint.sh` Docker Errors — Causes, Diagnostics, and Fixes
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 

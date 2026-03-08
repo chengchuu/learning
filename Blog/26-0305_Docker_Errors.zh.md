@@ -1,4 +1,4 @@
-# [ZH] Docker 容器启动时报错 "entrypoint.sh" 的排查与修复指南
+# [ZH] Docker 容器启动时报错 `entrypoint.sh` 的排查与修复指南
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 
