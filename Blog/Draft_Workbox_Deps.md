@@ -84,15 +84,17 @@ Workbox 属于多子包协同体系，常在同一 SW 流程内共同生效。�
 
 ## 可直接采用的依赖配置示例
 
-| 依赖分类 | 依赖包 | 版本 |
-|---|---|---|
-| devDependencies | workbox-cli | 6.6.0 |
-| devDependencies | workbox-webpack-plugin | 6.6.0 |
-| dependencies | workbox-cacheable-response | 6.6.0 |
-| dependencies | workbox-expiration | 6.6.0 |
-| dependencies | workbox-precaching | 6.6.0 |
-| dependencies | workbox-routing | 6.6.0 |
-| dependencies | workbox-strategies | 6.6.0 |
+考虑到 `workbox-cacheable-response` 未发布 `6.6.0`，建议按已发布版本对齐:
+
+| 依赖包 | 建议版本 |
+|---|---|
+| workbox-cacheable-response | 6.5.4 |
+| workbox-cli | 6.6.0 |
+| workbox-expiration | 6.6.0 |
+| workbox-precaching | 6.6.0 |
+| workbox-routing | 6.6.0 |
+| workbox-strategies | 6.6.0 |
+| workbox-webpack-plugin | 6.6.0 |
 
 依赖分组可按现有工程习惯调整。
 关键目标是统一版本，而不是固定分组形式。
