@@ -24,32 +24,25 @@ v6 的高频使用版本已集中在 6.5.4 和 6.6.0。本文据此进行版本�
 | workbox-webpack-plugin | 6.6.0 | 3,094,789 | 3 年前 |
 | workbox-webpack-plugin | 6.5.4 | 920,223 | 4 年前 |
 
-### 直接观察
-
-(1) 除 `workbox-cli` 外，其余核心运行时包在 6.6.0 的下载量明显高于 6.5.4。
-
-(2) `workbox-cli` 下载量远低于运行时包，这一现象正常。
-CLI 主要用于构建阶段，不参与浏览器运行时依赖链。
-
 ## 推荐版本策略
 
-### 方案 A: 统一到 6.6.0 (推荐)
+### 方案 A: 保守统一到 6.5.4 (推荐)
 
-建议将 Workbox 子包统一到 v6 后期稳定点。可采用如下版本策略:
+构建链可以能存在约束，统一到 6.5.4。
+
+### 方案 B: 统一到 6.6.0
+
+将 Workbox 子包统一到 v6 后期稳定点。可采用如下版本策略:
 
 | 依赖包 | 建议版本 |
 |---|---|
-| workbox-cacheable-response | 6.6.0 |
+| workbox-cacheable-response | 6.5.4 |
 | workbox-cli | 6.6.0 |
 | workbox-expiration | 6.6.0 |
 | workbox-precaching | 6.6.0 |
 | workbox-routing | 6.6.0 |
 | workbox-strategies | 6.6.0 |
 | workbox-webpack-plugin | 6.6.0 |
-
-### 方案 B: 保守统一到 6.5.4
-
-若构建链存在严格约束，可统一到 6.5.4。但根据当前数据，运行时包已明显向 6.6.0 集中。除非存在强约束，否则应优先选择 6.6.0。
 
 ## 为什么强调版本统一
 
@@ -81,24 +74,3 @@ Workbox 属于多子包协同体系，常在同一 SW 流程内共同生效。�
 - 离线访问导航页 (验证 fallback)。
 - 运行时缓存命中 (API、CDN、图片等)。
 - SW 更新链路 (含 `skipWaiting`、`clientsClaim`)。
-
-## 可直接采用的依赖配置示例
-
-考虑到 `workbox-cacheable-response` 未发布 `6.6.0`，建议按已发布版本对齐:
-
-| 依赖包 | 建议版本 |
-|---|---|
-| workbox-cacheable-response | 6.5.4 |
-| workbox-cli | 6.6.0 |
-| workbox-expiration | 6.6.0 |
-| workbox-precaching | 6.6.0 |
-| workbox-routing | 6.6.0 |
-| workbox-strategies | 6.6.0 |
-| workbox-webpack-plugin | 6.6.0 |
-
-依赖分组可按现有工程习惯调整。
-关键目标是统一版本，而不是固定分组形式。
-
-## 结论
-
-基于已统计的 npm 数据，Workbox v6 的主流使用重心已落在 6.6.0。统一到 6.6.0 并执行一次完整回归，可在不重构核心架构的前提下，提升版本一致性与后续可维护性。
