@@ -7,78 +7,88 @@ Please output the code as one complete file (e.g., "macos-scutil-name-guide.md")
 
 # macOS `scutil` 修改电脑名称与主机名称
 
-本文介绍如何在 macOS 上使用 `scutil` 修改电脑名称与主机名称。本文同时说明 `ComputerName`、`LocalHostName` 和 `HostName` 的区别，以及这些名称在 SMB 和 SSH 场景中的作用。本文最后说明这些名称在 zsh 中的显示方式。
+我经常遇到这种情况: Finder 里看到的 Mac 名称是一套，局域网里用 `ssh` 或 `smb://` 访问时又是另一套。macOS 里这些名字确实不是同一个字段。
 
-## 适用范围与准备工作
+本文用 `scutil` 把它们理顺。你会看到 `ComputerName`、`LocalHostName`、`HostName` 分别负责什么，它们对 SMB、SSH 有什么影响，以及在 zsh 里通常怎么显示。
 
-本文适用于 Intel Mac 和 Apple Silicon Mac。本文同样适用于较新的 macOS，以及较旧的 macOS (例如 macOS Monterey 12.7.6)。
+## 适用范围与开始前要知道的事
 
-你需要准备以下条件:
+本文适用于 Intel Mac 和 Apple Silicon Mac。对较新的 macOS 和较旧的 macOS 也都通用，比如 macOS Monterey 12.7.6。
 
-- 你可以使用管理员账号执行 `sudo`。
-- 你了解目标网络是否提供 DNS 名称。
-- 你知道自己更关注 SMB，还是更关注 SSH。
+开始前，你只需要确认 3 点:
 
-## 三个名称的区别与作用
+- 你能用管理员账号执行 `sudo`。
+- 你主要在局域网里用 `.local` 访问，还是依赖公司网络的 DNS。
+- 你想要"看起来好看"的名称，还是"好用好敲"的主机名。
 
-macOS 常用以下 3 个名称属性。它们的用途不同，你应当分别设置。
+这 3 点会影响你怎么取名。
 
-### ComputerName 的作用
+## 三个名称分别是什么
 
-`ComputerName` 是"电脑名称"。它是一个面向用户的友好名称。
+macOS 常用 3 个名称属性。它们各司其职，你可以把它们理解成"显示名"、"局域网名"和"系统名"。
 
-你通常会在以下位置看到该名称:
+### ComputerName: 更像展示用的名字
+
+`ComputerName` 是你在系统界面里最常看到的"电脑名称"。它更像一个展示用标签。
+
+常见出现位置包括:
 
 - System Settings (或 System Preferences) 的 Sharing 面板。
-- Finder 的共享设备列表。
-- AirDrop 的设备名称。
+- Finder 侧边栏的共享设备列表。
+- AirDrop 设备名称。
 
-`ComputerName` 可以包含空格，也可以使用大写字母。
+它可以包含空格，也能写成大写，比如 `CHENG AIR`。从体验上说，这个字段最适合用来满足"看着顺眼"。
 
-### LocalHostName 的作用
+### LocalHostName: `.local` 里常用的名字
 
-`LocalHostName` 是本地网络名称。它通常用于 Bonjour (mDNS) 场景。
+`LocalHostName` 是局域网里更实用的那个名字，通常和 Bonjour (mDNS，组播域名系统) 绑定得更紧。
 
-当你在局域网内使用 `.local` 域名访问时，通常使用该名称:
+如果你在局域网里用 `.local` 访问，一般就是它在起作用:
 
 - `ssh user@LOCALHOSTNAME.local`
 - `smb://LOCALHOSTNAME.local`
 
-`LocalHostName` 建议只使用以下字符:
+命名上建议收敛一点。你可以用:
 
 - 英文字母
 - 阿拉伯数字
 - 连接号 (`-`)
 
-你应当避免在 `LocalHostName` 中使用空格和下划线 (`_`)。部分服务可以容忍，但兼容性较差。
+不建议用空格和下划线 (`_`)。有些服务能容忍，但兼容性会变差。你想要省心，就用连接号。
 
-### HostName 的作用
+### HostName: 更偏 UNIX 语义的主机名
 
-`HostName` 是系统层面的主机名。它更偏向 UNIX 语义。
+`HostName` 是系统层面的主机名，偏 UNIX 语义，很多命令行工具会用到它，或者受它影响。
 
-以下场景更可能用到 `HostName`:
+它更常出现在这些场景里:
 
-- 你希望 `hostname` 或部分程序显示一个固定的主机名。
-- 你将 Mac 加入企业网络，并通过 DNS 解析主机名。
-- 你在脚本或远程管理中依赖主机名。
+- 你希望 `hostname` 这类输出稳定、可控。
+- 你在脚本里依赖主机名做分支判断。
+- 你在企业网络里用 DNS 解析主机名。
 
-如果你的网络没有为你的 Mac 配置 DNS 记录，设置 `HostName` 并不会自动让外部网络可以通过 `ssh user@HOSTNAME` 访问你的 Mac。你仍然需要 DNS 或者使用 IP 地址。
+需要注意的是: 如果网络没有给你的 Mac 配置 DNS 记录，你就算设置了 `HostName`，也不会自动获得一个可从外部解析的域名。此时 `ssh user@HOSTNAME` 往往还是不行，你需要 DNS 或直接用 IP。
 
-## 推荐命名规则 (全大写方案)
+## 全大写命名的取舍与建议
 
-你希望名称全大写时，建议按以下方式设置:
+你希望"全部大写"，可以做到。不过在实际体验上，我更建议你把"展示"和"连接"分开考虑。
 
-- `ComputerName`: 允许空格，适合显示用途，例如 `CHENG AIR`。
-- `LocalHostName`: 使用连接号，不使用空格，例如 `CHENG-AIR`。
-- `HostName`: 与 `LocalHostName` 一致，例如 `CHENG-AIR`。
+比较稳妥的一套全大写方案是:
 
-这样设置后，你可以在局域网内优先使用 `CHENG-AIR.local` 访问。
+- `ComputerName`: 用空格，适合展示，例如 `CHENG AIR`。
+- `LocalHostName`: 用连接号，不用空格，例如 `CHENG-AIR`。
+- `HostName`: 跟 `LocalHostName` 一致，例如 `CHENG-AIR`。
 
-## 修改操作与验证方法
+这样你在局域网里通常可以用 `CHENG-AIR.local` 访问。
 
-### 使用 scutil 设置 3 个名称
+另外补一句: 某些客户端会把 `.local` 显示成小写。你设置大写不代表失败，只是显示时做了规范化。
 
-以下命令将 3 个名称设置为全大写。
+## 修改与验证
+
+这部分就是操作步骤。建议你按顺序执行，然后用命令验证结果。
+
+### 设置 3 个名称
+
+下面命令会把 3 个名称都设置为全大写。
 
 ```bash
 sudo scutil --set ComputerName "CHENG AIR"
@@ -86,9 +96,9 @@ sudo scutil --set LocalHostName "CHENG-AIR"
 sudo scutil --set HostName "CHENG-AIR"
 ```
 
-### 验证 scutil 设置结果
+### 验证设置是否生效
 
-你可以使用以下命令检查当前值。
+你可以直接读取当前值。
 
 ```bash
 scutil --get ComputerName
@@ -96,44 +106,48 @@ scutil --get LocalHostName
 scutil --get HostName
 ```
 
-如果 `HostName` 未设置，`scutil --get HostName` 可能返回错误信息。这是正常现象。你可以重新执行 `--set HostName`。
+如果你从没设置过 `HostName`，读取时可能报错。这个现象正常。你重新执行一次 `--set HostName` 就可以。
 
-### 使网络服务更快刷新
+### 刷新显示与缓存
 
-部分情况下，名称变更不会立刻反映到共享服务列表。你可以使用以下方法刷新:
+有时 Finder 或共享列表不会立刻更新。你可以先试试下面两种方式:
 
 - 关闭并重新打开 Wi-Fi。
 - 重启 Mac。
 
-你也可以刷新缓存。该命令通常不会造成副作用。
+你也可以刷新缓存，这条命令一般没有副作用:
 
 ```bash
 dscacheutil -flushcache
 ```
 
-## SMB 与 SSH 场景说明
+## SMB 与 SSH 分别怎么看这些名字
 
-### SMB 连接时应当使用哪个名称
+名字改完了，关键是"连接时到底用哪个"。SMB 和 SSH 的习惯不太一样。
 
-你在 Finder 里连接 SMB 时，建议优先使用 `LocalHostName`:
+### SMB: Finder 里看到的名字和连接用的名字可能不同
+
+Finder 侧边栏看到的设备名称，通常更接近 `ComputerName`。所以你可能看到的是 `CHENG AIR`。
+
+但你在地址栏里连接时，更建议用 `LocalHostName`，因为它更适合放进 URL:
 
 - `smb://CHENG-AIR.local`
 
-如果你使用 IP 连接，也可以直接使用:
+当然，你也可以直接用 IP:
 
 - `smb://192.168.1.10`
 
-你在 Finder 侧边栏看到的设备显示名称，通常更接近 `ComputerName`。因此你会看到 `CHENG AIR`，但连接地址更适合使用 `CHENG-AIR.local`。
+如果你在局域网里经常手敲地址，`LocalHostName` 用连接号会明显舒服很多。
 
-### SSH 连接时应当使用哪个名称
+### SSH: `.local` 是最常见的用���
 
-如果你在局域网内通过 Bonjour 连接，建议使用:
+在局域网里通过 Bonjour 连接时，一般这样用:
 
 - `ssh 用户名@CHENG-AIR.local`
 
-如果你在更复杂的网络环境通过 DNS 连接，你需要网络侧提供可解析的 DNS 名称。此时你可以使用 DNS 名称，或者使用 IP。
+如果你在公司网络里依赖 DNS，那么连接名通常由 DNS 决定。此时就算你设置了 `HostName`，也未必能让外部解析到它。
 
-你可以执行以下命令检查本机当前主机名相关信息:
+你可以用这些命令快速确认当前状态:
 
 ```bash
 hostname
@@ -141,17 +155,19 @@ scutil --get HostName
 scutil --get LocalHostName
 ```
 
-## zsh 中名称显示的来源与配置建议
+## zsh 里主机名是怎么显示的
 
-zsh 的提示符 (prompt) 显示内容由主题或 `PROMPT` 变量决定。它不一定直接使用 `ComputerName`、`LocalHostName` 或 `HostName`，常见情况是使用 `hostname` 的输出。
+zsh 的提示符 (prompt) 显示什么，主要取决于主题或 `PROMPT` 变量。它不一定直接读取 `ComputerName`、`LocalHostName` 或 `HostName`。
 
-你可以用以下命令确认 `hostname` 当前输出:
+很多配置会直接用 `hostname` 的输出，也就是你在终端里运行 `hostname` 看到的那一串。
+
+你可以先确认一下当前 `hostname` 输出:
 
 ```bash
 hostname
 ```
 
-如果你希望 zsh 明确显示你设置的名称，建议在 `~/.zshrc` 中显式使用主机名变量。以下示例展示一种常见写法:
+如果你想在 zsh 提示符里明确显示主机名，可以在 `~/.zshrc` 里设置 `PROMPT`。这是一个常见写法:
 
 - `%n` 表示用户名。
 - `%m` 表示主机名 (短格式)。
@@ -160,18 +176,26 @@ hostname
 PROMPT='%n@%m %~ %# '
 ```
 
-如果你使用 Oh My Zsh 或其他主题系统，主题可能会覆盖 `PROMPT`。你需要在主题配置中调整显示逻辑。
+如果你使用 Oh My Zsh 或其他主题，主题可能会覆盖 `PROMPT`。这种情况下，你需要到主题的配置里改显示逻辑。
 
 ## 常见问题
 
-### 为什么我设置了全大写，但看到的是小写
+### 我设置成大写了，为什么看到的是小写
 
-部分客户端会对 Bonjour 名称做规范化显示。它可能将 `CHENG-AIR.local` 显示为 `cheng-air.local`。
+部分系统或客户端会对 Bonjour 名称做规范化显示。它可能把 `CHENG-AIR.local` 显示为 `cheng-air.local`。
 
-这是客户端显示策略导致的现象，不代表设置失败。你可以用 `scutil --get LocalHostName` 确认真实配置。
+你可以用下面命令确认真实配置是否仍是你设置的值:
 
-### 我能否把 LocalHostName 设置为带空格的名字
+```bash
+scutil --get LocalHostName
+```
 
-你可以为 `ComputerName` 使用空格。你不应当为 `LocalHostName` 使用空格。
+### LocalHostName 能不能带空格
 
-当你需要一个可读性更强的显示名称时，使用 `ComputerName`。当你需要一个稳定的网络访问名称时，使用 `LocalHostName`。
+不建议。
+
+你可以让 `ComputerName` 带空格，用于展示。你应该让 `LocalHostName` 保持简单，用连接号连接单词。
+
+当你更在意可读性时，用 `ComputerName`。
+
+当你更在意连接稳定、兼容性好时，用 `LocalHostName`。
