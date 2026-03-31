@@ -1,7 +1,5 @@
 # macOS 使用 `scutil` 统一 ComputerName、LocalHostName 与 HostName
 
-![Draft_macOS_scutil](#)
-
 macOS 中，Finder 里显示的设备名称与局域网访问时使用的主机名，可能来自不同字段。`scutil` 可以分别设置 `ComputerName`、`LocalHostName` 和 `HostName`，从而控制显示名称、Bonjour (mDNS，组播域名系统) 名称，以及系统层面的主机名行为。本文说明 3 个字段的差异与用途，并给出 SMB、SSH 相关的使用方式，以及 zsh 提示符中常见的显示来源与配置方法。
 
 - [适用范围与开始前的说明](#适用范围与开始前的说明)
@@ -198,3 +196,5 @@ scutil --get LocalHostName
 不建议为 `LocalHostName` 使用空格。
 
 `ComputerName` 适用于展示场景，可使用空格增强可读性。`LocalHostName` 更适合用于网络访问标识，建议保持字符集简单，并使用连接号连接单词。
+
+<!-- id: Draft_macOS_scutil -->

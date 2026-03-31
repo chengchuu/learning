@@ -20,6 +20,8 @@
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/xxxx.html>
 
+<!-- ID: ARTICLE_ID -->
+
 (完)
 
 **Copyright Notice**
@@ -28,5 +30,7 @@ This article is an original work. The author reserves all rights. If you wish to
 
 Author: [Cheng](https://github.com/chengchuu)
 Source: <http://blog.mazey.net/xxxx.html>
+
+<!-- ID: ARTICLE_ID -->
 
 (The End)
