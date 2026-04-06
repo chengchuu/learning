@@ -22,7 +22,7 @@ macOS 中，Finder 里显示的设备名称与局域网访问时使用的主机�
 
 ## 适用范围与开始前的说明
 
-本文适用于 Intel Mac 和 Apple Silicon Mac。对较新的 macOS 和较旧的 macOS 同样通用，例如 macOS Monterey 12.7.6。
+本文适用于 Apple Silicon Mac 和 Intel Mac。对较新的 macOS 和较旧的 macOS 同样通用，例如 macOS Monterey 12.7.6。
 
 执行前建议明确以下信息:
 
