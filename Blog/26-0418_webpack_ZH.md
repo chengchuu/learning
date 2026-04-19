@@ -1,4 +1,4 @@
-# webpack 中使用多配置: 导出配置对象数组
+# [ZH] webpack 中使用多配置: 导出配置对象数组
 
 ![webpack 多配置](http://blog.mazey.net/wp-content/uploads/2025/09/webpack_SF_7x3.jpg)
 
