@@ -129,7 +129,7 @@ module.exports = [
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <https://blog.mazey.net/6302.html>
+原文: <http://blog.mazey.net/6302.html>
 
 <!-- ID: 26-0418_webpack_ZH -->
 

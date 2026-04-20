@@ -18,7 +18,7 @@
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <https://blog.mazey.net/xxxx.html>
+原文: <http://blog.mazey.net/xxxx.html>
 
 <!-- ID: ARTICLE_ID -->
 
@@ -29,7 +29,7 @@
 This article is an original work. The author reserves all rights. If you wish to republish, please retain the full content of this article and include a hyperlink referencing both the author and the source.
 
 Author: [Cheng](https://github.com/chengchuu)
-Source: <https://blog.mazey.net/xxxx.html>
+Source: <http://blog.mazey.net/xxxx.html>
 
 <!-- ID: ARTICLE_ID -->
 

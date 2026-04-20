@@ -1,4 +1,19 @@
-# Using Multiple Configurations in webpack: Exporting an Array of Config Objects
+# [EN] Using Multiple Configurations in webpack: Exporting an Array of Config Objects
+
+![webpack](http://blog.mazey.net/wp-content/uploads/2025/09/webpack_SF_7x3.jpg)
+
+webpack supports enabling multi-compiler mode by exporting an array of configuration objects, allowing multiple entries and bundles to be managed within a single process. This approach unifies build and watch workflows, reduces the complexity of multiple config files, and still supports targeted builds via name (config-name), balancing efficiency, maintainability, and flexibility.
+
+- [Overview](#overview)
+- [My Experience: From Multiple Files to Multi-Config](#my-experience-from-multiple-files-to-multi-config)
+  - [The Turning Point](#the-turning-point)
+- [Why Is This Useful](#why-is-this-useful)
+- [How Does It Work](#how-does-it-work)
+- [Things to Keep in Mind](#things-to-keep-in-mind)
+- [Example: Multiple HTML and JS Bundles](#example-multiple-html-and-js-bundles)
+- [Conclusion](#conclusion)
+
+## Overview
 
 If you've ever worked on a web project with multiple entry points or distinct build requirements—such as separate bundles for the BUNDLE_A, BUNDLE_B, and BUNDLE_C—you might have wondered: Can I manage all builds efficiently with one webpack setup?
 
@@ -109,3 +124,14 @@ module.exports = [
 
 Exporting an array of config objects in webpack is a best practice for complex builds.
 It simplifies your workflow, reduces duplication, and lets you manage even large, multi-bundle projects efficiently.
+
+**Copyright Notice**
+
+This article is an original work. The author reserves all rights. If you wish to republish, please retain the full content of this article and include a hyperlink referencing both the author and the source.
+
+Author: [Cheng](https://github.com/chengchuu)
+Source: <http://blog.mazey.net/6306.html>
+
+<!-- ID: 26-0418_webpack_EN -->
+
+(The End)
