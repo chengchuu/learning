@@ -4,15 +4,14 @@
 
 介绍了如何通过 JS-SDK 部署前端性能监控，包括项目创建、代码部署和数据查看流程。提供了性能埋点指标及其计算方法，并列出了 Performance API 的关键字段和含义，帮助开发者全面了解网页性能数据的采集与分析。
 
-- [前端页面性能监控接入文档](#前端页面性能监控接入文档)
-  - [一、创建项目](#一创建项目)
-  - [二、代码部署](#二代码部署)
-  - [三、查看数据](#三查看数据)
-  - [附录: 性能埋点指标](#附录-性能埋点指标)
+- [一、创建项目](#一创建项目)
+- [二、代码部署](#二代码部署)
+- [三、查看数据](#三查看数据)
+- [附录: 性能埋点指标](#附录-性能埋点指标)
 
 ## 一、创建项目
 
-首先在[**前端性能**](https://tool.mazey.net/mazey-workspace/#/monitor/perf)栏位新建项目 (Topic):
+首先在[**前端性能**](https://i.mazey.net/x/mazey-workspace/#/monitor/perf)栏位新建项目 (Topic):
 
 ![](http://blog.mazey.net/wp-content/uploads/2021/08/feperf-20210824-w-600.png)
 
@@ -111,5 +110,7 @@ Performance API 字典
 
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/5699.html>
+
+<!-- ID: 21-0825_Frontend_Monitor -->
 
 (完)

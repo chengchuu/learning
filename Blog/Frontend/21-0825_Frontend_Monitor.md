@@ -11,7 +11,7 @@
 
 ## 一、创建项目
 
-首先在[**前端性能**](https://tool.mazey.net/mazey-workspace/#/monitor/perf)栏位新建项目 (Topic):
+首先在[**前端性能**](https://i.mazey.net/x/mazey-workspace/#/monitor/perf)栏位新建项目 (Topic):
 
 ![](http://blog.mazey.net/wp-content/uploads/2021/08/feperf-20210824-w-600.png)
 
