@@ -111,6 +111,6 @@ Performance API 字典
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/5699.html>
 
-<!-- ID: 21-0825_Frontend_Monitor -->
+<!-- ID: 21-0825_Monitor -->
 
 (完)
