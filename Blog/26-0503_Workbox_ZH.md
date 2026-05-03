@@ -31,10 +31,10 @@ Workbox v6 用于生成和维护 Service Worker (SW)，以支持 PWA 和离线�
 
 主要功能如下:
 
-* **预缓存 (Precache)**: 缓存构建时已知资源。
-* **运行时缓存 (Runtime cache)**: 缓存运行时请求。
-* **缓存策略 (Strategy)**: 定义网络与缓存行为。
-* **插件 (Plugin)**: 控制过期、缓存条件、后台同步等。
+- **预缓存 (Precache)**: 缓存构建时已知资源。
+- **运行时缓存 (Runtime cache)**: 缓存运行时请求。
+- **缓存策略 (Strategy)**: 定义网络与缓存行为。
+- **插件 (Plugin)**: 控制过期、缓存条件、后台同步等。
 
 CLI 提供两种模式:
 
@@ -141,8 +141,8 @@ module.exports = {
 
 建议如下:
 
-* 稳定优先: 保持默认值。
-* 快速发布: 同时启用两者，并配合版本控制。
+- 稳定优先: 保持默认值。
+- 快速发布: 同时启用两者，并配合版本控制。
 
 ---
 
@@ -180,8 +180,8 @@ module.exports = {
 
 说明:
 
-* 仅适用于 HTML 导航请求。
-* 不适用于 API 或资源请求。
+- 仅适用于 HTML 导航请求。
+- 不适用于 API 或资源请求。
 
 ---
 
@@ -191,17 +191,17 @@ module.exports = {
 
 用于构建时资源，例如:
 
-* HTML
-* JS、CSS
-* 本地字体
+- HTML
+- JS、CSS
+- 本地字体
 
 ### 运行时缓存
 
 用于动态资源，例如:
 
-* API
-* CDN 文件
-* 用户上传内容
+- API
+- CDN 文件
+- 用户上传内容
 
 ### 是否可以重复缓存
 
@@ -229,11 +229,11 @@ cacheableResponse: { statuses: [0, 200] }
 
 ## 10) 策略选择速查表 (v6)
 
-* `CacheFirst`: 静态资源
-* `NetworkFirst`: HTML 或 API
-* `StaleWhileRevalidate`: 常规资源
-* `NetworkOnly`: 敏感接口
-* `CacheOnly`: 特殊场景
+- `CacheFirst`: 静态资源
+- `NetworkFirst`: HTML 或 API
+- `StaleWhileRevalidate`: 常规资源
+- `NetworkOnly`: 敏感接口
+- `CacheOnly`: 特殊场景
 
 ---
 
@@ -271,10 +271,10 @@ if ('serviceWorker' in navigator) {
 
 检查以下内容:
 
-* SW 是否成功安装
-* 缓存是否创建
-* 请求是否由 Service Worker 处理
-* 构建路径是否正确
+- SW 是否成功安装
+- 缓存是否创建
+- 请求是否由 Service Worker 处理
+- 构建路径是否正确
 
 ---
 
@@ -320,9 +320,9 @@ module.exports = {
 
 在使用 v6 项目时参考 v7 文档，应注意:
 
-* 核对 API 是否存在
-* 避免使用新特性
-* 每次修改后进行测试
+- 核对 API 是否存在
+- 避免使用新特性
+- 每次修改后进行测试
 
 ---
 
