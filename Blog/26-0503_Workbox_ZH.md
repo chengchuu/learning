@@ -1,6 +1,6 @@
 # Workbox v6 (CLI + `workbox-config.js`) 实用指南
 
-本文适用于使用 Workbox v6.x、workbox-cli 以及 `workbox-config.js` 构建文件的项目。本文仅讨论 v6 兼容用法，避免使用 v7 专属特性。
+本文介绍 Workbox v6 在 CLI 环境中的使用方法，涵盖 generateSW 与 injectManifest 两种模式，说明缓存策略、运行时缓存与预缓存机制，以及 skipWaiting 和 clientsClaim 的更新行为，并提供配置示例与生产实践建议。
 
 - [1) Workbox v6 是什么](#1-workbox-v6-是什么)
 - [2) 安装 (v6)](#2-安装-v6)
@@ -23,7 +23,6 @@
 - [15) 最小 `generateSW` 配置模板](#15-最小-generatesw-配置模板)
 - [16) 构建脚本示例 (`package.json`)](#16-构建脚本示例-packagejson)
 - [17) 迁移说明 (v6 项目参考 v7 文档)](#17-迁移说明-v6-项目参考-v7-文档)
-- [使用说明](#使用说明)
 
 ## 1) Workbox v6 是什么
 
@@ -41,20 +40,16 @@ CLI 提供两种模式:
 1. `generateSW`: 基于配置自动生成 SW。
 2. `injectManifest`: 使用自定义 SW 文件。
 
----
-
 ## 2) 安装 (v6)
 
 如果项目尚未安装:
 
 ```bash
-npm i -D workbox-cli@^6.1.5
-npm i workbox-routing@^6.1.2 workbox-strategies@^6.1.2 workbox-precaching@^6.1.2 workbox-expiration@^6.1.2 workbox-cacheable-response@^6.1.2
+npm i -D workbox-cli@^6.5.4
+npm i workbox-routing@^6.5.4 workbox-strategies@^6.5.4 workbox-precaching@^6.5.4 workbox-expiration@^6.5.4 workbox-cacheable-response@^6.5.4
 ```
 
 建议保持各个 Workbox 包版本一致。
-
----
 
 ## 3) CLI 配置文件基础 (`workbox-config.js`)
 
@@ -75,8 +70,6 @@ module.exports = {
 ```bash
 npx workbox generateSW workbox-config.js
 ```
-
----
 
 ## 4) `generateSW` 模式 (v6)
 
@@ -129,8 +122,6 @@ module.exports = {
 };
 ```
 
----
-
 ## 5) `skipWaiting` 与 `clientsClaim` 说明 (v6)
 
 这两个选项用于控制 Service Worker 的更新行为。
@@ -143,8 +134,6 @@ module.exports = {
 
 - 稳定优先: 保持默认值。
 - 快速发布: 同时启用两者，并配合版本控制。
-
----
 
 ## 6) `injectManifest` 模式 (v6)
 
@@ -160,8 +149,6 @@ module.exports = {
   swDest: 'dist/sw.js'
 };
 ```
-
----
 
 ## 7) `navigateFallback` 示例 (v6)
 
@@ -182,8 +169,6 @@ module.exports = {
 
 - 仅适用于 HTML 导航请求。
 - 不适用于 API 或资源请求。
-
----
 
 ## 8) 预缓存与运行时缓存 (v6 最佳实践)
 
@@ -207,8 +192,6 @@ module.exports = {
 
 避免将同一 URL 同时加入两种缓存。该行为会增加调试难度。
 
----
-
 ## 9) 第三方域名缓存 (v6)
 
 可以缓存跨域资源。
@@ -225,8 +208,6 @@ module.exports = {
 cacheableResponse: { statuses: [0, 200] }
 ```
 
----
-
 ## 10) 策略选择速查表 (v6)
 
 - `CacheFirst`: 静态资源
@@ -234,8 +215,6 @@ cacheableResponse: { statuses: [0, 200] }
 - `StaleWhileRevalidate`: 常规资源
 - `NetworkOnly`: 敏感接口
 - `CacheOnly`: 特殊场景
-
----
 
 ## 11) 生产环境建议
 
@@ -247,8 +226,6 @@ cacheableResponse: { statuses: [0, 200] }
 4. 明确限制第三方域名。
 5. 规划更新策略。
 6. 避免缓存敏感接口。
-
----
 
 ## 12) 注册 Service Worker (Web 应用侧)
 
@@ -265,8 +242,6 @@ if ('serviceWorker' in navigator) {
 }
 ```
 
----
-
 ## 13) 调试检查清单 (v6)
 
 检查以下内容:
@@ -275,8 +250,6 @@ if ('serviceWorker' in navigator) {
 - 缓存是否创建
 - 请求是否由 Service Worker 处理
 - 构建路径是否正确
-
----
 
 ## 14) 常见问题 (v6)
 
@@ -287,8 +260,6 @@ if ('serviceWorker' in navigator) {
 3. 未处理跨域响应
 4. 未设置过期策略
 5. HTML 使用错误缓存策略
-
----
 
 ## 15) 最小 `generateSW` 配置模板
 
@@ -301,8 +272,6 @@ module.exports = {
 };
 ```
 
----
-
 ## 16) 构建脚本示例 (`package.json`)
 
 ```json
@@ -314,8 +283,6 @@ module.exports = {
 }
 ```
 
----
-
 ## 17) 迁移说明 (v6 项目参考 v7 文档)
 
 在使用 v6 项目时参考 v7 文档，应注意:
@@ -323,9 +290,3 @@ module.exports = {
 - 核对 API 是否存在
 - 避免使用新特性
 - 每次修改后进行测试
-
----
-
-## 使用说明
-
-本文可用于内部文档，可根据项目需求进行调整。
