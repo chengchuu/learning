@@ -46,7 +46,7 @@ CLI 提供两种模式:
 
 ```bash
 npm i -D workbox-cli@^6.5.4
-npm i workbox-routing@^6.5.4 workbox-strategies@^6.5.4 workbox-precaching@^6.5.4 workbox-expiration@^6.5.4 workbox-cacheable-response@^6.5.4
+npm i -D workbox-routing@^6.5.4 workbox-strategies@^6.5.4 workbox-precaching@^6.5.4 workbox-expiration@^6.5.4 workbox-cacheable-response@^6.5.4
 ```
 
 建议保持各个 Workbox 包版本一致。

@@ -1,43 +1,42 @@
 # Workbox v6 (CLI + "workbox-config.js") Practical Guide
 
-- [Workbox v6 (CLI + "workbox-config.js") Practical Guide](#workbox-v6-cli--workbox-configjs-practical-guide)
-  - [1) What is Workbox in v6?](#1-what-is-workbox-in-v6)
-  - [2) Install (v6)](#2-install-v6)
-  - [3) CLI config file basics (`workbox-config.js`)](#3-cli-config-file-basics-workbox-configjs)
-  - [4) `generateSW` mode (v6)](#4-generatesw-mode-v6)
-    - [Example `workbox-config.js` (v6, with runtime caching)](#example-workbox-configjs-v6-with-runtime-caching)
-  - [5) `skipWaiting` and `clientsClaim` explained (v6)](#5-skipwaiting-and-clientsclaim-explained-v6)
-    - [Default lifecycle (both false)](#default-lifecycle-both-false)
-    - [`skipWaiting`](#skipwaiting)
-    - [`clientsClaim`](#clientsclaim)
-    - [Recommended usage](#recommended-usage)
-  - [6) `injectManifest` mode (v6)](#6-injectmanifest-mode-v6)
-    - [`workbox-config.js` for `injectManifest`](#workbox-configjs-for-injectmanifest)
-    - [`src/sw.js` (v6-compatible example)](#srcswjs-v6-compatible-example)
-  - [7) `navigateFallback` example (v6)](#7-navigatefallback-example-v6)
-    - [Example config](#example-config)
-    - [`offline.html` sample](#offlinehtml-sample)
-  - [8) Precache vs Runtime cache (v6 best practice)](#8-precache-vs-runtime-cache-v6-best-practice)
-    - [Precache](#precache)
-    - [Runtime cache](#runtime-cache)
-    - [Can the same URL be in both?](#can-the-same-url-be-in-both)
-  - [9) Third-party domain caching in v6](#9-third-party-domain-caching-in-v6)
-  - [10) Strategy selection cheat sheet (v6)](#10-strategy-selection-cheat-sheet-v6)
-  - [11) Typical production recommendations](#11-typical-production-recommendations)
-  - [12) Register service worker (web app side)](#12-register-service-worker-web-app-side)
-  - [13) Debug checklist (v6)](#13-debug-checklist-v6)
-  - [14) Common pitfalls in v6](#14-common-pitfalls-in-v6)
-  - [15) Minimal `generateSW` config template (copy/paste)](#15-minimal-generatesw-config-template-copypaste)
-  - [16) Build script example (`package.json`)](#16-build-script-example-packagejson)
-  - [17) Final migration note (v6 project reading v7 docs)](#17-final-migration-note-v6-project-reading-v7-docs)
-  - [License / usage](#license--usage)
+- [1) What is Workbox in v6](#1-what-is-workbox-in-v6)
+- [2) Install (v6)](#2-install-v6)
+- [3) CLI config file basics (`workbox-config.js`)](#3-cli-config-file-basics-workbox-configjs)
+- [4) `generateSW` mode (v6)](#4-generatesw-mode-v6)
+  - [Example `workbox-config.js` (v6, with runtime caching)](#example-workbox-configjs-v6-with-runtime-caching)
+- [5) `skipWaiting` and `clientsClaim` explained (v6)](#5-skipwaiting-and-clientsclaim-explained-v6)
+  - [Default lifecycle (both false)](#default-lifecycle-both-false)
+  - [`skipWaiting`](#skipwaiting)
+  - [`clientsClaim`](#clientsclaim)
+  - [Recommended usage](#recommended-usage)
+- [6) `injectManifest` mode (v6)](#6-injectmanifest-mode-v6)
+  - [`workbox-config.js` for `injectManifest`](#workbox-configjs-for-injectmanifest)
+  - [`src/sw.js` (v6-compatible example)](#srcswjs-v6-compatible-example)
+- [7) `navigateFallback` example (v6)](#7-navigatefallback-example-v6)
+  - [Example config](#example-config)
+  - [`offline.html` sample](#offlinehtml-sample)
+- [8) Precache vs Runtime cache (v6 best practice)](#8-precache-vs-runtime-cache-v6-best-practice)
+  - [Precache](#precache)
+  - [Runtime cache](#runtime-cache)
+  - [Can the same URL be in both](#can-the-same-url-be-in-both)
+- [9) Third-party domain caching in v6](#9-third-party-domain-caching-in-v6)
+- [10) Strategy selection cheat sheet (v6)](#10-strategy-selection-cheat-sheet-v6)
+- [11) Typical production recommendations](#11-typical-production-recommendations)
+- [12) Register service worker (web app side)](#12-register-service-worker-web-app-side)
+- [13) Debug checklist (v6)](#13-debug-checklist-v6)
+- [14) Common pitfalls in v6](#14-common-pitfalls-in-v6)
+- [15) Minimal `generateSW` config template (copy/paste)](#15-minimal-generatesw-config-template-copypaste)
+- [16) Build script example (`package.json`)](#16-build-script-example-packagejson)
+- [17) Final migration note (v6 project reading v7 docs)](#17-final-migration-note-v6-project-reading-v7-docs)
+- [License / usage](#license--usage)
 
-> Target audience: projects using **Workbox v6.x** with **workbox-cli** and a `workbox-config.js` build file.  
+> Target audience: projects using **Workbox v6.x** with **workbox-cli** and a `workbox-config.js` build file.
 > This guide avoids v7-only wording and focuses on v6-compatible usage and patterns.
 
 ---
 
-## 1) What is Workbox in v6?
+## 1) What is Workbox in v6
 
 Workbox v6 helps you generate and maintain a Service Worker (SW) for PWA/offline caching:
 
@@ -58,8 +57,8 @@ With CLI, you typically use one of two modes:
 If you already have these, skip:
 
 ```bash
-npm i -D workbox-cli@^6.1.5
-npm i workbox-routing@^6.1.2 workbox-strategies@^6.1.2 workbox-precaching@^6.1.2 workbox-expiration@^6.1.2 workbox-cacheable-response@^6.1.2
+npm i -D workbox-cli@^6.5.4
+npm i -D workbox-routing@^6.5.4 workbox-strategies@^6.5.4 workbox-precaching@^6.5.4 workbox-expiration@^6.5.4 workbox-cacheable-response@^6.5.4
 ```
 
 > Tip: Keep Workbox package versions aligned as closely as possible in v6 projects.
@@ -172,6 +171,7 @@ These options control **how quickly a new SW version takes over**.
 ### Default lifecycle (both false)
 
 When a new SW is deployed:
+
 1. It installs and becomes **waiting**.
 2. It activates later (usually when old controlled tabs are closed/reloaded).
 
@@ -355,6 +355,7 @@ module.exports = {
 ```
 
 > Notes:
+>
 > - `navigateFallback` does **not** apply to API/script/image requests.
 > - It only applies to navigation requests.
 > - If network is fine and routes are reachable, normal pages should load instead of fallback.
@@ -364,19 +365,22 @@ module.exports = {
 ## 8) Precache vs Runtime cache (v6 best practice)
 
 ### Precache
+
 - For build assets you control and version.
 - Typical: `index.html`, hashed JS/CSS, app icons, local fonts.
 
 ### Runtime cache
+
 - For dynamic or external resources.
 - Typical: API responses, CDN files, user images.
 
-### Can the same URL be in both?
+### Can the same URL be in both
+
 - It may still function, but avoid this overlap.
 - Usually precache route wins for precached URL matches.
 - Overlap can waste storage and complicate debugging.
 
-**Rule of thumb**:  
+**Rule of thumb**:
 Do not intentionally cache the same URL in both precache and runtime routes.
 
 ---
@@ -409,15 +413,15 @@ cacheableResponse: { statuses: [0, 200] }
 
 ## 10) Strategy selection cheat sheet (v6)
 
-- `CacheFirst`  
+- `CacheFirst`
   Best for hashed static assets, fonts, stable images.
-- `NetworkFirst`  
+- `NetworkFirst`
   Best for HTML/API needing freshness.
-- `StaleWhileRevalidate`  
+- `StaleWhileRevalidate`
   Best for UX speed with eventual freshness (common default).
-- `NetworkOnly`  
+- `NetworkOnly`
   Auth/session/sensitive endpoints.
-- `CacheOnly`  
+- `CacheOnly`
   Rare, special controlled scenarios.
 
 ---
