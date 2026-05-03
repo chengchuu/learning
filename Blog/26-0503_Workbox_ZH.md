@@ -55,7 +55,7 @@ npm i workbox-routing@^6.5.4 workbox-strategies@^6.5.4 workbox-precaching@^6.5.4
 
 在项目根目录创建配置文件:
 
-```js
+```javascript
 module.exports = {
   globDirectory: 'dist/',
   globPatterns: [
@@ -77,7 +77,7 @@ npx workbox generateSW workbox-config.js
 
 ### 示例 `workbox-config.js` (v6，包含运行时缓存)
 
-```js
+```javascript
 module.exports = {
   globDirectory: 'dist/',
   globPatterns: [
@@ -141,7 +141,7 @@ module.exports = {
 
 配置示例:
 
-```js
+```javascript
 module.exports = {
   globDirectory: 'dist/',
   globPatterns: ['**/*.{html,js,css,png,jpg,jpeg,svg,webp,woff,woff2}'],
@@ -156,7 +156,7 @@ module.exports = {
 
 示例:
 
-```js
+```javascript
 module.exports = {
   globDirectory: 'dist/',
   globPatterns: ['**/*.{html,js,css,png,jpg,jpeg,svg,webp,woff,woff2}'],
@@ -198,13 +198,13 @@ module.exports = {
 
 示例:
 
-```js
+```javascript
 ({url}) => url.origin === 'https://cdn.example.com'
 ```
 
 对于跨域响应，应包含状态码 `0`:
 
-```js
+```javascript
 cacheableResponse: { statuses: [0, 200] }
 ```
 
@@ -229,7 +229,7 @@ cacheableResponse: { statuses: [0, 200] }
 
 ## 12) 注册 Service Worker (Web 应用侧)
 
-```js
+```javascript
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
@@ -263,7 +263,7 @@ if ('serviceWorker' in navigator) {
 
 ## 15) 最小 `generateSW` 配置模板
 
-```js
+```javascript
 module.exports = {
   globDirectory: 'dist/',
   globPatterns: ['**/*.{html,js,css,svg,png,jpg,jpeg,woff2}'],
