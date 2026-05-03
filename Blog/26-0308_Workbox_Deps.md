@@ -57,7 +57,7 @@ Workbox 是多包仓库。发布新版本时，只有发生变更的包才会升
 该方案可获得部分子包的后续更新收益。考虑到 `workbox-cacheable-response` 未发布 6.6.0，建议版本如下:
 
 | 依赖包 | 建议版本 |
-|---|---|
+| --- | --- |
 | workbox-cacheable-response | 6.5.4 |
 | workbox-cli | 6.6.0 |
 | workbox-expiration | 6.6.0 |
