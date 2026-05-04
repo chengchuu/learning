@@ -1,4 +1,6 @@
-# Workbox v6 (CLI + `workbox-config.js`) 实用指南
+# [ZH] Workbox v6 (CLI + `workbox-config.js`) 实用指南
+
+![Workbox](http://blog.mazey.net/wp-content/uploads/2026/04/Workbox_SF_s7x3.jpg)
 
 本文介绍 Workbox v6 在 CLI 环境中的使用方法，涵盖 generateSW 与 injectManifest 两种模式，说明缓存策略、运行时缓存与预缓存机制，以及 skipWaiting 和 clientsClaim 的更新行为，并提供配置示例与生产实践建议。
 
@@ -287,3 +289,14 @@ module.exports = {
 - 核对 API 是否存在。
 - 避免使用新特性。
 - 每次修改后进行测试。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <http://blog.mazey.net/6365.html>
+
+<!-- ID: 26-0503_Workbox_ZH -->
+
+(完)

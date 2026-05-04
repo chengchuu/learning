@@ -1,6 +1,6 @@
 # Workbox v6 版本分布与升级建议 (基于 npm 发布数据)
 
-![Workbox](http://blog.mazey.net/wp-content/uploads/2025/11/PWA_SF_7x3.jpg)
+![Workbox](http://blog.mazey.net/wp-content/uploads/2026/04/Workbox_SF_s7x3.jpg)
 
 本文围绕 Workbox v6 发布数据，梳理 6.5.4 与 6.6.0 的版本分布，说明多包仓库按变更发布机制，给出保守统一与按子包对齐两种升级路径，并提供依赖更新、SW 产物重建和回归验证清单，提升维护稳定性。
 
@@ -103,5 +103,7 @@ Workbox 属于多子包协同体系，常在同一 SW 流程内共同生效。�
 
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/6221.html>
+
+<!-- ID: 26-0308_Workbox_Deps -->
 
 (完)
