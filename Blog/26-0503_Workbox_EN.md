@@ -1,4 +1,8 @@
-# Workbox v6 (CLI + "workbox-config.js") Practical Guide
+# [EN] Workbox v6 (CLI + "workbox-config.js") Practical Guide
+
+![Workbox](http://blog.mazey.net/wp-content/uploads/2026/04/Workbox_SF_s7x3.jpg)
+
+Target audience: projects using Workbox v6.x with workbox-cli and a `workbox-config.js` build file. This guide avoids v7-only wording and focuses on v6-compatible usage and patterns.
 
 - [1) What is Workbox in v6](#1-what-is-workbox-in-v6)
 - [2) Install (v6)](#2-install-v6)
@@ -30,11 +34,6 @@
 - [16) Build script example (`package.json`)](#16-build-script-example-packagejson)
 - [17) Final migration note (v6 project reading v7 docs)](#17-final-migration-note-v6-project-reading-v7-docs)
 - [License / usage](#license--usage)
-
-> Target audience: projects using **Workbox v6.x** with **workbox-cli** and a `workbox-config.js` build file.
-> This guide avoids v7-only wording and focuses on v6-compatible usage and patterns.
-
----
 
 ## 1) What is Workbox in v6
 
@@ -543,3 +542,14 @@ If you read v7 docs while staying on v6:
 ## License / usage
 
 Feel free to copy this article into your internal docs and adapt per project.
+
+**Copyright Notice**
+
+This article is an original work. The author reserves all rights. If you wish to republish, please retain the full content of this article and include a hyperlink referencing both the author and the source.
+
+Author: [Cheng](https://github.com/chengchuu)
+Source: <http://blog.mazey.net/6369.html>
+
+<!-- ID: 26-0503_Workbox_EN -->
+
+(The End)
