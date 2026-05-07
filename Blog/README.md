@@ -1,17 +1,25 @@
 <!-- omit from toc -->
 # Blog
 
+## Content Notice
+
 **内容声明**
 
 本文仅用于技术分享和学习交流，内容不包含任何广告、推广、引流、付费课程或外链信息。所有示例和配置均为技术实践，欢迎参考和自定义。
 
 ---
 
+## Update Record
+
 **更新记录**
 
 本文首次编辑于 <Date>，最近更新于 <Date>。
 
+---
+
 本文首次编辑于 <Date>，最近更新于 <Date>。项目代码在 Node.js <Version>.x 上已测试可稳定运行。
+
+## Copyright Notice
 
 **版权声明**
 
@@ -23,6 +31,8 @@
 <!-- ID: ARTICLE_ID -->
 
 (完)
+
+---
 
 **Copyright Notice**
 
