@@ -181,6 +181,6 @@ npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试。
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/5611.html>
 
-<!-- ID: 22-0303_Git_Command -->
+<!-- ID: 22-0303-Git-Command -->
 
 (完)
