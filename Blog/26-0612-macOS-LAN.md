@@ -189,6 +189,6 @@ enhanced-mode = fake-ip
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/6434.html>
 
-<!-- ID: 26-0512-macOS-LAN -->
+<!-- ID: 26-0612-macOS-LAN -->
 
 (完)
