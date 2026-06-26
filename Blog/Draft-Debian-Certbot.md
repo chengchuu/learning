@@ -33,10 +33,10 @@ Certbot 是一个用于管理 HTTPS 证书的工具。它由 Let's Encrypt 提�
 
 Certbot 支持多种验证方式，例如:
 
-* standalone 模式
-* webroot 模式
-* Nginx 模式
-* Apache 模式
+- standalone 模式
+- webroot 模式
+- Nginx 模式
+- Apache 模式
 
 本文以 Debian 系统为例，介绍 Certbot 的安装和常用操作。
 
@@ -125,9 +125,9 @@ Certbot 临时服务
 
 注意:
 
-* 域名必须正确解析到服务器。
-* TCP 80 端口必须空闲。
-* Nginx、Docker 或 Apache 可能占用端口。
+- 域名必须正确解析到服务器。
+- TCP 80 端口必须空闲。
+- Nginx、Docker 或 Apache 可能占用端口。
 
 检查端口占用情况:
 
@@ -170,9 +170,9 @@ sudo certbot --nginx -d example.com
 
 此模式会自动完成以下操作:
 
-* 创建证书
-* 修改 Nginx 配置
-* 重载 Nginx
+- 创建证书
+- 修改 Nginx 配置
+- 重载 Nginx
 
 ## 查看证书状态
 
@@ -196,11 +196,11 @@ Private Key Path: /etc/letsencrypt/live/example.com/privkey.pem
 
 输出内容说明:
 
-* Certificate Name: 证书名称
-* Domains: 域名列表
-* Expiry Date: 过期时间
-* Certificate Path: 证书文件路径
-* Private Key Path: 私钥文件路径
+- Certificate Name: 证书名称
+- Domains: 域名列表
+- Expiry Date: 过期时间
+- Certificate Path: 证书文件路径
+- Private Key Path: 私钥文件路径
 
 ### 查看证书文件目录
 
@@ -220,9 +220,9 @@ Certbot 默认保存到:
 
 目录说明:
 
-* live: 当前使用的证书软链接
-* archive: 历史证书文件
-* renewal: 自动续约配置
+- live: 当前使用的证书软链接
+- archive: 历史证书文件
+- renewal: 自动续约配置
 
 ## 续约证书
 
