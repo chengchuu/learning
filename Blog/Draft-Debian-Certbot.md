@@ -40,9 +40,9 @@
 
 ## 概述
 
-Certbot 是一个 ACME (Automated Certificate Management Environment，自动证书管理环境) 客户端。它可以申请、部署、续约和撤销 HTTPS 证书。
+Certbot 是一个 ACME (Automated Certificate Management Environment，自动证书管理环境) 客户端。他可以申请、部署、续约和撤销 HTTPS 证书。
 
-Certbot 通常用于申请 Let's Encrypt 证书。它支持以下验证方式:
+Certbot 通常用于申请 Let's Encrypt 证书。他支持以下验证方式:
 
 - `standalone`
 - `webroot`
@@ -536,7 +536,7 @@ sudo certbot renew \
   --run-deploy-hooks
 ```
 
-测试成功时，Certbot 会使用当前正式证书执行 `deploy-hook`。它不会部署测试环境生成的临时证书。
+测试成功时，Certbot 会使用当前正式证书执行 `deploy-hook`。他不会部署测试环境生成的临时证书。
 
 ## 管理自动续约
 
