@@ -149,24 +149,9 @@ Nginx、Apache 或 Docker 容器可能占用该端口。
 
 ### 使用 webroot 模式
 
-`webroot` 模式通过现有 Web 服务提供验证文件。该模式不需要停止 Nginx 或 Apache。
+`webroot` 模式通过现有 Web 服务提供验证文件。他不需要停止 Nginx 或 Apache。
 
-假设网站根目录为:
-
-```text
-/var/www/html
-```
-
-申请证书:
-
-```bash
-sudo certbot certonly \
-  --webroot \
-  --webroot-path /var/www/html \
-  -d example.com
-```
-
-也可以使用 `-w` 作为简写:
+指定网站根目录并申请证书:
 
 ```bash
 sudo certbot certonly \
@@ -175,30 +160,7 @@ sudo certbot certonly \
   -d example.com
 ```
 
-Certbot 会在以下目录创建临时验证文件:
-
-```text
-/var/www/html/.well-known/acme-challenge/
-```
-
-外部网络必须能够访问该目录中的文件。
-
-使用 Nginx 时，可以增加以下配置:
-
-```nginx
-location ^~ /.well-known/acme-challenge/ {
-    root /var/www/html;
-    default_type text/plain;
-    try_files $uri =404;
-}
-```
-
-修改配置后，执行检查和重载:
-
-```bash
-sudo nginx -t
-sudo systemctl reload nginx
-```
+外部网络必须能够访问 `/.well-known/acme-challenge/` 路径。
 
 ### 使用 Nginx 插件
 
@@ -210,25 +172,11 @@ sudo certbot --nginx \
   -d www.example.com
 ```
 
-如果只申请证书，不修改 Nginx 配置，可以执行:
-
-```bash
-sudo certbot certonly --nginx \
-  -d example.com \
-  -d www.example.com
-```
-
-执行自动配置前，建议先检查 Nginx 配置:
-
-```bash
-sudo nginx -t
-```
+使用前需要安装 `python3-certbot-nginx`，并确保 Nginx 配置检查通过。
 
 ### 申请通配符证书
 
-通配符证书必须使用 DNS 验证。
-
-以下命令使用手动 DNS 验证:
+通配符证书必须使用 DNS 验证:
 
 ```bash
 sudo certbot certonly \
@@ -238,9 +186,7 @@ sudo certbot certonly \
   -d '*.example.com'
 ```
 
-Certbot 会要求用户创建一条 DNS `TXT` 记录。
-
-手动 DNS 验证无法直接实现无人值守续约。生产环境应优先使用对应 DNS 服务商的 Certbot 插件。
+Certbot 会要求用户创建 DNS `TXT` 记录。手动 DNS 验证不适合无人值守续约。
 
 ## 配置和验证证书
 
