@@ -474,10 +474,25 @@ Certbot 会自动执行以下目录中的可执行文件:
 /etc/letsencrypt/renewal-hooks/post/
 ```
 
+Hook 脚本统一使用 `.sh` 后缀。该后缀可以明确表示文件类型，也便于编辑器识别 Shell 语法。
+
+脚本名称中的 `10-` 和 `90-` 用于控制执行顺序。Certbot 会按照文件名的字节顺序，执行同一个 Hook 目录中的脚本。
+
+例如，以下脚本的执行顺序为:
+
+```text
+10-stop-nginx.sh
+20-stop-other-service.sh
+90-write-log.sh
+```
+
+`pre`、`deploy` 和 `post` 是相互独立的目录。文件名排序只影响同一个目录中的执行顺序。
+
 创建 standalone 模式的 Docker Compose 停止脚本:
 
 ```bash
-sudo nano /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx
+sudo nano \
+  /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx.sh
 ```
 
 写入以下内容:
@@ -494,7 +509,8 @@ set -eu
 创建恢复脚本:
 
 ```bash
-sudo nano /etc/letsencrypt/renewal-hooks/post/90-start-nginx
+sudo nano \
+  /etc/letsencrypt/renewal-hooks/post/90-start-nginx.sh
 ```
 
 写入以下内容:
@@ -508,12 +524,20 @@ set -eu
   start nginx
 ```
 
-授予执行权限:
+授予脚本执行权限:
 
 ```bash
 sudo chmod +x \
-  /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx \
-  /etc/letsencrypt/renewal-hooks/post/90-start-nginx
+  /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx.sh \
+  /etc/letsencrypt/renewal-hooks/post/90-start-nginx.sh
+```
+
+检查脚本权限:
+
+```bash
+sudo ls -l \
+  /etc/letsencrypt/renewal-hooks/pre/ \
+  /etc/letsencrypt/renewal-hooks/post/
 ```
 
 确认 Docker 的实际路径:
@@ -813,6 +837,8 @@ Debian 可以通过 APT 安装 Certbot 及其 Web 服务插件。
 `standalone` 模式适合没有 Web 服务的服务器。该模式也适合可以短暂停止反向代理的场景。
 
 Docker 容器占用 TCP 80 时，可以使用 Hook 停止并恢复指定服务。Hook 应使用 Compose 文件的绝对路径。
+
+Hook 脚本应使用 `.sh` 后缀，并通过数字前缀控制执行顺序。
 
 完成配置后，应检查 `certbot.timer`，并执行以下测试:
 
