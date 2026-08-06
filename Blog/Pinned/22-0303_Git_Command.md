@@ -4,19 +4,18 @@
 
 整理常用 Git 命令与配置技巧，涵盖基础操作、缓存清理、权限设置、分支管理、远程仓库、提交信息、标签创建及批量拉取代码，支持多平台 SSH 配置、CI / CD 部署及 npm 本地调试，便于高效开发与协作。
 
-- [Git 常用命令记录](#git-常用命令记录)
-  - [安装 Install](#安装-install)
-  - [基础 Basic](#基础-basic)
-  - [配置 Config](#配置-config)
-  - [权限 Access Credential](#权限-access-credential)
-  - [缓存 Cache](#缓存-cache)
-  - [仓库地址 Remote Repository](#仓库地址-remote-repository)
-  - [分支 Branch](#分支-branch)
-  - [提交 Commit](#提交-commit)
-  - [标签 Tag](#标签-tag)
-  - [拉取 Pull](#拉取-pull)
-  - [开发 Development](#开发-development)
-  - [极狐 GitLab](#极狐-gitlab)
+- [安装 Install](#安装-install)
+- [基础 Basic](#基础-basic)
+- [配置 Config](#配置-config)
+- [权限 Access Credential](#权限-access-credential)
+- [缓存 Cache](#缓存-cache)
+- [仓库地址 Remote Repository](#仓库地址-remote-repository)
+- [分支 Branch](#分支-branch)
+- [提交 Commit](#提交-commit)
+- [标签 Tag](#标签-tag)
+- [拉取 Pull](#拉取-pull)
+- [开发 Development](#开发-development)
+- [极狐 GitLab](#极狐-gitlab)
 
 ## 安装 Install
 
@@ -79,8 +78,16 @@ git config user.email "<UserName>@<DomainName>"
 
 添加 SSH Keys 到远程平台:
 
+ED25519 (推荐):
+
 ```bash
-cd ~ && ssh-keygen -t rsa -C "<UserName>@<DomainName>" && cd ~/.ssh && cat id_rsa.pub
+cd ~ && ssh-keygen -t ed25519 -C "USERNAME@DOMAIN.COM" && cd ~/.ssh && cat id_ed25519.pub
+```
+
+RSA:
+
+```bash
+cd ~ && ssh-keygen -t rsa -C "USERNAME@DOMAIN.COM" && cd ~/.ssh && cat id_rsa.pub
 ```
 
 参考: [GitHub / Gitee 等托管平台添加 SSH Keys](http://blog.mazey.net/2628.html)

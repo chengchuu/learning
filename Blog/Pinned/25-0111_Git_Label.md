@@ -4,17 +4,16 @@
 
 在进行项目协作时，合理使用 Git 平台的 Pull Request 与 Issue 标签 (Label)，能大幅提升管理效率和协作体验。本文整理了一些主流标签及其说明、所属分类及颜色，供参考和查询。
 
-- [Git 平台常见 PR \& Issue 标签及用途说明](#git-平台常见-pr--issue-标签及用途说明)
-  - [标签分类](#标签分类)
-  - [技能标签](#技能标签)
-  - [项目标签](#项目标签)
-  - [实践建议](#实践建议)
-  - [示例应用](#示例应用)
+- [标签分类](#标签分类)
+- [技能标签](#技能标签)
+- [项目标签](#项目标签)
+- [实践建议](#实践建议)
+- [示例应用](#示例应用)
 
 ## 标签分类
 
 | Label Name           | Description                                   | Category          | Color       |
-|----------------------|-----------------------------------------------|-------------------|-------------|
+|:---------------------|:----------------------------------------------|:------------------|:------------|
 | `bug`                | 功能异常或出现错误 / Something is not working   | Categories        | `#d73a4a`   |
 | `dependencies`       | 更新依赖文件相关的 PR / Updates dependency file | Categories        | `#0366d6`   |
 | `enhancement`        | 新功能或需求请求 / New feature or request       | Categories        | `#84b6eb`   |
@@ -52,7 +51,7 @@
 ## 技能标签
 
 | Label Name     | Description                     | Color       |
-|----------------|---------------------------------|-------------|
+|:---------------|:--------------------------------|:------------|
 | `go`           | Go language related             | `#00ADD8`   |
 | `javascript`   | JavaScript language related     | `#f1e05a`   |
 | `typescript`   | TypeScript language related     | `#3178c6`   |
@@ -62,6 +61,7 @@
 | `css`          | CSS related                     | `#663399`   |
 | `nginx`        | Nginx related                   | `#009639`   |
 | `sql`          | SQL language related            | `#e38c00`   |
+| `PowerShell`   | PowerShell related              | `#012456`   |
 | `php`          | PHP language related            | `#4F5D95`   |
 | `python`       | Python language related         | `#3572A5`   |
 | `java`         | Java language related           | `#b07219`   |
@@ -81,7 +81,7 @@
 ## 项目标签
 
 | Label Name     | Description                     | Color       |
-|----------------|---------------------------------|-------------|
+|:---------------|:--------------------------------|:------------|
 | `web`          | Web related                     | `#c5def5`   |
 | `api`          | API related                     | `#5319e7`   |
 | `mobile`       | Mobile related                  | `#f4f1bb`   |
