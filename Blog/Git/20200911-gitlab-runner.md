@@ -4,11 +4,10 @@
 
 通过为 GitLab Runner 与 Job 设置相同的 Tags，可将任务绑定到指定 Runner，确保脚本在预期环境运行。配置方式包括在 Runner 设置中添加 Tags，并在 .gitlab-ci.yml 的对应 Job 中声明相同标签，从而实现更明确的构建资源分配与管理。
 
-- [GitLab 指定 Runner 执行任务 (CI/CD/JOB)](#gitlab-指定-runner-执行任务-cicdjob)
-  - [前言](#前言)
-  - [为 Runner 添加 Tags](#为-runner-添加-tags)
-  - [为 GitLab Job 添加 Tags](#为-gitlab-job-添加-tags)
-  - [总结](#总结)
+- [前言](#前言)
+- [为 Runner 添加 Tags](#为-runner-添加-tags)
+- [为 GitLab Job 添加 Tags](#为-gitlab-job-添加-tags)
+- [总结](#总结)
 
 ## 前言
 
@@ -68,6 +67,6 @@ publish-prd:
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <http://blog.mazey.net/1744.html>
+原文: <https://blog.mazey.net/5992.html>
 
 (完)

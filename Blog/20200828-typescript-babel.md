@@ -4,12 +4,11 @@
 
 使用 ts-loader 在构建打包生产代码时面对重重问题，比如 Polyfill 的自动注入等，于是转变为用 Babel 来编译 TypeScript。
 
-- [使用 Babel 编译 TypeScript](#使用-babel-编译-typescript)
-  - [安装 Babel](#安装-babel)
-  - [配置 `babel.config.js`](#配置-babelconfigjs)
-  - [修改 webpack 配置](#修改-webpack-配置)
-  - [配置 TypeScript 环境](#配置-typescript-环境)
-  - [附录](#附录)
+- [安装 Babel](#安装-babel)
+- [配置 `babel.config.js`](#配置-babelconfigjs)
+- [修改 webpack 配置](#修改-webpack-配置)
+- [配置 TypeScript 环境](#配置-typescript-环境)
+- [附录](#附录)
 
 ## 安装 Babel
 
@@ -157,6 +156,6 @@ npm install typescript -D
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <http://blog.mazey.net/1722.html>
+原文: <http://blog.mazey.net/5983.html>
 
 (完)

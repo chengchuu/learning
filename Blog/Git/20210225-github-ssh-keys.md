@@ -4,9 +4,8 @@
 
 本文介绍了生成和添加 SSH Key 的步骤。首先，通过 ssh-keygen 命令生成 SSH Key。然后，进入 .ssh 目录，使用 cat id_rsa.pub 查看并复制公钥，最后将其添加到所需平台。
 
-- [GitHub/Gitee 等托管平台添加 SSH Key](#githubgitee-等托管平台添加-ssh-key)
-  - [生成 SSH Key](#生成-ssh-key)
-  - [添加到平台](#添加到平台)
+- [生成 SSH Key](#生成-ssh-key)
+- [添加到平台](#添加到平台)
 
 ## 生成 SSH Key
 
@@ -46,6 +45,6 @@ cat id_rsa.pub
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <http://blog.mazey.net/2628.html>
+原文: <https://blog.mazey.net/2628.html>
 
 (完)
