@@ -1,6 +1,6 @@
 # Workbox v6 版本分布与升级建议 (基于 npm 发布数据)
 
-![Workbox](http://blog.mazey.net/wp-content/uploads/2025/11/PWA_SF_7x3.jpg)
+![Workbox](http://blog.mazey.net/wp-content/uploads/2026/04/Workbox_SF_s7x3.jpg)
 
 本文围绕 Workbox v6 发布数据，梳理 6.5.4 与 6.6.0 的版本分布，说明多包仓库按变更发布机制，给出保守统一与按子包对齐两种升级路径，并提供依赖更新、SW 产物重建和回归验证清单，提升维护稳定性。
 
@@ -27,7 +27,7 @@ v6 的高频使用版本集中在 6.5.4 和 6.6.0。  本文基于已统计数�
 ### 已提供的数据
 
 | 依赖包 | 版本 | 下载量 | 发布时间 |
-|:---|---:|---:|:---|
+| :--- | ---: | ---: | :--- |
 | workbox-cacheable-response | 6.5.4 | 980,381 | 4 年前 |
 | workbox-cli | 6.6.0 | 3,677 | 3 年前 |
 | workbox-cli | 6.5.4 | 6,431 | 4 年前 |
@@ -57,7 +57,7 @@ Workbox 是多包仓库。发布新版本时，只有发生变更的包才会升
 该方案可获得部分子包的后续更新收益。考虑到 `workbox-cacheable-response` 未发布 6.6.0，建议版本如下:
 
 | 依赖包 | 建议版本 |
-|---|---|
+| --- | --- |
 | workbox-cacheable-response | 6.5.4 |
 | workbox-cli | 6.6.0 |
 | workbox-expiration | 6.6.0 |
@@ -103,5 +103,7 @@ Workbox 属于多子包协同体系，常在同一 SW 流程内共同生效。�
 
 作者: [除除](https://github.com/chengchuu)
 原文: <http://blog.mazey.net/6221.html>
+
+<!-- ID: 26-0308_Workbox_Deps -->
 
 (完)
