@@ -33,7 +33,7 @@ Linux 搭建 Git 服务器及后续更新:
 ```bash
 git status                  # 查看当前仓库状态 (变更、未暂存、未提交等)
 git add .                   # 添加所有变更到暂存区
-git commit -m "[Message]"   # 提交到本地仓库
+git commit -m "Your-Message"   # 提交到本地仓库
 git push                    # 推送到远程仓库
 git pull                    # 拉取远程仓库最新代码
 git log                     # 查看提交历史
@@ -58,15 +58,15 @@ git config user.name
 git config user.email
 
 # 修改
-git config --global user.name "[UserName]"
-git config --global user.email "[UserName]@[DomainName]"
+git config --global user.name "Your-Username"
+git config --global user.email "Your-Username@Example.COM"
 ```
 
 针对不同项目修改用户名和邮箱:
 
 ```bash
-git config user.name "[UserName]"
-git config user.email "[UserName]@[DomainName]"
+git config user.name "Your-Username"
+git config user.email "Your-Username@Example.COM"
 ```
 
 参考:
@@ -81,13 +81,13 @@ git config user.email "[UserName]@[DomainName]"
 ED25519 (推荐):
 
 ```bash
-cd ~ && ssh-keygen -t ed25519 -C "USERNAME@DOMAIN.COM" && cd ~/.ssh && cat id_ed25519.pub
+cd ~ && ssh-keygen -t ed25519 -C "Your-Username@Example.COM" && cd ~/.ssh && cat id_ed25519.pub
 ```
 
 RSA:
 
 ```bash
-cd ~ && ssh-keygen -t rsa -C "USERNAME@DOMAIN.COM" && cd ~/.ssh && cat id_rsa.pub
+cd ~ && ssh-keygen -t rsa -C "Your-Username@Example.COM" && cd ~/.ssh && cat id_rsa.pub
 ```
 
 参考: [GitHub / Gitee 等托管平台添加 SSH Keys](http://blog.mazey.net/2628.html)
@@ -107,7 +107,7 @@ git rm -r --cached . && git add . && git commit -m "chore: clean cache" && git p
 修改远程仓库地址:
 
 ```bash
-git remote set-url origin [URL]
+git remote set-url origin Your-New-URL
 ```
 
 参考: [Git 修改远程地址](http://blog.mazey.net/2631.html)
@@ -117,8 +117,8 @@ git remote set-url origin [URL]
 删除本地和远程分支:
 
 ```bash
-git branch -d [BranchName]
-git push origin --delete [BranchName]
+git branch -d Your-Branch
+git push origin --delete Your-Branch
 ```
 
 参考: [Git 删除本地和远程分支](http://blog.mazey.net/1617.html)
@@ -135,7 +135,7 @@ git commit --amend
 
 ```bash
 git rev-list --max-parents=0 HEAD
-git show [Commit]
+git show Your-Commit-Hash
 ```
 
 参考:
@@ -179,7 +179,7 @@ npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试。
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <http://blog.mazey.net/5611.html>
+原文: <https://blog.mazey.net/5611.html>
 
 <!-- ID: 22-0303-Git-Command -->
 
