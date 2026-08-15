@@ -170,7 +170,7 @@ npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试。
 
 参考:
 
-- [GitLab 指定 Runner 执行任务 (CI / CD / JOB)](http://blog.mazey.net/1744.html)
+- [GitLab 指定 Runner 执行任务 (CI / CD / JOB)](http://blog.mazey.net/5992.html)
 - [Webpack 多页面 & GitLab 增量构建部署模板](http://blog.mazey.net/1706.html)
 - [使用 GitLab CI / CD 和阿里云 CLI 自动部署前端项目](http://blog.mazey.net/1695.html)
 

@@ -1,6 +1,10 @@
 <!-- omit from toc -->
 # Blog
 
+- [Content Notice](#content-notice)
+- [Update Record](#update-record)
+- [Copyright Notice](#copyright-notice)
+
 ## Content Notice
 
 **内容声明**

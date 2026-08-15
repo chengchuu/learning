@@ -1,4 +1,20 @@
-# Debian 安装与使用 `Certbot`
+# Debian 安装与使用 Certbot
+
+![Debian 安装与使用 Certbot](http://blog.mazey.net/wp-content/uploads/2023/06/Debian_SF_7x3.jpg)
+
+介绍 Debian 环境下 Certbot 的安装、HTTPS 证书申请、Nginx 配置、续约与撤销流程，并涵盖 standalone、webroot、Hook、systemd 定时器及 Docker Compose 端口冲突排查，帮助建立稳定的证书自动化管理方案。
+
+```plain
+#Certbot
+#LetsEncrypt
+#Debian
+#HTTPS
+#SSL
+#TLS
+#Nginx
+#DockerCompose
+#DevOps
+```
 
 - [概述](#概述)
 - [前置条件](#前置条件)
@@ -149,24 +165,9 @@ Nginx、Apache 或 Docker 容器可能占用该端口。
 
 ### 使用 webroot 模式
 
-`webroot` 模式通过现有 Web 服务提供验证文件。该模式不需要停止 Nginx 或 Apache。
+`webroot` 模式通过现有 Web 服务提供验证文件。他不需要停止 Nginx 或 Apache。
 
-假设网站根目录为:
-
-```text
-/var/www/html
-```
-
-申请证书:
-
-```bash
-sudo certbot certonly \
-  --webroot \
-  --webroot-path /var/www/html \
-  -d example.com
-```
-
-也可以使用 `-w` 作为简写:
+指定网站根目录并申请证书:
 
 ```bash
 sudo certbot certonly \
@@ -175,30 +176,7 @@ sudo certbot certonly \
   -d example.com
 ```
 
-Certbot 会在以下目录创建临时验证文件:
-
-```text
-/var/www/html/.well-known/acme-challenge/
-```
-
-外部网络必须能够访问该目录中的文件。
-
-使用 Nginx 时，可以增加以下配置:
-
-```nginx
-location ^~ /.well-known/acme-challenge/ {
-    root /var/www/html;
-    default_type text/plain;
-    try_files $uri =404;
-}
-```
-
-修改配置后，执行检查和重载:
-
-```bash
-sudo nginx -t
-sudo systemctl reload nginx
-```
+外部网络必须能够访问 `/.well-known/acme-challenge/` 路径。
 
 ### 使用 Nginx 插件
 
@@ -210,25 +188,11 @@ sudo certbot --nginx \
   -d www.example.com
 ```
 
-如果只申请证书，不修改 Nginx 配置，可以执行:
-
-```bash
-sudo certbot certonly --nginx \
-  -d example.com \
-  -d www.example.com
-```
-
-执行自动配置前，建议先检查 Nginx 配置:
-
-```bash
-sudo nginx -t
-```
+使用前需要安装 `python3-certbot-nginx`，并确保 Nginx 配置检查通过。
 
 ### 申请通配符证书
 
-通配符证书必须使用 DNS 验证。
-
-以下命令使用手动 DNS 验证:
+通配符证书必须使用 DNS 验证:
 
 ```bash
 sudo certbot certonly \
@@ -238,9 +202,7 @@ sudo certbot certonly \
   -d '*.example.com'
 ```
 
-Certbot 会要求用户创建一条 DNS `TXT` 记录。
-
-手动 DNS 验证无法直接实现无人值守续约。生产环境应优先使用对应 DNS 服务商的 Certbot 插件。
+Certbot 会要求用户创建 DNS `TXT` 记录。手动 DNS 验证不适合无人值守续约。
 
 ## 配置和验证证书
 
@@ -248,7 +210,7 @@ Certbot 会要求用户创建一条 DNS `TXT` 记录。
 
 Certbot 默认将证书保存在以下目录:
 
-```text
+```plain
 /etc/letsencrypt/live/example.com/
 ```
 
@@ -321,7 +283,7 @@ sudo certbot certificates
 
 示例输出:
 
-```text
+```plain
 Certificate Name: example.com
 Domains: example.com www.example.com
 Expiry Date: 2026-09-20 08:00:00+00:00
@@ -360,7 +322,7 @@ sudo certbot renew --dry-run
 
 测试成功时，会出现类似输出:
 
-```text
+```plain
 Congratulations, all simulated renewals succeeded
 ```
 
@@ -411,7 +373,7 @@ Certbot 会先通过测试环境验证新配置。验证成功后，新配置会
 
 不建议直接编辑以下文件:
 
-```text
+```plain
 /etc/letsencrypt/renewal/example.com.conf
 ```
 
@@ -468,16 +430,31 @@ sudo certbot renew \
 
 Certbot 会自动执行以下目录中的可执行文件:
 
-```text
+```plain
 /etc/letsencrypt/renewal-hooks/pre/
 /etc/letsencrypt/renewal-hooks/deploy/
 /etc/letsencrypt/renewal-hooks/post/
 ```
 
+Hook 脚本统一使用 `.sh` 后缀。该后缀可以明确表示文件类型，也便于编辑器识别 Shell 语法。
+
+脚本名称中的 `10-` 和 `90-` 用于控制执行顺序。Certbot 会按照文件名的字节顺序，执行同一个 Hook 目录中的脚本。
+
+例如，以下脚本的执行顺序为:
+
+```plain
+10-stop-nginx.sh
+20-stop-other-service.sh
+90-write-log.sh
+```
+
+`pre`、`deploy` 和 `post` 是相互独立的目录。文件名排序只影响同一个目录中的执行顺序。
+
 创建 standalone 模式的 Docker Compose 停止脚本:
 
 ```bash
-sudo nano /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx
+sudo nano \
+  /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx.sh
 ```
 
 写入以下内容:
@@ -494,7 +471,8 @@ set -eu
 创建恢复脚本:
 
 ```bash
-sudo nano /etc/letsencrypt/renewal-hooks/post/90-start-nginx
+sudo nano \
+  /etc/letsencrypt/renewal-hooks/post/90-start-nginx.sh
 ```
 
 写入以下内容:
@@ -508,12 +486,20 @@ set -eu
   start nginx
 ```
 
-授予执行权限:
+授予脚本执行权限:
 
 ```bash
 sudo chmod +x \
-  /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx \
-  /etc/letsencrypt/renewal-hooks/post/90-start-nginx
+  /etc/letsencrypt/renewal-hooks/pre/10-stop-nginx.sh \
+  /etc/letsencrypt/renewal-hooks/post/90-start-nginx.sh
+```
+
+检查脚本权限:
+
+```bash
+sudo ls -l \
+  /etc/letsencrypt/renewal-hooks/pre/ \
+  /etc/letsencrypt/renewal-hooks/post/
 ```
 
 确认 Docker 的实际路径:
@@ -564,7 +550,7 @@ sudo systemctl enable --now certbot.timer
 
 正常运行时，状态通常为:
 
-```text
+```plain
 Active: active (waiting)
 ```
 
@@ -572,7 +558,7 @@ Active: active (waiting)
 
 定时器会触发以下服务:
 
-```text
+```plain
 certbot.service
 ```
 
@@ -669,7 +655,7 @@ sudo certbot delete \
 
 错误示例:
 
-```text
+```plain
 Could not bind TCP port 80 because it is already in use
 ```
 
@@ -785,7 +771,7 @@ curl \
 
 预期输出:
 
-```text
+```plain
 certbot-test
 ```
 
@@ -806,18 +792,21 @@ sudo certbot renew --dry-run -v
 
 ## 总结
 
-Debian 可以通过 APT 安装 Certbot 及其 Web 服务插件。
+- Debian 可以通过 APT 安装 Certbot 及其 Web 服务插件。
+- 已经运行 Nginx 的服务器，优先使用 Nginx 插件或 `webroot` 模式。这两种方式通常不需要停止 Web 服务。
+- `standalone` 模式适合没有 Web 服务的服务器。该模式也适合可以短暂停止反向代理的场景。
+- Docker 容器占用 TCP 80 时，可以使用 Hook 停止并恢复指定服务。Hook 应使用 Compose 文件的绝对路径。
+- Hook 脚本应使用 `.sh` 后缀，并通过数字前缀控制执行顺序。
+- 完成配置后，应检查 `certbot.timer`，并执行测试: `sudo certbot renew --dry-run`
+- 只有测试成功，才能确认自动续约流程可以正常工作。
 
-已经运行 Nginx 的服务器，优先使用 Nginx 插件或 `webroot` 模式。这两种方式通常不需要停止 Web 服务。
+**版权声明**
 
-`standalone` 模式适合没有 Web 服务的服务器。该模式也适合可以短暂停止反向代理的场景。
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
-Docker 容器占用 TCP 80 时，可以使用 Hook 停止并恢复指定服务。Hook 应使用 Compose 文件的绝对路径。
+作者: [除除](https://github.com/chengchuu)
+原文: <https://blog.mazey.net/6504.html>
 
-完成配置后，应检查 `certbot.timer`，并执行以下测试:
+<!-- ID: 20260899-debian-certbot -->
 
-```bash
-sudo certbot renew --dry-run
-```
-
-只有测试成功，才能确认自动续约流程可以正常工作。
+(完)
