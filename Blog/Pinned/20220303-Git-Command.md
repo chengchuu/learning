@@ -1,3 +1,4 @@
+<!-- omit from toc -->
 # Git 常用命令记录
 
 ![Git 常用命令记录](http://blog.mazey.net/wp-content/uploads/2025/08/git_SegmentFault_7x3.jpg)
@@ -14,6 +15,8 @@
 - [提交 Commit](#提交-commit)
 - [标签 Tag](#标签-tag)
 - [拉取 Pull](#拉取-pull)
+  - [配置 git pull 的 Merge / Rebase 策略](#配置-git-pull-的-merge--rebase-策略)
+  - [批量拉取](#批量拉取)
 - [开发 Development](#开发-development)
 - [极狐 GitLab](#极狐-gitlab)
 
@@ -23,8 +26,8 @@ Linux 搭建 Git 服务器及后续更新:
 
 参考:
 
-- [Linux 搭建 Git 服务器](http://blog.mazey.net/925.html)
-- [如何在 CentOS 7.x / 6.x 安装 / 更新新版 Git](http://blog.mazey.net/2034.html)
+- [Linux 搭建 Git 服务器](http://blog.mazey.net/925)
+- [如何在 CentOS 7.x / 6.x 安装 / 更新新版 Git](http://blog.mazey.net/2034)
 
 ## 基础 Basic
 
@@ -46,7 +49,7 @@ git reflog                  # 查看所有操作记录 (包括回滚、reset 等
 - `git reflog` 可用于找回误删的分支和提交。
 - `git log --oneline` 可简洁显示历史记录。
 
-参考: [Git 基础操作](http://blog.mazey.net/1644.html)
+参考: [Git 基础操作](http://blog.mazey.net/1644)
 
 ## 配置 Config
 
@@ -71,8 +74,8 @@ git config user.email "Your-Username@Example.COM"
 
 参考:
 
-- [Git 查看和修改用户名和邮箱](http://blog.mazey.net/1985.html)
-- [GitHub / GitLab 为不同的项目修改提交名字 user.name 和邮箱 user.email](http://blog.mazey.net/2956.html)
+- [Git 查看和修改用户名和邮箱](http://blog.mazey.net/1985)
+- [GitHub / GitLab 为不同的项目修改提交名字 user.name 和邮箱 user.email](http://blog.mazey.net/2956)
 
 ## 权限 Access Credential
 
@@ -90,7 +93,7 @@ RSA:
 cd ~ && ssh-keygen -t rsa -C "Your-Username@Example.COM" && cd ~/.ssh && cat id_rsa.pub
 ```
 
-参考: [GitHub / Gitee 等托管平台添加 SSH Keys](http://blog.mazey.net/2628.html)
+参考: [GitHub / Gitee 等托管平台添加 SSH Keys](http://blog.mazey.net/2628)
 
 ## 缓存 Cache
 
@@ -100,7 +103,7 @@ cd ~ && ssh-keygen -t rsa -C "Your-Username@Example.COM" && cd ~/.ssh && cat id_
 git rm -r --cached . && git add . && git commit -m "chore: clean cache" && git push
 ```
 
-参考: [Git 删除 .gitignore 生成之前上传的文件](http://blog.mazey.net/1401.html)
+参考: [Git 删除 .gitignore 生成之前上传的文件](http://blog.mazey.net/1401)
 
 ## 仓库地址 Remote Repository
 
@@ -110,7 +113,7 @@ git rm -r --cached . && git add . && git commit -m "chore: clean cache" && git p
 git remote set-url origin Your-New-URL
 ```
 
-参考: [Git 修改远程地址](http://blog.mazey.net/2631.html)
+参考: [Git 修改远程地址](http://blog.mazey.net/2631)
 
 ## 分支 Branch
 
@@ -121,7 +124,7 @@ git branch -d Your-Branch
 git push origin --delete Your-Branch
 ```
 
-参考: [Git 删除本地和远程分支](http://blog.mazey.net/1617.html)
+参考: [Git 删除本地和远程分支](http://blog.mazey.net/1617)
 
 ## 提交 Commit
 
@@ -140,7 +143,7 @@ git show Your-Commit-Hash
 
 参考:
 
-- [Git Commit message 和 Change log 编写规范 / 指南](http://blog.mazey.net/2186.html)
+- [Git Commit message 和 Change log 编写规范 / 指南](http://blog.mazey.net/2186)
 - [Change a commit message](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message)
 
 ## 标签 Tag
@@ -154,15 +157,51 @@ git push origin v1.0.0
 
 ## 拉取 Pull
 
+### 配置 git pull 的 Merge / Rebase 策略
+
+当本地分支和远程分支出现分叉时，可配置 `git pull` 默认使用 Merge 或 Rebase，避免 Git 每次提示选择拉取策略。
+
+使用 Merge:
+
+```bash
+git config --global pull.rebase false
+```
+
+保留分支原有提交历史，必要时会产生 Merge Commit。
+
+使用 Rebase:
+
+```bash
+git config --global pull.rebase true
+```
+
+将本地提交重新应用到远程分支最新提交之后，使提交历史更加线性。
+
+仅针对当前仓库配置时，移除 `--global`:
+
+```bash
+git config pull.rebase false
+git config pull.rebase true
+```
+
+查看当前配置:
+
+```bash
+git config --get pull.rebase
+git config --global --get pull.rebase
+```
+
+### 批量拉取
+
 批量拉取指定文件夹下所有 Git 项目最新代码。
 
-参考: [批量拉取 / git pull 指定文件夹下面所有 Git 项目的最新代码](http://blog.mazey.net/3035.html)
+参考: [批量拉取 / git pull 指定文件夹下面所有 Git 项目的最新代码](http://blog.mazey.net/3035)
 
 ## 开发 Development
 
 npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试。
 
-参考: [npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试](http://blog.mazey.net/2616.html)
+参考: [npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试](http://blog.mazey.net/2616)
 
 ## 极狐 GitLab
 
@@ -170,9 +209,9 @@ npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试。
 
 参考:
 
-- [GitLab 指定 Runner 执行任务 (CI / CD / JOB)](http://blog.mazey.net/5992.html)
-- [Webpack 多页面 & GitLab 增量构建部署模板](http://blog.mazey.net/1706.html)
-- [使用 GitLab CI / CD 和阿里云 CLI 自动部署前端项目](http://blog.mazey.net/1695.html)
+- [GitLab 指定 Runner 执行任务 (CI / CD / JOB)](http://blog.mazey.net/5992)
+- [webpack 多页面 & GitLab 增量构建部署模板](http://blog.mazey.net/1706)
+- [使用 GitLab CI / CD 和阿里云 CLI 自动部署前端项目](http://blog.mazey.net/1695)
 
 **版权声明**
 
@@ -181,6 +220,6 @@ npm 直接安装 GitHub / GitLab 仓库代码及 npm link 本地调试。
 作者: [除除](https://github.com/chengchuu)
 原文: <https://blog.mazey.net/5611.html>
 
-<!-- ID: 22-0303-Git-Command -->
+<!-- ID: 20220303-Git-Command -->
 
 (完)
