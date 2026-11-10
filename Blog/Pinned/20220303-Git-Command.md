@@ -35,19 +35,19 @@ Linux 搭建 Git 服务器及后续更新:
 
 ## 基础 Basic
 
-示例中的 `<your-...>` 是占位符，执行前请替换为实际值。Shell 命令中的占位符使用引号包裹，避免尖括号被解释为重定向。
+示例中的 `<placeholder-name>` 是占位符，使用小写字母和连字符命名。执行前请将整个占位符（包括尖括号）替换为实际值，并保留 Shell 命令中的引号，避免尖括号被解释为重定向。
 
 最常用的 Git 操作命令:
 
 ```bash
-git status                  # 查看当前仓库状态 (变更、未暂存、未提交等)
-git add .                   # 添加所有变更到暂存区
-git commit -m "<your-message>" # 提交到本地仓库
-git push                    # 推送到远程仓库
-git pull                    # 拉取远程仓库最新代码
-git log                     # 查看提交历史
-git diff                    # 比较变更内容
-git reflog                  # 查看所有操作记录 (包括回滚、reset 等)
+git status                       # 查看当前仓库状态 (变更、未暂存、未提交等)
+git add .                        # 添加所有变更到暂存区
+git commit -m "<commit-message>" # 提交到本地仓库
+git push                         # 推送到远程仓库
+git pull                         # 拉取远程仓库最新代码
+git log                          # 查看提交历史
+git diff                         # 比较变更内容
+git reflog                       # 查看所有操作记录 (包括回滚、reset 等)
 ```
 
 说明:
@@ -66,7 +66,7 @@ git reflog                  # 查看所有操作记录 (包括回滚、reset 等
 保留所获取分支的完整提交历史，按需下载文件内容:
 
 ```bash
-git clone --filter=blob:none "<your-repository-url>"
+git clone --filter=blob:none "<repository-url>"
 ```
 
 - `blob` 是 Git 存储文件内容的对象。初次获取时省略这些对象，检出时再下载当前版本所需的内容。
@@ -78,7 +78,7 @@ git clone --filter=blob:none "<your-repository-url>"
 仅获取最新一层提交历史，适合阅读或构建最新源码:
 
 ```bash
-git clone --depth 1 "<your-repository-url>"
+git clone --depth 1 "<repository-url>"
 ```
 
 默认只获取一个分支。浅克隆仍可编辑和提交，但依赖完整历史的操作会受限。
@@ -112,15 +112,15 @@ git config user.name
 git config user.email
 
 # 修改
-git config --global user.name "<your-username>"
-git config --global user.email "<your-email>"
+git config --global user.name "<username>"
+git config --global user.email "<email>"
 ```
 
 针对不同项目修改用户名和邮箱:
 
 ```bash
-git config user.name "<your-username>"
-git config user.email "<your-email>"
+git config user.name "<username>"
+git config user.email "<email>"
 ```
 
 参考:
@@ -133,7 +133,7 @@ git config user.email "<your-email>"
 只在当前本地仓库忽略文件，无需修改共享的 `.gitignore`。在普通克隆仓库的根目录执行:
 
 ```bash
-echo "<your-file>" >> .git/info/exclude
+echo "<ignore-pattern>" >> .git/info/exclude
 ```
 
 例如，忽略未跟踪的 `AGENTS.md`:
@@ -158,13 +158,13 @@ echo "AGENTS.md" >> .git/info/exclude
 ED25519 (推荐):
 
 ```bash
-cd ~ && ssh-keygen -t ed25519 -C "<your-email>" && cd ~/.ssh && cat id_ed25519.pub
+cd ~ && ssh-keygen -t ed25519 -C "<email>" && cd ~/.ssh && cat id_ed25519.pub
 ```
 
 RSA:
 
 ```bash
-cd ~ && ssh-keygen -t rsa -C "<your-email>" && cd ~/.ssh && cat id_rsa.pub
+cd ~ && ssh-keygen -t rsa -C "<email>" && cd ~/.ssh && cat id_rsa.pub
 ```
 
 参考: [GitHub / Gitee 等托管平台添加 SSH Keys](http://blog.mazey.net/2628)
@@ -184,7 +184,7 @@ git rm -r --cached . && git add . && git commit -m "chore: clean cache" && git p
 修改远程仓库地址:
 
 ```bash
-git remote set-url origin "<your-repository-url>"
+git remote set-url origin "<repository-url>"
 ```
 
 参考: [Git 修改远程地址](http://blog.mazey.net/2631)
@@ -194,8 +194,8 @@ git remote set-url origin "<your-repository-url>"
 删除本地和远程分支:
 
 ```bash
-git branch -d "<your-branch>"
-git push origin --delete "<your-branch>"
+git branch -d "<branch-name>"
+git push origin --delete "<branch-name>"
 ```
 
 参考: [Git 删除本地和远程分支](http://blog.mazey.net/1617)
@@ -212,7 +212,7 @@ git commit --amend
 
 ```bash
 git rev-list --max-parents=0 HEAD
-git show "<your-commit-hash>"
+git show "<commit-hash>"
 ```
 
 参考:
