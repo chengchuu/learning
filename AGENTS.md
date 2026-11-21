@@ -2,14 +2,24 @@
 
 ## Project Structure & Module Organization
 
-This repository is a collection of dated learning notes and runnable examples, not a single application. Topic directories such as `JavaScript Enlightenment/`, `Note/`, and `Interviews/` contain HTML, JavaScript, CSS, and related assets. Long-form articles live in `Blog/`; archived publication copies live in `TCloud/`. Go exercises are isolated in `The Go Programming Language/`, which is the only directory with a module manifest (`go.mod`). Keep images, styles, and scripts beside the lesson that uses them unless an existing subtree has its own asset convention.
+This repository contains technical articles, learning notes, and standalone examples. Topic directories such as `JavaScript Enlightenment/`, `Note/`, and `Interviews/` contain HTML, JavaScript, CSS, and related assets. Archived publication copies live in `TCloud/`. Go exercises live in `The Go Programming Language/`, the repository's only Go module. Keep images, styles, and scripts beside the lesson that uses them unless the subtree has its own asset convention.
+
+Work from the directory of the example you are changing. The package manifest in `Node.js/2022/20220223/` belongs to that lesson. Its `npm test` script is a placeholder that exits with an error.
+
+## Blog workflow
+
+- Find articles directly under `Blog/` and in topic folders such as `Blog/Docker/`, `Blog/Git/`, and `Blog/Linux/`. Curated reference articles live in `Blog/Pinned/`.
+- Use `draft-<topic>.md` for working drafts and `YYYYMMDD-<topic>.md` for dated articles. Check for an existing dated version before editing a draft or creating a duplicate. For example, [the basic frp deployment guide](Blog/20261121-docker-frp.md) is a dated article.
+- Follow [the Blog writing guidelines](Blog/writing-guidelines.md) for Chinese prose. Use [the Blog templates](Blog/README.md) for content notices, update records, and copyright notices when applicable. Preserve existing author attribution, source URLs, and article IDs.
+- Keep each article's language, heading structure, and technical literals consistent. If an article has a table of contents, update its labels and anchors when headings change. Keep related translations and archived copies outside the edit unless the task calls for syncing them.
+- When updating the root [README](README.md), keep its latest-articles list limited to dated English-language articles. Verify the linked article's language and sort by the date in the filename, newest first.
 
 ## Build, Test, and Development Commands
 
-There is no repository-wide build or package manifest. Run checks within the area you change:
+Run checks within the area you change. The repository has no shared build or root package manifest.
 
-- `npx markdownlint-cli2 "**/*.md"` checks Markdown using `.markdownlint.json`.
-- `cd "The Go Programming Language" && go test ./...` compiles every Go exercise; no test files currently exist.
+- From the repository root, run `npx markdownlint-cli2 "<article-path>"` for one article. Replace `<article-path>` with its repository-relative path. Run `npx markdownlint-cli2 "**/*.md"` for a repository-wide check. Both use `.markdownlint.json`.
+- `cd "The Go Programming Language" && go test ./...` checks the Go exercises in their module. Packages reported as `[no test files]` are compile checks.
 - `gofmt -w path/to/file.go` formats changed Go source before review.
 - `python3 -m http.server 8000` serves static examples from the repository root at `http://localhost:8000/`.
 
@@ -17,11 +27,13 @@ Open changed HTML examples in a browser and inspect the console, layout, and ref
 
 ## Coding Style & Naming Conventions
 
-Use LF line endings, a final newline, and no trailing whitespace, matching `.vscode/settings.json`. Markdown uses ATX headings, dash bullets, two-space nested-list indentation, fenced backtick blocks, and a 500-character line limit. Preserve the style of historical examples; avoid broad modernization of lesson code. Format Go with `gofmt`. Follow established date-based paths and filenames, such as `Blog/20260613-macOS-scutil.md` and `Note/Archives/2019/20190117/test0.html`.
+Use LF line endings, a final newline, and no trailing whitespace, matching `.vscode/settings.json`. Markdown uses ATX headings, dash bullets, two-space nested-list indentation, and fenced backtick blocks. The 500-character line limit excludes code blocks and tables. Preserve the style and date-based paths of historical examples. Format Go with `gofmt`.
 
 ## Testing Guidelines
 
-Add focused verification near the changed material. Name Go tests `*_test.go` and functions `TestXxx`; run `go test ./...` from the Go module. For static examples, document manual browser coverage in the pull request. No coverage threshold is configured.
+For Markdown changes, check affected links and anchors and run `git diff --check`. When changing runnable examples in articles, validate the changed commands and configurations in an isolated environment where practical. For Compose examples, check the configuration with `docker compose config`. If Docker is available, run the documented workflow and verify its expected result. Report configuration checks and runtime results separately.
+
+Name Go tests `*_test.go` and functions `TestXxx`. For static examples, document manual browser coverage in the pull request.
 
 ## Commit & Pull Request Guidelines
 
