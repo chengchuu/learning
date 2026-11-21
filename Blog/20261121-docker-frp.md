@@ -232,11 +232,11 @@ webServer.password = "WEBSERVER_PASSWORD"
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <https://blog.mazey.net/xxxx.html>
+原文: <https://blog.mazey.net/6572.html>
 
-<!-- ID: ARTICLE_ID -->
+<!-- ID: 20261121-docker-frp -->
 
 ```plain
-#FRP #Compose #Proxy #Docker #TCP #Container #Linux #Network #Security #Troubleshooting
+#FRP #Compose #Proxy #Docker #TCP #Container #Linux #Network #Security
 #容器化 #端口 #容器 #测试 #日志 #服务器 #运维
 ```
