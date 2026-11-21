@@ -1,5 +1,9 @@
 # 基于 Docker Compose 部署 frp 实现内网穿透
 
+![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
+
+用 Docker Compose 部署 frp，将内网容器的 8000 端口映射到公网 6000。两端共用鉴权令牌，通过日志和连通性测试排查故障，并限制管理面板的访问来源。
+
 - [1. 适用范围](#1-适用范围)
 - [2. 部署架构](#2-部署架构)
   - [2.1 组件说明](#21-组件说明)
@@ -208,3 +212,17 @@ curl http://111.111.222.222:6000
 - 回滚方案
 
 以上内容可保证后续运维与审计可追溯。
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <https://blog.mazey.net/xxxx.html>
+
+<!-- ID: ARTICLE_ID -->
+
+```plain
+#FRP #Compose #Proxy #Docker #TCP #Container #Linux #Network #Security #Troubleshooting
+#容器化 #端口 #容器 #测试 #日志 #服务器 #运维
+```
