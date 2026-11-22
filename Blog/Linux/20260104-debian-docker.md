@@ -1,19 +1,18 @@
-# Debian 12.x Docker 从安装配置到容器部署全流程
+# Debian 12.x/13.x Docker 从安装配置到容器部署全流程
 
 ![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 
 本文介绍如何在腾讯云轻量应用服务器 (或云服务器 CVM) 上安装 Debian 12 系统，配置 Docker 环境，并通过上传镜像的方式部署容器服务。适用于想规避 Docker Hub 网络波动或需要私有化部署的场景。
 
-- [Debian 12.x Docker 从安装配置到容器部署全流程](#debian-12x-docker-从安装配置到容器部署全流程)
-  - [安装系统](#安装系统)
-  - [安装 Docker](#安装-docker)
-  - [容器部署](#容器部署)
-    - [部署背景](#部署背景)
-    - [镜像准备](#镜像准备)
-    - [镜像上传](#镜像上传)
-    - [容器启动](#容器启动)
-    - [容器管理](#容器管理)
-  - [防火墙管理](#防火墙管理)
+- [安装系统](#安装系统)
+- [安装 Docker](#安装-docker)
+- [容器部署](#容器部署)
+  - [部署背景](#部署背景)
+  - [镜像准备](#镜像准备)
+  - [镜像上传](#镜像上传)
+  - [容器启动](#容器启动)
+  - [容器管理](#容器管理)
+- [防火墙管理](#防火墙管理)
 
 ## 安装系统
 
@@ -219,7 +218,7 @@ ufw enable
 配置 `ufw` 规则:
 
 ```bash
-ufw allow PORT_NUMBER/tcp
+ufw allow <port-number>/tcp
 ```
 
 例如:
@@ -234,7 +233,7 @@ ufw allow 3306/tcp
 验证端口是否开放:
 
 ```bash
-netstat -tulnp | grep PORT_NUMBER
+netstat -tulnp | grep <port-number>
 ```
 
 检查云服务商 - 防火墙 - 规则:
@@ -250,6 +249,6 @@ netstat -tulnp | grep PORT_NUMBER
 本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
 
 作者: [除除](https://github.com/chengchuu)
-原文: <http://blog.mazey.net/6103.html>
+原文: <https://blog.mazey.net/6103.html>
 
-(完)
+<!-- ID: 20260104-debian-docker -->

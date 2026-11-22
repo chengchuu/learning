@@ -1,210 +1,261 @@
-# 基于 Docker Compose 部署 frp 实现内网穿透
+# frp 内网穿透：多个 Web 服务如何共用公网 80 端口
 
-- [1. 适用范围](#1-适用范围)
-- [2. 部署架构](#2-部署架构)
-  - [2.1 组件说明](#21-组件说明)
-  - [2.2 流量路径](#22-流量路径)
-- [3. 前置条件](#3-前置条件)
-- [4. 服务端配置 (`frps`)](#4-服务端配置-frps)
-  - [4.1 `docker-compose.yml`](#41-docker-composeyml)
-  - [4.2 `frps.toml`](#42-frpstoml)
-  - [4.3 启动命令](#43-启动命令)
-- [5. 客户端配置 (`frpc`)](#5-客户端配置-frpc)
-  - [5.1 `docker-compose.yml`](#51-docker-composeyml)
-  - [5.2 `frpc.toml`](#52-frpctoml)
-  - [5.3 启动命令](#53-启动命令)
-- [6. 验证步骤](#6-验证步骤)
-  - [6.1 检查容器状态](#61-检查容器状态)
-  - [6.2 检查日志](#62-检查日志)
-  - [6.3 连通性测试](#63-连通性测试)
-- [7. 参数说明与默认策略](#7-参数说明与默认策略)
-- [8. 安全建议](#8-安全建议)
-- [9. 故障排查](#9-故障排查)
-- [10. 配置变更记录建议](#10-配置变更记录建议)
+![Docker](http://blog.mazey.net/wp-content/uploads/2023/01/Docker_SF_7x3.jpg)
 
-## 1. 适用范围
+多个内网 Web 服务可共用公网 80 端口。纯 frp 直接按域名转发；公网服务器已有网站时，可由 Nginx 统一接收请求，将内网域名交给 frp，其余网站沿用各自的配置。
 
-本文用于在以下环境部署 frp 反向代理服务，以暴露内网服务端口 `8000`。
+- [部署背景](#部署背景)
+- [部署架构](#部署架构)
+- [前置条件](#前置条件)
+- [公网服务器配置](#公网服务器配置)
+  - [服务端 `compose.yaml`](#服务端-composeyaml)
+  - [`frps.toml`](#frpstoml)
+- [内网主机配置](#内网主机配置)
+  - [客户端 `compose.yaml`](#客户端-composeyaml)
+  - [`frpc.toml`](#frpctoml)
+- [验证转发](#验证转发)
+- [使用 Nginx 共用公网端口](#使用-nginx-共用公网端口)
+  - [启用 Nginx 的服务端 Compose](#启用-nginx-的服务端-compose)
+  - [`nginx.conf`](#nginxconf)
+- [参考资料](#参考资料)
 
-- 客户端: 本地主机，使用 `Docker Compose` 运行 `frpc`。
-- 服务端: Linux 公网服务器，使用 `Docker Compose` 运行 `frps`。
-- 目标: 通过公网服务器访问内网容器 `WEB_SERVER:8000`。
+## 部署背景
 
-## 2. 部署架构
+本文沿用 [Docker Compose 部署 frp 的基础配置](https://blog.mazey.net/6572.html)，将 Web 流量的入口改为基于域名的 HTTP 代理。
 
-### 2.1 组件说明
+## 部署架构
 
-- `frps`: 部署在公网服务器，负责接收 `frpc` 连接和公网流量。
-- `frpc`: 部署在本地主机，负责把内网服务映射到公网服务器。
-- `WEB_SERVER`: 本地主机上的业务容器，提供 `8000` 端口服务。
+`浏览器` → HTTP → `公网服务器:80` → `frps:8080` → `frpc` → `内网 Web 服务`
 
-### 2.2 流量路径
+- `app.example.com` 和 `api.example.com` 指向同一台公网服务器。
+- `app.example.com` 转发到 `WEB_SERVER:8000`，`api.example.com` 转发到 `API_SERVER:8080`。
+- `7000` 仍用于 `frpc` 连接 `frps`。示例中的域名和 Compose 服务名均可替换为实际值。
 
-客户端访问 `公网 IP:6000` 后，流量路径如下:
+## 前置条件
 
-`公网客户端` → `frps:6000` → `frpc` → `WEB_SERVER:8000`
+- 两台主机均已安装 Docker 与 Docker Compose。运行基础示例前，确认公网服务器的 TCP `80` 和 `7000` 可用。
+- 部署时，将两个示例域名替换为实际域名。`frpc.toml` 中的 `customDomains` 须与访问时使用的域名一致。使用域名直接访问前，将 DNS 记录指向公网服务器。DNS 尚未配置时，可参照 [Nginx 扩展示例](#使用-nginx-共用公网端口)用 `curl --resolve` 验证。
+- 为两端的 `AUTH_TOKEN` 设置同一个高强度随机密钥。开放公网 TCP `80` 供用户访问，并允许内网主机连接 TCP `7000`。
 
-## 3. 前置条件
+## 公网服务器配置
 
-- 本地主机与 Linux 服务器均已安装 Docker 与 Docker Compose。
-- 公网服务器已放行 TCP 端口: `6000`、`7000`、`7500`。
-- 客户端可以主动访问公网服务器 `111.111.222.222:7000`。
-- 两端 `auth.token` 必须一致。
+基础示例只运行 `frps`。将以下两个配置文件放在公网服务器的同一目录下，并将挂载路径中的 `/PATH` 替换为该目录的实际绝对路径，例如 `/opt/frp`。端口映射 `"80:8080"` 将来自公网的 HTTP 请求直接交给 `frps`。
 
-## 4. 服务端配置 (`frps`)
-
-### 4.1 `docker-compose.yml`
+### 服务端 `compose.yaml`
 
 ```yaml
 services:
-  CONTAINER_FRPS:
+  frps:
     image: fatedier/frps:v0.68.0
-    container_name: CONTAINER_FRPS
     restart: unless-stopped
     command: ["-c", "/etc/frp/frps.toml"]
     ports:
-      - "6000:6000"
       - "7000:7000"
-      - "7500:7500"
+      - "80:8080"
     volumes:
-      - "/PATH/frps.toml:/etc/frp/frps.toml"
+      - "/PATH/frps.toml:/etc/frp/frps.toml:ro"
 ```
 
-### 4.2 `frps.toml`
+### `frps.toml`
 
 ```toml
 bindPort = 7000
 auth.token = "AUTH_TOKEN"
-
-# Dashboard
-webServer.addr = "0.0.0.0"
-webServer.port = 7500
-webServer.user = "admin"
-webServer.password = "WEBSERVER_PASSWORD"
+vhostHTTPPort = 8080
 ```
 
-### 4.3 启动命令
+在公网服务器的 Compose 目录运行 `docker compose up -d`。
 
-```bash
-docker compose up -d
-```
+## 内网主机配置
 
-## 5. 客户端配置 (`frpc`)
+将以下两个配置文件放在内网主机的同一目录下，并将挂载路径中的 `/PATH` 替换为该目录的实际绝对路径。两个业务容器分别返回固定文本，便于确认请求到达正确的后端。换成实际业务时，确保 `frpc` 能在共享网络中通过服务名访问对应端口。
 
-### 5.1 `docker-compose.yml`
+### 客户端 `compose.yaml`
 
 ```yaml
 services:
-  CONTAINER_FRPC:
+  frpc:
     image: fatedier/frpc:v0.68.0
-    container_name: CONTAINER_FRPC
     restart: unless-stopped
     command: ["-c", "/etc/frp/frpc.toml"]
     volumes:
-      - "/PATH/frpc.toml:/etc/frp/frpc.toml"
+      - "/PATH/frpc.toml:/etc/frp/frpc.toml:ro"
     depends_on:
       - WEB_SERVER
+      - API_SERVER
+
+  WEB_SERVER:
+    image: busybox:1.37
+    command:
+      - sh
+      - -ec
+      - |
+        mkdir -p /www
+        printf '%s\n' 'web backend' > /www/index.html
+        exec httpd -f -p 8000 -h /www
+
+  API_SERVER:
+    image: busybox:1.37
+    command:
+      - sh
+      - -ec
+      - |
+        mkdir -p /www
+        printf '%s\n' 'api backend' > /www/index.html
+        exec httpd -f -p 8080 -h /www
 ```
 
-### 5.2 `frpc.toml`
+### `frpc.toml`
+
+将 `203.0.113.10` 替换为公网服务器的实际 IP，并使用与服务端相同的鉴权密钥。
 
 ```toml
-serverAddr = "111.111.222.222"
+serverAddr = "203.0.113.10"
 serverPort = 7000
 auth.token = "AUTH_TOKEN"
 
 [[proxies]]
-name = "FRP_NAME"
-type = "tcp"
+name = "web-http"
+type = "http"
 localIP = "WEB_SERVER"
 localPort = 8000
-remotePort = 6000
+customDomains = ["app.example.com"]
+
+[[proxies]]
+name = "api-http"
+type = "http"
+localIP = "API_SERVER"
+localPort = 8080
+customDomains = ["api.example.com"]
 ```
 
-### 5.3 启动命令
+在内网主机的 Compose 目录运行 `docker compose up -d`。
+
+## 验证转发
+
+两端启动后，在内网主机运行 `docker compose logs frpc`，确认 `web-http` 和 `api-http` 都已启动。从外网访问以下地址，并将域名替换为实际域名。
 
 ```bash
-docker compose up -d
+curl --fail --show-error http://app.example.com/
+curl --fail --show-error http://api.example.com/
 ```
 
-## 6. 验证步骤
+两个请求共用公网服务器的 `80` 端口，预期分别返回 `web backend` 和 `api backend`。
 
-### 6.1 检查容器状态
+## 使用 Nginx 共用公网端口
 
-服务端执行:
+公网服务器上已有其他网站或 Web 服务时，可由一个 Nginx 实例统一监听 `80`。此时只需调整公网侧的 HTTP 入口，两端的 TOML 文件和内网主机的 Compose 文件继续沿用基础示例。
+
+- `www.example.com` → `Nginx:80` → `public-site:8000` (公网服务器上的现有网站)。
+- `app.example.com` → `Nginx:80` → `frps:8080` → `frpc` → `WEB_SERVER:8000`。
+- `api.example.com` → `Nginx:80` → `frps:8080` → `frpc` → `API_SERVER:8080`。
+
+### 启用 Nginx 的服务端 Compose
+
+使用容器版 Nginx 时，在原服务端 Compose 项目中用下面的 `compose.yaml` 替换基础示例的文件。Nginx 接管宿主机的 `80` 端口，`frps` 保留 `7000` 的映射供客户端连接。切换端口映射时，Compose 会重建 `frps`，业务转发可能短暂中断。
+
+`public-site` 模拟公网服务器上原有的网站。网站端口 `8000` 和 frp 的 HTTP 入口 `8080` 均通过 Compose 网络访问。将 `/PATH` 替换为配置文件所在目录的实际绝对路径。
+
+```yaml
+services:
+  frps:
+    image: fatedier/frps:v0.68.0
+    restart: unless-stopped
+    command: ["-c", "/etc/frp/frps.toml"]
+    ports:
+      - "7000:7000"
+    volumes:
+      - "/PATH/frps.toml:/etc/frp/frps.toml:ro"
+
+  nginx:
+    image: nginx:1.30-alpine
+    restart: unless-stopped
+    depends_on:
+      - frps
+      - public-site
+    ports:
+      - "80:80"
+    volumes:
+      - "/PATH/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
+
+  public-site:
+    image: busybox:1.37
+    command:
+      - sh
+      - -ec
+      - |
+        mkdir -p /www
+        printf '%s\n' 'public website' > /www/index.html
+        exec httpd -f -p 8000 -h /www
+```
+
+### `nginx.conf`
+
+将以下站点配置保存为 `nginx.conf`，并把 `server_name` 中的示例域名换成实际域名。`www.example.com` 对应公网侧网站，由 Nginx 直接转发。另两个域名须与 `frpc.toml` 中的 `customDomains` 一致，由 Nginx 保留 `Host` 并交给 frp 匹配。
+
+```nginx
+server {
+    listen 80;
+    server_name app.example.com api.example.com;
+
+    location / {
+        proxy_pass http://frps:8080;
+        proxy_set_header Host $host;
+    }
+}
+
+server {
+    listen 80;
+    server_name www.example.com;
+
+    location / {
+        proxy_pass http://public-site:8000;
+        proxy_set_header Host $host;
+    }
+}
+```
+
+如果宿主机上的 Nginx 已监听 `80`，沿用基础示例的服务端 Compose 文件，将 `"80:8080"` 改为 `"127.0.0.1:8080:8080"`。保留现有网站的站点配置，只加入上面转发给 frp 的 `server` 块，并把该块的 `proxy_pass` 目标改为 `http://127.0.0.1:8080`。
+
+在公网服务器的 Compose 目录运行 `docker compose up -d`。使用宿主机上的 Nginx 时，先运行 `nginx -t` 检查配置，再重新加载 Nginx。
+
+三个域名的 DNS 记录指向公网服务器后，从外网分别发起请求。容器版示例的预期响应依次为 `public website`、`web backend` 和 `api backend`。使用宿主机上的 Nginx 时，第一个请求应返回现有网站的内容。
 
 ```bash
-docker ps | grep CONTAINER_FRPS
+curl --fail --show-error http://www.example.com/
+curl --fail --show-error http://app.example.com/
+curl --fail --show-error http://api.example.com/
 ```
 
-客户端执行:
+DNS 尚未配置时，可以用 `curl --resolve` 将三个域名临时指向同一个公网 IP 和 `80` 端口。将 `203.0.113.10` 替换为公网服务器的实际 IP。若已更换示例域名，也要同步替换命令中 `--resolve` 和 URL 里的域名。
 
 ```bash
-docker ps | findstr CONTAINER_FRPC
+curl --fail --show-error --noproxy '*' --resolve www.example.com:80:203.0.113.10 http://www.example.com/
+curl --fail --show-error --noproxy '*' --resolve app.example.com:80:203.0.113.10 http://app.example.com/
+curl --fail --show-error --noproxy '*' --resolve api.example.com:80:203.0.113.10 http://api.example.com/
 ```
 
-### 6.2 检查日志
+请求仍使用 URL 中的域名作为 `Host`，因此 Nginx 和 frp 会按原有规则分流，预期响应与上面相同。
 
-服务端执行:
+容器版 Nginx 实测时，将三条命令中的示例 IP 换成 `127.0.0.1`，三个请求都通过同一个 `127.0.0.1:80` 入口，无需配置 DNS 或修改 `hosts` 文件。`www.example.com`、`app.example.com` 和 `api.example.com` 分别返回 `public website`、`web backend` 和 `api backend`。
 
-```bash
-docker logs -f CONTAINER_FRPS
+宿主机 Nginx 方案也在 macOS 上单独实测。三个域名共用 `127.0.0.1:80`，分别返回现有网站和两个内网服务的内容。`frps` 的 `8080` 仅发布到回环地址 `127.0.0.1:8080`。由于测试账号无法直接监听 `80`，测试时通过临时 TCP 转发将 `80` 接到宿主机 Nginx 的高位端口。
+
+## 参考资料
+
+- [frp 多域名转发示例](https://gofrp.org/en/docs/examples/vhost-http/)
+- [Nginx 代理请求头配置](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header)
+
+**版权声明**
+
+本文为原创文章，作者保留版权。转载请保留本文完整内容，并以超链接形式注明作者及原文出处。
+
+作者: [除除](https://github.com/chengchuu)
+原文: <https://blog.mazey.net/xxxx.html>
+
+<!-- ID: ARTICLE_ID -->
+
+```plain
+#FRP #Nginx #Docker #Compose #HTTP #Proxy #Curl
+#反向代理 #域名 #端口 #容器化 #虚拟主机 #部署
 ```
-
-客户端执行:
-
-```bash
-docker logs -f CONTAINER_FRPC
-```
-
-### 6.3 连通性测试
-
-从外网执行:
-
-```bash
-curl http://111.111.222.222:6000
-```
-
-如果业务是 HTTP 服务，应返回页面或接口响应。如果业务是非 HTTP 服务，请使用对应客户端工具验证 TCP 连通性。
-
-## 7. 参数说明与默认策略
-
-本文尽量采用 `frp` 默认行为，仅显式配置必要参数。
-
-- `bindPort`: `frps` 控制通道端口。
-- `serverAddr`、`serverPort`: `frpc` 连接 `frps` 的地址与端口。
-- `auth.token`: 鉴权口令，两端须一致。
-- `remotePort`: 公网暴露端口。
-- `localIP`、`localPort`: 客户端内网目标服务地址与端口。
-
-说明: `localIP = "WEB_SERVER"` 使用 Docker 内部 DNS 解析容器名。该写法适用于 `CONTAINER_FRPC` 与 `WEB_SERVER` 位于同一 Compose 网络的场景。
-
-## 8. 安全建议
-
-- 请替换示例中的 `token` 与 Dashboard 密码，使用高强度随机字符串。
-- 生产环境建议限制 `7500` 的来源 IP，避免 Dashboard 暴露到公网。
-- 如无 Dashboard 需求，可移除 `7500:7500` 端口映射，并删除相关配置。
-- 建议定期升级镜像版本，并先在测试环境验证兼容性。
-
-## 9. 故障排查
-
-- 无法访问 `6000`:
-  - 检查公网安全组与系统防火墙是否放行 `6000`、`7000`。
-  - 检查 `frps` 是否正常监听并启动成功。
-- `frpc` 连接失败:
-  - 检查 `serverAddr`、`serverPort` 是否正确。
-  - 检查两端 `auth.token` 是否一致。
-- 连接建立但业务不通:
-  - 检查 `WEB_SERVER` 容器是否监听 `8000`。
-  - 在 `CONTAINER_FRPC` 容器内确认可解析并访问 `WEB_SERVER:8000`。
-
-## 10. 配置变更记录建议
-
-建议在仓库维护以下变更记录字段:
-
-- 变更日期
-- 变更人
-- 变更项 (端口、镜像版本、鉴权参数、网络策略)
-- 回滚方案
-
-以上内容可保证后续运维与审计可追溯。

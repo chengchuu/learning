@@ -4,18 +4,6 @@
 
 介绍 Debian 环境下 Certbot 的安装、HTTPS 证书申请、Nginx 配置、续约与撤销流程，并涵盖 standalone、webroot、Hook、systemd 定时器及 Docker Compose 端口冲突排查，帮助建立稳定的证书自动化管理方案。
 
-```plain
-#Certbot
-#LetsEncrypt
-#Debian
-#HTTPS
-#SSL
-#TLS
-#Nginx
-#DockerCompose
-#DevOps
-```
-
 - [概述](#概述)
 - [前置条件](#前置条件)
 - [安装 Certbot](#安装-certbot)
@@ -436,9 +424,7 @@ Certbot 会自动执行以下目录中的可执行文件:
 /etc/letsencrypt/renewal-hooks/post/
 ```
 
-Hook 脚本统一使用 `.sh` 后缀。该后缀可以明确表示文件类型，也便于编辑器识别 Shell 语法。
-
-脚本名称中的 `10-` 和 `90-` 用于控制执行顺序。Certbot 会按照文件名的字节顺序，执行同一个 Hook 目录中的脚本。
+推荐 Hook 脚本统一使用 `.sh` 后缀。该后缀可以明确表示文件类型，也便于编辑器识别 Shell 语法。脚本名称中的 `10-` 和 `90-` 用于控制执行顺序。Certbot 会按照文件名的字节顺序，执行同一个 Hook 目录中的脚本。
 
 例如，以下脚本的执行顺序为:
 
@@ -809,4 +795,6 @@ sudo certbot renew --dry-run -v
 
 <!-- ID: 20260899-debian-certbot -->
 
-(完)
+```plain
+#Certbot #LetsEncrypt #Debian #HTTPS #SSL #TLS #Nginx #DockerCompose #DevOps
+```
