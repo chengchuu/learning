@@ -4,8 +4,6 @@ This repository collects technical articles, learning notes, and standalone prog
 
 ## Latest dated articles
 
-English-language articles are listed by the date in their filenames, newest first.
-
 - 2026-05-03 · [Workbox v6 practical guide](Blog/PWA/20260503-workbox-en.md)
 - 2026-04-18 · [Multiple webpack configurations](Blog/webpack/20260418-webpack-en.md)
 - 2026-03-05 · [Troubleshoot Docker entrypoint errors](Blog/Docker/20260305-docker-errors-en.md)
