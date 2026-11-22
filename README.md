@@ -11,6 +11,6 @@ This repository collects technical articles, learning notes, and standalone prog
 ## Repository layout
 
 - [Blog](Blog/) contains dated articles and working drafts, with topic folders for [Docker](Blog/Docker/), [Git](Blog/Git/), [Linux](Blog/Linux/), [PWA](Blog/PWA/), and other subjects. [Pinned articles](Blog/Pinned/) collect reference guides.
-- [Note](Note/) and [Interviews](Interviews/) contain learning notes and practice material. Book-specific folders such as [JavaScript Enlightenment](JavaScript%20Enlightenment/) contain examples and related assets.
-- [The Go Programming Language](The%20Go%20Programming%20Language/) contains Go exercises in a separate module.
+- [Note](Note/) and [Interviews](Interview/) contain learning notes and practice material. Book-specific folders such as [JavaScript Enlightenment](JavaScript-Enlightenment/) contain examples and related assets.
+- [The Go Programming Language](The-Go-Programming-Language/) contains Go exercises in a separate module.
 - [TCloud](TCloud/) contains archived publication copies.

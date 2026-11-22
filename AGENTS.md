@@ -2,9 +2,9 @@
 
 ## Project Structure & Module Organization
 
-This repository contains technical articles, learning notes, and standalone examples. Topic directories such as `JavaScript Enlightenment/`, `Note/`, and `Interviews/` contain HTML, JavaScript, CSS, and related assets. Archived publication copies live in `TCloud/`. Go exercises live in `The Go Programming Language/`, the repository's only Go module. Keep images, styles, and scripts beside the lesson that uses them unless the subtree has its own asset convention.
+This repository contains technical articles, learning notes, and standalone examples. Topic directories such as `JavaScript-Enlightenment/`, `Note/`, and `Interview/` contain HTML, JavaScript, CSS, and related assets. Archived publication copies live in `TCloud/`. Go exercises live in `The-Go-Programming-Language/`, the repository's only Go module. Keep images, styles, and scripts beside the lesson that uses them unless the subtree has its own asset convention.
 
-Work from the directory of the example you are changing. The package manifest in `Node.js/2022/20220223/` belongs to that lesson. Its `npm test` script is a placeholder that exits with an error.
+Work from the directory of the example you are changing. The package manifest in `Node-js/2022/20220223/` belongs to that lesson. Its `npm test` script is a placeholder that exits with an error.
 
 ## Blog workflow
 
@@ -21,7 +21,7 @@ Work from the directory of the example you are changing. The package manifest in
 Run checks within the area you change. The repository has no shared build or root package manifest.
 
 - From the repository root, run `npx markdownlint-cli2 "<article-path>"` for one article. Replace `<article-path>` with its repository-relative path. Run `npx markdownlint-cli2 "**/*.md"` for a repository-wide check. Both use `.markdownlint.json`.
-- `cd "The Go Programming Language" && go test ./...` checks the Go exercises in their module. Packages reported as `[no test files]` are compile checks.
+- `cd "The-Go-Programming-Language" && go test ./...` checks the Go exercises in their module. Packages reported as `[no test files]` are compile checks.
 - `gofmt -w path/to/file.go` formats changed Go source before review.
 - `python3 -m http.server 8000` serves static examples from the repository root at `http://localhost:8000/`.
 
