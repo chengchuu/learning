@@ -6,6 +6,8 @@ This repository contains technical articles, learning notes, and standalone exam
 
 Work from the directory of the example you are changing. The package manifest in `Node-js/2022/20220223/` belongs to that lesson. Its `npm test` script is a placeholder that exits with an error.
 
+Place new dated exercises in `YYYY/YYYYMMDD/` under the relevant topic directory. The year in the date directory must match its parent year. For example, Go exercises live under [The Go Programming Language](The-Go-Programming-Language/2022/20220204/), and archived notes follow the same pattern under [Note/Archives](Note/Archives/2023/20230205/). Dated Blog articles use the filename convention below.
+
 ## Blog workflow
 
 - Find articles directly under `Blog/` and in topic folders such as `Blog/Docker/`, `Blog/Git/`, and `Blog/Linux/`. Curated reference articles live in `Blog/Pinned/`.
